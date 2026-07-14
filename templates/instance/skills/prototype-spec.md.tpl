@@ -29,8 +29,8 @@ Traduzir o use case em uma especificação de protótipo navegável — descreve
 
 Antes de gerar, leia:
 
-- [ ] `features/{slug}/spec/use-case.md`
-- [ ] `features/{slug}/spec/business-rules.md`
+- [ ] `sprints/sprint-{N}/features/{slug}/spec/use-case.md`
+- [ ] `sprints/sprint-{N}/features/{slug}/spec/business-rules.md`
 
 Se use case não existir → delegar `use-case` primeiro.
 
@@ -134,7 +134,7 @@ Tudo que ainda precisa de decisão antes de implementar o protótipo.
 
 ## Saída esperada
 
-Arquivo `features/{slug}/design/prototype.md` com:
+Arquivo `sprints/sprint-{N}/features/{slug}/design/prototype.md` com:
 - ID e rota no catálogo
 - Especificação de cada tela (layout, estados, mock data)
 - Mapa de navegação
@@ -145,7 +145,7 @@ Arquivo `features/{slug}/design/prototype.md` com:
 
 ## Após gerar — progress e entrega
 
-1. Atualizar `features/{slug}/progress.md` — marcar **A4** `[x]` (skill `feature-progress`)
+1. Atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — marcar **A4** `[x]` (skill `feature-progress`)
 2. Responder ao usuário conforme `docs/skill-conventions.md`
 
 **Próximos passos:** B1 — Sprint task (`sprint-task`) ou B4 — Protótipo Angular (`prototype-angular`)

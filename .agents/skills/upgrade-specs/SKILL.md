@@ -11,7 +11,7 @@ description: Atualiza instância SDD existente para contract_version 1 — steer
 - Adicionar `steering/`, `sdd.config.yaml`, gates RN atualizados
 - Alinhar skills ao contrato em `docs/instance-contract.md`
 
-**Não apagar:** `features/**`, `fixes/**`, protótipos de domínio já implementados.
+**Não apagar:** `sprints/**`, `features/**` (legado), `fixes/**` (legado), protótipos de domínio já implementados.
 
 **Sem scripts** — o agente lê, compara e grava arquivos.
 

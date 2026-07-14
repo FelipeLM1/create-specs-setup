@@ -60,7 +60,7 @@ Legenda: 🔴 obrigatório · 🟡 recomendado (pode `[PENDENTE]` não crítico)
 
 | # | Pergunta | Campo |
 |---|----------|-------|
-| 3.1 🔴 | Confirmar: fonte **primária** das RN = `features/{slug}/spec/business-rules.md`? | `primary_store: specs_repo` |
+| 3.1 🔴 | Confirmar: fonte **primária** das RN = `sprints/sprint-{N}/features/{slug}/spec/business-rules.md`? | `primary_store: specs_repo` |
 | 3.2 🔴 | O projeto usa **wiki externa** (GitLab) para publicar RN? sim/não | `wiki.enabled` |
 | 3.3a 🔴 (se wiki) | URL base do GitLab/grupo? | `wiki.base_url` |
 | 3.3b 🔴 (se wiki) | Em qual **repo** fica a wiki? (ex.: SPA) | `wiki.host_repo` |
@@ -77,7 +77,7 @@ Legenda: 🔴 obrigatório · 🟡 recomendado (pode `[PENDENTE]` não crítico)
 | 4.1 🔴 | Usa **GitLab** (ou outro) para issues/MR? sim/não | `gitlab.enabled` |
 | 4.2 🔴 (se sim) | URL base (grupo/organização)? | `gitlab.base_url` |
 | 4.3 🟡 | Namespace dos projetos (ex.: `acme-corp/web`)? | `gitlab.namespace` |
-| 4.4 🔴 | **Hotfix urgente** em produção: vai direto no GitLab **sem** pasta `fixes/`? | `workflow.hotfix_outside_specs` |
+| 4.4 🔴 | **Hotfix urgente** em produção: vai direto no GitLab **sem** pasta `sprints/.../fixes/`? | `workflow.hotfix_outside_specs` |
 | 4.5 🟡 | Sprint tasks costumam ser **uma** ou **split** backend/frontend? | `workflow.sprint_task_split_default` |
 | 4.6 🔴 | O time já tem **padrão/template** de escrita de tarefas (dev, front, back, design)? Quer **manter o de vocês** ou seguir o **template padrão** do setup? | `workflow.task_templates` |
 | 4.6a 🔴 (se custom) | Pedir **exemplo** (issue GitLab colada, link ou arquivo): quais seções são obrigatórias? | adaptar `templates/sprint-task.md`, `design-task.md`, `fix-task.md` |

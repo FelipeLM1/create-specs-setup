@@ -11,14 +11,14 @@ description: Guia o dev na investigação e correção de bug/ajuste no {{API_RE
 - "investigue o bug X" / "corrija o bug em…"
 - "implemente o fix…"
 - "o comportamento está errado em…"
-- Continuar etapa **F3** de `fixes/{slug}/progress.md`
+- Continuar etapa **F3** de `sprints/sprint-{N}/fixes/{slug}/progress.md`
 
 **Não usar quando:**
 - Hotfix urgente em produção → GitLab + MR direto, sem fluxo specs
 - Só **documentar** o bug (sem codar ainda) → `quick-fix`
 - Nova funcionalidade ou RN nova → `full-spec`
 
-**Repos:** alterações em `{{API_REPO}}` / `{{SPA_REPO}}`. Spec de fix em `fixes/{slug}/` quando existir.
+**Repos:** alterações em `{{API_REPO}}` / `{{SPA_REPO}}`. Spec de fix em `sprints/sprint-{N}/fixes/{slug}/` quando existir.
 
 **Referências:** `steering/engineering.md` · `ai-rules.md` · `docs/fix-lifecycle.md` · `docs/skill-conventions.md`
 
@@ -38,7 +38,7 @@ Perguntar sempre que houver gap — máximo **3 perguntas por mensagem**. Causa 
 2. **Localizar** a causa no código (investigação guiada)
 3. Propor correção mínima alinhada aos padrões do projeto
 4. Implementar + testes unitários quando fizer sentido
-5. Validar aceite e atualizar `fixes/{slug}/progress.md`
+5. Validar aceite e atualizar `sprints/sprint-{N}/fixes/{slug}/progress.md`
 
 ---
 
@@ -47,7 +47,7 @@ Perguntar sempre que houver gap — máximo **3 perguntas por mensagem**. Causa 
 ```
 Vou guiar a investigação e correção. Antes de alterar código:
 
-1. **Existe fix documentado** em `fixes/{slug}/` ou issue GitLab?
+1. **Existe fix documentado** em `sprints/sprint-{N}/fixes/{slug}/` ou issue GitLab?
 2. Se **sim** — qual slug, link ou caminho do fix-task?
 3. Se **não** — descreva: o que acontece hoje, o que deveria acontecer, como reproduzir
 ```
@@ -56,13 +56,13 @@ Vou guiar a investigação e correção. Antes de alterar código:
 
 ## Fase 1 — Contexto: spec de fix sim ou não
 
-### Caminho A — **Existe `fixes/{slug}/fix-task.md`**
+### Caminho A — **Existe `sprints/sprint-{N}/fixes/{slug}/fix-task.md`**
 
 Ler:
 
-- `fixes/{slug}/fix-task.md`
-- `fixes/{slug}/progress.md`
-- Feature relacionada em `features/` (se linkada)
+- `sprints/sprint-{N}/fixes/{slug}/fix-task.md`
+- `sprints/sprint-{N}/fixes/{slug}/progress.md`
+- Feature relacionada em `sprints/sprint-{N}/features/` (se linkada)
 - `steering/engineering.md`
 
 Confirmar com o dev se a descrição ainda está atualizada.
@@ -144,7 +144,7 @@ Mesmas regras de `implement-sprint-task` § Fase 3:
 
 1. Validar critérios de aceite do fix-task ou descrição oral
 2. Rodar testes afetados
-3. Atualizar `fixes/{slug}/progress.md` — **F3** (e F4/F5 se aplicável)
+3. Atualizar `sprints/sprint-{N}/fixes/{slug}/progress.md` — **F3** (e F4/F5 se aplicável)
 4. Resumir para MR/issue GitLab
 
 ---

@@ -1,6 +1,6 @@
 ---
 name: fix-progress
-description: Cria e atualiza acompanhamento de bug-fix e ajustes no {{SPECS_REPO_SLUG}} (fixes/{slug}/progress.md). Use quando perguntar status do fix, onde parou, marcar MR mergeado, aceite verificado ou encerrar fix.
+description: Cria e atualiza acompanhamento de bug-fix e ajustes no {{SPECS_REPO_SLUG}} (sprints/sprint-{N}/fixes/{slug}/progress.md). Use quando perguntar status do fix, onde parou, marcar MR mergeado, aceite verificado ou encerrar fix.
 ---
 
 # Skill: Fix Progress (acompanhamento)
@@ -23,7 +23,7 @@ description: Cria e atualiza acompanhamento de bug-fix e ajustes no {{SPECS_REPO
 ## Arquivo alvo
 
 ```
-fixes/{slug}/progress.md
+sprints/sprint-{N}/fixes/{slug}/progress.md
 ```
 
 Se não existir, criar a partir de `templates/fix-progress.md` (normalmente já criado pela skill `quick-fix`).
@@ -60,7 +60,7 @@ Atualizar **Última atualização** para hoje (`YYYY-MM-DD`).
 
 ### Criar progress (fix sem progress)
 
-1. Confirmar slug em `fixes/{slug}/`
+1. Confirmar slug em `sprints/sprint-{N}/fixes/{slug}/`
 2. Copiar template → `progress.md`
 3. Sincronizar com `fix-task.md` (tipo, resumo, GitLab)
 4. Marcar F1 se fix-task existir
@@ -74,7 +74,7 @@ Atualizar **Última atualização** para hoje (`YYYY-MM-DD`).
 
 ### Responder "qual o status?"
 
-1. Ler `fixes/{slug}/progress.md` e `fix-task.md`
+1. Ler `sprints/sprint-{N}/fixes/{slug}/progress.md` e `fix-task.md`
 2. Responder em português:
    - Status geral + resumo
    - Etapas feitas / pendentes

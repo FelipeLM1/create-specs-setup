@@ -608,7 +608,7 @@ Ao final da execução desta skill, você deve ter:
 
 ## Após gerar — progress e entrega
 
-1. Atualizar `features/{slug}/progress.md` — marcar **B5** `[x]`, link do catálogo na nota (skill `feature-progress`)
+1. Atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — marcar **B5** `[x]`, link do catálogo na nota (skill `feature-progress`)
 2. Responder ao usuário conforme `docs/skill-conventions.md`
 
 **Próximo passo:** B5 — validação com stakeholder (registrar em progress)

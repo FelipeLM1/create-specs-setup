@@ -9,7 +9,7 @@
 As regras de negócio vivem em:
 
 ```
-features/{slug}/spec/business-rules.md
+sprints/sprint-{N}/features/{slug}/spec/business-rules.md
 ```
 
 Formato **SE / ENTÃO**, numeradas `RN-{code}.{seq}` (ex.: `RN-100.1`).
@@ -57,7 +57,7 @@ O usuário informa o **código** na skill `business-rules` ou na entrevista de s
 ## Referência nas tasks
 
 ```markdown
-**Regras de negócio:** `features/{slug}/spec/business-rules.md`
+**Regras de negócio:** `sprints/sprint-{N}/features/{slug}/spec/business-rules.md`
 ```
 
 Se wiki habilitada, acrescentar link da página `RN{code}`.

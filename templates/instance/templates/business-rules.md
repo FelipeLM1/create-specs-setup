@@ -10,7 +10,7 @@
 | **Data de Criação** | YYYY-MM-DD |
 | **Autor** | <nome> |
 | **Stakeholders** | <times/papéis> |
-| **Feature (specs)** | `features/{slug}/` *(espelho local)* |
+| **Feature (specs)** | `sprints/sprint-{N}/features/{slug}/` *(espelho local)* |
 
 ---
 

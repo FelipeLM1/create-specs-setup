@@ -56,9 +56,9 @@ B3  Issue GitLab
 Se faltar algo, pergunte — **máximo 3 perguntas por mensagem**.
 
 **Ao passar o gate:**
-1. Criar `features/{slug}/` com subpastas `spec/`, `design/`, `tasks/`
-2. Salvar referência dos PNGs em `features/{slug}/design/` (ou anotar caminhos se já existentes)
-3. Criar `features/{slug}/progress.md` (template `templates/feature-progress.md`) com A4, B1, B5, B6 marcados `[-]` e nota "design já existente (PNG em design/)"
+1. Criar `sprints/sprint-{N}/features/{slug}/` com subpastas `spec/`, `design/`, `tasks/`
+2. Salvar referência dos PNGs em `sprints/sprint-{N}/features/{slug}/design/` (ou anotar caminhos se já existentes)
+3. Criar `sprints/sprint-{N}/features/{slug}/progress.md` (template `templates/feature-progress.md`) com A4, B1, B5, B6 marcados `[-]` e nota "design já existente (PNG em design/)"
 4. Marcar **A0** `[x]` no progress
 5. Informar modo (guiado/batch) e iniciar **A1**
 
@@ -90,7 +90,7 @@ Antes de gerar o arquivo, fechar pelo menos:
 
 Marcar `[PENDENTE]` o que não for respondido — não inventar.
 
-**Saída:** `features/{slug}/spec/meeting-notes.md` (template `templates/meeting-notes.md`)
+**Saída:** `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md` (template `templates/meeting-notes.md`)
 
 Na seção "Origem": registrar `design-to-spec — walkthrough PNG` e listar os arquivos em `design/`.
 
@@ -142,7 +142,7 @@ Delegar à skill `sprint-task`.
 ## Estrutura gerada
 
 ```
-features/{slug}/
+sprints/sprint-{N}/features/{slug}/
 ├── progress.md
 ├── spec/
 │   ├── meeting-notes.md    ← A1 (walkthrough do PNG)

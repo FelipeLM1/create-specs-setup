@@ -25,7 +25,7 @@ description: Gera especificação a partir de código já implementado — lê A
 
 ## Objetivo
 
-Documentar um fluxo **já implementado** em `features/{slug}/`, gerando apenas os artefatos que o usuário escolher:
+Documentar um fluxo **já implementado** em `sprints/sprint-{N}/features/{slug}/`, gerando apenas os artefatos que o usuário escolher:
 
 | Artefato | Arquivo |
 |----------|---------|
@@ -57,7 +57,7 @@ Perguntar (agrupar em até 3 por rodada):
 | # | Pergunta | Campo |
 |---|----------|-------|
 | 1 🔴 | Qual fluxo/módulo/tela documentar? (ex.: "cadastro de usuário") | escopo |
-| 2 🔴 | Slug da pasta `features/{slug}/` — criar nova ou usar existente? | `slug` |
+| 2 🔴 | Slug da pasta `sprints/sprint-{N}/features/{slug}/` — criar nova ou usar existente? | `slug` |
 | 3 🔴 | Código RN da feature (ex.: `100`) — ou próximo livre | `RN-{code}` |
 | 4 🔴 | **Quais artefatos gerar?** (marcar todos que aplicam) | seleção |
 | 5 🟡 | Dicas de onde está no código? (rota, módulo, endpoint) | pistas |
@@ -76,7 +76,7 @@ Quais documentos devo gerar para este fluxo?
 Responda: todos, ou liste os números (ex.: 1 e 2).
 ```
 
-Se pasta `features/{slug}/` já existir com conteúdo → **não sobrescrever** sem confirmação explícita.
+Se pasta `sprints/sprint-{N}/features/{slug}/` já existir com conteúdo → **não sobrescrever** sem confirmação explícita.
 
 ---
 
@@ -151,7 +151,7 @@ Separar de gaps: aqui é evolução/ideia, não defeito.
 
 ## Passo 4 — Progress e handoff
 
-1. Criar ou atualizar `features/{slug}/progress.md` a partir de `templates/spec-from-code-progress.md`
+1. Criar ou atualizar `sprints/sprint-{N}/features/{slug}/progress.md` a partir de `templates/spec-from-code-progress.md`
 2. Marcar etapas R* concluídas conforme artefatos gerados
 3. Status geral: `spec_from_code` até revisão humana; depois sugerir `done` ou evolução via `full-spec`
 

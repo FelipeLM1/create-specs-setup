@@ -61,4 +61,4 @@
 1. `steering/` (este arquivo e `product.md`)
 2. `sdd.config.yaml`
 3. Código nos repos listados acima
-4. Artefatos em `features/{slug}/` — nunca inventar fora disso
+4. Artefatos em `sprints/sprint-{N}/features/{slug}/` — nunca inventar fora disso

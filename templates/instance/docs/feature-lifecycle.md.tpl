@@ -1,6 +1,6 @@
 # Ciclo de vida de uma feature ({{SPECS_REPO_SLUG}})
 
-Documento de referência: **todas as features** do {{PROJECT_NAME}} seguem estas etapas. O acompanhamento operacional fica em `features/{slug}/progress.md` (uma checklist por feature).
+Documento de referência: **todas as features** do {{PROJECT_NAME}} seguem estas etapas. O acompanhamento operacional fica em `sprints/sprint-{N}/features/{slug}/progress.md` (uma checklist por feature).
 
 ---
 
@@ -8,7 +8,7 @@ Documento de referência: **todas as features** do {{PROJECT_NAME}} seguem estas
 
 1. **O fluxo não é linear de um dia só** — `progress.md` é atualizado sempre que algo avançar ou parar.
 2. **Revisão manual é obrigatória** nas etapas marcadas com 🔍 — não fechar só porque a IA gerou o arquivo.
-3. **Uma fonte de verdade por feature** — ao perguntar "qual o status?", ler `features/{slug}/progress.md`.
+3. **Uma fonte de verdade por feature** — ao perguntar "qual o status?", ler `sprints/sprint-{N}/features/{slug}/progress.md`.
 4. **Checklist curta** — observações em uma linha; detalhes ficam nos artefatos (`spec/`, `design/`, `tasks/`).
 
 ---
@@ -130,7 +130,7 @@ Quando o fluxo **já está implementado** e a spec deve ser **inferida do códig
 ## Estrutura de pastas (referência)
 
 ```
-features/{slug}/
+sprints/sprint-{N}/features/{slug}/
 ├── progress.md              ← acompanhamento (esta skill)
 ├── spec/
 ├── design/

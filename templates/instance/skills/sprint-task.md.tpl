@@ -29,7 +29,7 @@ Convenção: `docs/business-rules-store.md` · ler `sdd.config.yaml`.
 
 **Não gerar sprint task** até que:
 
-- [ ] `features/{slug}/spec/business-rules.md` exista, esteja completo e revisado
+- [ ] `sprints/sprint-{N}/features/{slug}/spec/business-rules.md` exista, esteja completo e revisado
 - [ ] Se `business_rules.wiki.enabled: true` → link da página wiki RN informado
 
 Se faltar business rules → delegar skill `business-rules`.
@@ -37,7 +37,7 @@ Se faltar business rules → delegar skill `business-rules`.
 | Tipo de trabalho | business-rules.md | Wiki (se enabled) |
 |------------------|-------------------|-------------------|
 | **Nova feature** | **Sim** — bloqueante | Sim, se `wiki.enabled` |
-| Bug/ajuste (`fixes/`) | Não (RN existente ou fix-task) | Não |
+| Bug/ajuste (`sprints/sprint-{N}/fixes/`) | Não (RN existente ou fix-task) | Não |
 | Hotfix urgente | Não | Não |
 
 ### Demais artefatos (recomendado)
@@ -163,7 +163,7 @@ Estrutura de código, endpoints, componentes, pontos de atenção, pendências �
 
 ## Saída esperada
 
-`features/{slug}/tasks/`:
+`sprints/sprint-{N}/features/{slug}/tasks/`:
 
 - `sprint-task.md` ou `task-backend.md` / `task-frontend.md`
 - Cabeçalho: **Regras de negócio (wiki):** link

@@ -3,7 +3,7 @@
 Pasta para instâncias de correções e ajustes pontuais. Cada item tem sua subpasta:
 
 ```
-fixes/{slug}/
+sprints/sprint-{N}/fixes/{slug}/
 ├── fix-task.md
 └── progress.md
 ```

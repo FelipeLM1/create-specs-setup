@@ -25,14 +25,14 @@ description: Cria e atualiza o acompanhamento de progresso de features no {{SPEC
 
 ## Objetivo
 
-Manter **um arquivo por feature** — `features/{slug}/progress.md` — curto, atualizado e legível como uma issue do GitLab: checklist + notas breves + próximo passo.
+Manter **um arquivo por feature** — `sprints/sprint-{N}/features/{slug}/progress.md` — curto, atualizado e legível como uma issue do GitLab: checklist + notas breves + próximo passo.
 
 ---
 
 ## Arquivo alvo
 
 ```
-features/{slug}/progress.md
+sprints/sprint-{N}/features/{slug}/progress.md
 ```
 
 Se não existir, criar a partir de `templates/feature-progress.md`.
@@ -65,7 +65,7 @@ Marcar `[x]` na etapa quando o artefato existir e estiver alinhado ao estado atu
 
 | Etapa | Verificar |
 |-------|-----------|
-| A1 | `features/{slug}/spec/meeting-notes.md` |
+| A1 | `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md` |
 | A2 | `spec/business-rules.md` |
 | A3 | `spec/use-case.md` |
 | A4 | `design/prototype.md` |
@@ -91,7 +91,7 @@ Se um artefato for reescrito de forma relevante, voltar revisão para `[ ]` naqu
 ### 1. Criar checklist (feature nova)
 
 1. Confirmar `slug` (kebab-case).
-2. Copiar `templates/feature-progress.md` → `features/{slug}/progress.md`.
+2. Copiar `templates/feature-progress.md` → `sprints/sprint-{N}/features/{slug}/progress.md`.
 3. Preencher título, responsável, links se conhecidos.
 4. Marcar `[x]` / `[~]` conforme artefatos já existentes no disco.
 5. Preencher **Resumo**, **Próximo passo**, **Pendências** a partir de sprint task / meeting notes.
@@ -106,7 +106,7 @@ Se um artefato for reescrito de forma relevante, voltar revisão para `[ ]` naqu
 
 ### 3. Responder "qual o status?"
 
-1. Ler `features/{slug}/progress.md`.
+1. Ler `sprints/sprint-{N}/features/{slug}/progress.md`.
 2. Se ausente, inferir de artefatos e oferecer criar o arquivo.
 3. Responder em português, estruturado:
    - Status geral + resumo (1 frase)

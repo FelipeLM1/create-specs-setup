@@ -1,6 +1,6 @@
 ---
 name: business-rules
-description: Gera regras de negócio (RN-{code}.{seq}) e requisitos funcionais (RF-{code}.{seq}) em features/{slug}/spec/business-rules.md a partir de meeting notes. Wiki externa opcional se sdd.config.yaml wiki.enabled. Use para business rules, regras de negócio ou antes de sprint task.
+description: Gera regras de negócio (RN-{code}.{seq}) e requisitos funcionais (RF-{code}.{seq}) em sprints/sprint-{N}/features/{slug}/spec/business-rules.md a partir de meeting notes. Wiki externa opcional se sdd.config.yaml wiki.enabled. Use para business rules, regras de negócio ou antes de sprint task.
 ---
 
 # Skill: Regras de negócio (spec primário)
@@ -18,7 +18,7 @@ description: Gera regras de negócio (RN-{code}.{seq}) e requisitos funcionais (
 
 ## Objetivo
 
-Produzir, em `features/{slug}/spec/business-rules.md`, dois tipos de artefato com formatos distintos:
+Produzir, em `sprints/sprint-{N}/features/{slug}/spec/business-rules.md`, dois tipos de artefato com formatos distintos:
 
 - **RN-{code}.{seq}** — Regras de negócio: decisões de produto, independentes de tecnologia
 - **RF-{code}.{seq}** — Requisitos funcionais: o que o sistema faz para satisfazer as RNs
@@ -45,7 +45,7 @@ Convenção: `docs/business-rules-store.md`.
 
 ## Pré-condições (gate)
 
-- [ ] `features/{slug}/spec/meeting-notes.md` com conteúdo suficiente
+- [ ] `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md` com conteúdo suficiente
 - [ ] `steering/product.md` lido (contexto de domínio)
 - [ ] Usuário informou **código da RN** (ex.: `100`) — obrigatório
 
@@ -78,7 +78,7 @@ Exemplo (code `100`): `https://{{GITLAB_BASE_URL}}/{{WIKI_HOST_REPO}}/-/wikis/bu
 
 ### 1. Ler meeting notes
 
-Absorver `features/{slug}/spec/meeting-notes.md`: problema, comportamentos, restrições, decisões, pendências.
+Absorver `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md`: problema, comportamentos, restrições, decisões, pendências.
 
 ### 1b. Consultar código (search-first)
 
@@ -149,7 +149,7 @@ Usar `templates/business-rules.md`:
 ### 6. Publicar na wiki (se habilitado)
 
 1. Conteúdo final na página `RN{code}` da wiki (usuário ou agente com acesso).
-2. Espelhar o mesmo conteúdo em `features/{slug}/spec/business-rules.md`.
+2. Espelhar o mesmo conteúdo em `sprints/sprint-{N}/features/{slug}/spec/business-rules.md`.
 3. Registrar no cabeçalho do espelho local o **link wiki** canônico.
 
 ### 7. Matriz opcional (features complexas)
@@ -175,14 +175,14 @@ Se a feature tiver muitos blocos de UI/API com filtros distintos, incluir seçã
 
 | Artefato | Onde |
 |----------|------|
-| Fonte primária | `features/{slug}/spec/business-rules.md` |
+| Fonte primária | `sprints/sprint-{N}/features/{slug}/spec/business-rules.md` |
 | Wiki (se enabled) | `{{WIKI_HOST_REPO}}` — `RN{code}` |
 | Link para tasks | `https://{{GITLAB_BASE_URL}}/{{WIKI_HOST_REPO}}/-/wikis/business-rules/RN{code}` |
 
 **Mensagem ao usuário (após gerar):**
 
 ```markdown
-**Espelho:** `features/{slug}/spec/business-rules.md`
+**Espelho:** `sprints/sprint-{N}/features/{slug}/spec/business-rules.md`
 **Regras:** RN-{code}.1 … RN-{code}.{N} | RF-{code}.1 … RF-{code}.{M}
 **Próximo:** use-case (A3) ou sprint-task (B2) — tasks devem referenciar RN/RF, não repetir o conteúdo
 ```
@@ -191,7 +191,7 @@ Se a feature tiver muitos blocos de UI/API com filtros distintos, incluir seçã
 
 ## Após gerar
 
-1. Atualizar `features/{slug}/progress.md` — **A2** `[x]` (`feature-progress`)
+1. Atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — **A2** `[x]` (`feature-progress`)
 2. Responder conforme `docs/skill-conventions.md`
 
 **Próximo passo:** A3 `use-case` · depois B2 `sprint-task` (exige RN/RF prontos)

@@ -7,7 +7,7 @@
 | **Status** | `rascunho` |
 | **Última atualização** | YYYY-MM-DD |
 | **Regras de negócio (wiki)** | [RN-{code} — Nome](https://{{GITLAB_BASE_URL}}/{{WIKI_HOST_REPO}}/-/wikis/business-rules/RN{code}) |
-| **Espelho local** | `features/{slug}/spec/business-rules.md` |
+| **Espelho local** | `sprints/sprint-{N}/features/{slug}/spec/business-rules.md` |
 | **GitLab** | [preencher ao criar issue] |
 
 ---
@@ -32,7 +32,7 @@
 ### Referências
 
 - **Regras de negócio:** [RN-{code}](https://{{GITLAB_BASE_URL}}/{{WIKI_HOST_REPO}}/-/wikis/business-rules/RN{code})
-- **Use case:** `features/{slug}/spec/use-case.md`
+- **Use case:** `sprints/sprint-{N}/features/{slug}/spec/use-case.md`
 - **Design / protótipo:** *(se existir)*
 
 ---

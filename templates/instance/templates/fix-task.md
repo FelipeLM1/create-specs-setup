@@ -8,7 +8,7 @@
 | **Prioridade** | `baixa` \| `media` \| `alta` |
 | **Última atualização** | YYYY-MM-DD |
 | **Origem** | {ticket, report, QA, PO, etc.} |
-| **Feature relacionada** | {`features/{slug}/` ou —} |
+| **Feature relacionada** | {`sprints/sprint-{N}/features/{slug}/` ou —} |
 | **GitLab** | {link ou —} |
 
 ---

@@ -46,7 +46,7 @@ O manual do sistema é voltado para o **usuário final** (não para o dev). Ele 
 Antes de gerar, confirme:
 
 - [ ] A feature está implementada e disponível para o usuário
-- [ ] Você tem acesso aos artefatos de spec: `features/{slug}/spec/` e `features/{slug}/design/`
+- [ ] Você tem acesso aos artefatos de spec: `sprints/sprint-{N}/features/{slug}/spec/` e `sprints/sprint-{N}/features/{slug}/design/`
 - [ ] Você entende o fluxo do usuário na implementação real (pode diferir levemente do protótipo)
 
 ---
@@ -56,8 +56,8 @@ Antes de gerar, confirme:
 ### 1. Revisar os artefatos de spec
 
 Leia rapidamente:
-- `features/{slug}/spec/use-case.md` — para entender o fluxo do usuário
-- `features/{slug}/spec/business-rules.md` — para entender restrições visíveis ao usuário
+- `sprints/sprint-{N}/features/{slug}/spec/use-case.md` — para entender o fluxo do usuário
+- `sprints/sprint-{N}/features/{slug}/spec/business-rules.md` — para entender restrições visíveis ao usuário
 
 Identifique:
 - Qual é o fluxo principal do usuário?
@@ -150,7 +150,7 @@ Leia a seção como se você fosse um usuário que nunca viu a funcionalidade. P
 
 ## Saída esperada
 
-Arquivo `features/{slug}/docs/system-manual.md` com:
+Arquivo `sprints/sprint-{N}/features/{slug}/docs/system-manual.md` com:
 - Seção completa do manual em linguagem de usuário
 - Fluxo de uso passo a passo
 - Placeholders de imagem descritivos
@@ -161,7 +161,7 @@ Arquivo `features/{slug}/docs/system-manual.md` com:
 
 ## Após gerar — progress e entrega
 
-1. Atualizar `features/{slug}/progress.md` — marcar **D1** `[x]` (skill `feature-progress`)
+1. Atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — marcar **D1** `[x]` (skill `feature-progress`)
 2. Responder ao usuário conforme `docs/skill-conventions.md`
 
 **Próximo passo:** D2 — UAT / aceite · D4 — encerrar feature

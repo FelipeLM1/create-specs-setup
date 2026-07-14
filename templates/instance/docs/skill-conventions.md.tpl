@@ -2,6 +2,8 @@
 
 Referência compartilhada por **todas** as skills em `.agents/skills/`. A IA deve seguir estas regras ao gerar artefatos.
 
+**Layout de pastas:** `docs/sprint-layout.md` — artefatos em `sprints/sprint-{N}/features|fixes|meetings/`. `N` = `workflow.current_sprint` em `sdd.config.yaml`, salvo indicação contrária do usuário.
+
 ---
 
 ## Formato do arquivo SKILL.md
@@ -49,7 +51,7 @@ Se faltar informação: perguntar — **máximo 3 perguntas por mensagem**, agru
 
 Obrigatório ao final de **cada** skill de artefato:
 
-1. **Progress:** atualizar `features/{slug}/progress.md` conforme `.agents/skills/feature-progress/SKILL.md`
+1. **Progress:** atualizar `sprints/sprint-{N}/features/{slug}/progress.md` conforme `.agents/skills/feature-progress/SKILL.md`
    - Se `progress.md` não existir, criar a partir de `templates/feature-progress.md`
    - Marcar etapa correspondente `[x]` (A1, A2, A3, A4, B1, B2, B5, D1…)
    - Atualizar status geral, **Próximo passo**, **Histórico**
@@ -71,11 +73,11 @@ Não marcar revisão manual 🔍 como `[x]` sem confirmação humana.
 
 Obrigatório ao final da skill `quick-fix`:
 
-1. Atualizar `fixes/{slug}/progress.md` (F1 `[x]`) — ver `fix-progress`
+1. Atualizar `sprints/sprint-{N}/fixes/{slug}/progress.md` (F1 `[x]`) — ver `fix-progress`
 2. Entrega no formato:
 
 ```markdown
-**Gerado:** `fixes/{slug}/fix-task.md` + `progress.md`
+**Gerado:** `sprints/sprint-{N}/fixes/{slug}/fix-task.md` + `progress.md`
 **Próximo:** F2 — criar issue GitLab
 **Texto GitLab:** (resumo ou referência à seção)
 ```

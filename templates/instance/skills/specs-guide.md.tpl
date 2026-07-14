@@ -105,9 +105,9 @@ Se o usuário já descreveu o problema, **pule a lista** e vá direto à triagem
 
 ### Status
 
-- Feature: ler `features/{slug}/progress.md` via `feature-progress`.
-- Fix: ler `fixes/{slug}/progress.md` via `fix-progress`.
-- Slug desconhecido: listar pastas em `features/` e `fixes/` e pedir qual.
+- Feature: ler `sprints/sprint-{N}/features/{slug}/progress.md` via `feature-progress`.
+- Fix: ler `sprints/sprint-{N}/fixes/{slug}/progress.md` via `fix-progress`.
+- Slug desconhecido: listar pastas em `sprints/sprint-{N}/features/` e `sprints/sprint-{N}/fixes/` e pedir qual.
 
 ### Continuar spec ou fix
 
@@ -181,7 +181,7 @@ Posso continuar com {próxima etapa}? (farei perguntas se faltar contexto)
 
 - Gerar artefatos nesta skill sem delegar
 - Escolher fluxo sem triagem quando ambíguo
-- Ignorar hotfix urgente e criar pasta em `fixes/`
+- Ignorar hotfix urgente e criar pasta em `sprints/sprint-{N}/fixes/`
 - Continuar batch quando usuário não pediu
 
 ---

@@ -32,9 +32,14 @@ Uma instância válida é o repositório `{projeto}-specs` gerado pelo `create-s
 │   ├── feature-lifecycle.md
 │   ├── fix-lifecycle.md
 │   ├── skill-conventions.md
-│   └── business-rules-store.md
-├── features/           # .gitkeep
-├── fixes/              # README.md
+│   ├── business-rules-store.md
+│   └── sprint-layout.md
+├── sprints/
+│   ├── README.md
+│   └── sprint-1/       # current_sprint
+│       ├── features/   # .gitkeep
+│       ├── fixes/      # README.md
+│       └── meetings/   # .gitkeep
 ├── .agents/skills/     # 17 skills (ver lista abaixo)
 └── prototypes/         # somente se prototype.enabled: true
     └── src/app/feature/   # um protótipo por pasta: {task_ref}-{slug}
@@ -124,7 +129,7 @@ Gate obrigatório na skill `create-specs-setup` (Fase 7.5) — reportar ✅/❌ 
 | V4 | Cada skill com frontmatter YAML `name` + `description` |
 | V5 | `AGENTS.md` aponta para `welcome`; guide com nome real (sem placeholder) |
 | V6 | 14 templates em `templates/` |
-| V7 | `features/.gitkeep`, `fixes/README.md`, `ai-rules.md`, `steering/*` |
+| V7 | `sprints/README.md`, `sprints/sprint-1/features/.gitkeep`, `sprints/sprint-1/fixes/README.md`, `ai-rules.md`, `steering/*` |
 | V8 | Skills sem referências `{{...}}` não substituídas |
 | V9 | `ai-rules.md` com seção Search-first |
 | V10 | Se `prototype.enabled`: `prototypes/package.json` + catálogo vazio em `registry/` + `src/app/feature/README.md` |

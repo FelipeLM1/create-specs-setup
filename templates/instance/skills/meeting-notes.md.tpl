@@ -47,7 +47,7 @@ Bons exemplos: `importacao-planilha-csv`, `filtro-por-periodo`, `dashboard-resum
 A feature deve seguir esta estrutura:
 
 ```
-features/{slug}/
+sprints/sprint-{N}/features/{slug}/
 ├── spec/
 │   ├── meeting-notes.md    ← este arquivo
 │   ├── business-rules.md
@@ -60,7 +60,7 @@ features/{slug}/
     └── system-manual.md    (pós-implementação)
 ```
 
-Crie apenas `features/{slug}/spec/meeting-notes.md` agora. As demais pastas e arquivos serão criados nas próximas etapas.
+Crie apenas `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md` agora. As demais pastas e arquivos serão criados nas próximas etapas.
 
 ### 4. Gerar o arquivo
 
@@ -94,7 +94,7 @@ Use o template `templates/meeting-notes.md` como base. Preencha com o conteúdo 
 
 ## Saída esperada
 
-Arquivo `features/{slug}/spec/meeting-notes.md` pronto, com:
+Arquivo `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md` pronto, com:
 - Cabeçalho preenchido (feature, status, data, origem)
 - Seções preenchidas com base no contexto real
 - Dúvidas explícitas listadas
@@ -104,7 +104,7 @@ Arquivo `features/{slug}/spec/meeting-notes.md` pronto, com:
 
 ## Após gerar — progress e entrega
 
-1. Criar ou atualizar `features/{slug}/progress.md` — marcar **A0** e **A1** `[x]` (skill `feature-progress`)
+1. Criar ou atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — marcar **A0** e **A1** `[x]` (skill `feature-progress`)
 2. Responder ao usuário conforme `docs/skill-conventions.md`
 
 **Próximo passo:** A2 — Business rules (skill `business-rules`)

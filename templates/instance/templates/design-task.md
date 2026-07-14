@@ -68,8 +68,8 @@ Use blocos curtos por tela (não repetir o que já está igual em todas).
 
 ### Referências
 
-- Prototype spec: `features/{slug}/design/prototype.md`
-- Use case: `features/{slug}/spec/use-case.md`
+- Prototype spec: `sprints/sprint-{N}/features/{slug}/design/prototype.md`
+- Use case: `sprints/sprint-{N}/features/{slug}/spec/use-case.md`
 - Protótipo navegável (se existir): [link]
 
 ### Fora do escopo (design)

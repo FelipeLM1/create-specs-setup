@@ -31,7 +31,7 @@ A IA deve confirmar que tem:
 - Assumir endpoints, tabelas, campos ou fluxos do sistema sem evidência (código ou spec)
 - Criar critérios de aceite vagos ("deve funcionar bem", "sem bugs")
 - Pular etapas do fluxo de **feature** (ex.: gerar sprint task sem business rules)
-- Adicionar novos tipos de documento além dos templates oficiais (`features/` ou `fixes/`)
+- Adicionar novos tipos de documento além dos templates oficiais (`sprints/sprint-{N}/features/` ou `sprints/sprint-{N}/fixes/`)
 - Misturar fato e hipótese sem rotular
 
 ---
@@ -82,7 +82,7 @@ Com base nas notas abaixo da reunião, preencha o template meeting-notes.md.
 ### Business Rules
 
 ```
-Com base em features/{slug}/meeting-notes.md, preencha business-rules.md.
+Com base em sprints/sprint-{N}/features/{slug}/meeting-notes.md, preencha business-rules.md.
 - Regras no formato SE/ENTÃO/QUANDO
 - Cada regra deve ser testável
 - Não adicione regras ausentes nas meeting notes sem marcar [HIPÓTESE]
@@ -108,7 +108,7 @@ Com base nos artefatos da feature {slug}, preencha prototype.md.
 ### Sprint Task
 
 ```
-Com base em todos os artefatos de features/{slug}/, preencha sprint-task.md.
+Com base em todos os artefatos de sprints/sprint-{N}/features/{slug}/, preencha sprint-task.md.
 - Texto curto, copiável para GitLab
 - Critérios de aceite verificáveis
 - Serviços impactados apenas se mencionados ou evidentes no escopo
@@ -119,7 +119,7 @@ Com base em todos os artefatos de features/{slug}/, preencha sprint-task.md.
 ```
 Use a skill .agents/skills/quick-fix/SKILL.md.
 - Faça perguntas até o checklist de contexto mínimo estar completo
-- Só então gere fixes/{slug}/fix-task.md e progress.md
+- Só então gere sprints/sprint-{N}/fixes/{slug}/fix-task.md e progress.md
 - Texto GitLab: contexto, atual vs esperado, reprodução, aceite
 - Investigação e solução sugerida ficam no fix-task (referência interna)
 - Não invente causa raiz — use [HIPÓTESE] ou [PENDENTE]

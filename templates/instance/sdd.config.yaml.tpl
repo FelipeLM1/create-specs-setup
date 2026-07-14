@@ -31,6 +31,7 @@ workflow:
   hotfix_outside_specs: {{HOTFIX_OUTSIDE_SPECS}}
   sprint_task_split_default: "{{SPRINT_TASK_SPLIT}}"  # single | backend_frontend
   task_templates: "{{TASK_TEMPLATES_MODE}}"  # default | custom
+  current_sprint: 1  # pasta sprints/sprint-{N}/ — perguntar se divergir
 
 prototype:
   enabled: {{PROTOTYPE_ENABLED}}

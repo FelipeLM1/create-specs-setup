@@ -28,7 +28,7 @@ Contexto do produto: ler `steering/product.md` (1 frase no boas-vindas, se exist
 ```
 Bem-vindo ao **{{SPECS_REPO_SLUG}}** — especificações do **{{PROJECT_NAME}}**.
 
-Aqui conversas viram artefatos rastreáveis: features em `features/`, ajustes em `fixes/`.
+Aqui conversas viram artefatos rastreáveis: features em `sprints/sprint-{N}/features/`, ajustes em `sprints/sprint-{N}/fixes/`.
 
 **O que você precisa?**
 
@@ -117,7 +117,7 @@ Perguntar: *"Qual dessas opções quer seguir agora?"*
 
 - Gerar artefatos nesta skill
 - Pular triagem em pedido ambíguo (delegar `{{GUIDE_SKILL_NAME}}`)
-- Prometer hotfix via pasta `fixes/` quando for urgência em produção
+- Prometer hotfix via pasta `sprints/sprint-{N}/fixes/` quando for urgência em produção
 
 ---
 

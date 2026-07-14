@@ -1,6 +1,6 @@
 ---
 name: quick-fix
-description: Cria especificação enxuta de bug-fix ou ajuste no {{SPECS_REPO_SLUG}} (fixes/{slug}/). Faz perguntas até reunir contexto mínimo e gera fix-task.md e progress.md. Use quando o usuário reportar bug, pedir correção, ajuste pontual, fix task, issue de bug ou investigar problema sem ser feature nova.
+description: Cria especificação enxuta de bug-fix ou ajuste no {{SPECS_REPO_SLUG}} (sprints/sprint-{N}/fixes/{slug}/). Faz perguntas até reunir contexto mínimo e gera fix-task.md e progress.md. Use quando o usuário reportar bug, pedir correção, ajuste pontual, fix task, issue de bug ou investigar problema sem ser feature nova.
 ---
 
 # Skill: Quick Fix (bug-fix e ajustes)
@@ -18,7 +18,7 @@ description: Cria especificação enxuta de bug-fix ou ajuste no {{SPECS_REPO_SL
 
 **Não usar quando:**
 - Hotfix urgente em produção → issue GitLab + MR direto, sem {{SPECS_REPO_SLUG}}
-- Nova funcionalidade ou mudança de regra de negócio → skill `full-spec` / fluxo `features/`
+- Nova funcionalidade ou mudança de regra de negócio → skill `full-spec` / fluxo `sprints/sprint-{N}/features/`
 
 **Referência:** `docs/fix-lifecycle.md` · `docs/skill-conventions.md`
 
@@ -29,7 +29,7 @@ description: Cria especificação enxuta de bug-fix ou ajuste no {{SPECS_REPO_SL
 Conduzir uma **entrevista curta** com o usuário, reunir o contexto mínimo e gerar automaticamente:
 
 ```
-fixes/{slug}/
+sprints/sprint-{N}/fixes/{slug}/
 ├── fix-task.md
 └── progress.md
 ```
@@ -55,7 +55,7 @@ Antes de perguntas detalhadas, classifique mentalmente:
 | `bug` | Comportamento incorreto vs o esperado |
 | `adjustment` | Melhoria pontual acordada (label, copy, filtro, validação) |
 
-Se claramente for **feature nova**, interrompa e sugira fluxo `features/`.
+Se claramente for **feature nova**, interrompa e sugira fluxo `sprints/sprint-{N}/features/`.
 
 ---
 
@@ -87,7 +87,7 @@ Pergunte **apenas o que faltar**. Use esta ordem de prioridade:
 |---|-------|---------------|
 | C1 | **Onde** | Tela, menu, endpoint, job, importação, etc. |
 | C2 | **Serviços** | {{API_REPO}}, {{SPA_REPO}}, {{SPECS_REPO_SLUG}}, `repos.extra` — quais? |
-| C3 | **Feature relacionada** | Existe spec em `features/{slug}/`? Link se souber |
+| C3 | **Feature relacionada** | Existe spec em `sprints/sprint-{N}/features/{slug}/`? Link se souber |
 
 ### Bloco D — Aceite e escopo (obrigatório)
 
@@ -131,7 +131,7 @@ Se E1–E3 vazios, preencher com `[PENDENTE]` ou sugestão `[HIPÓTESE]` — **n
 ### 1. Criar estrutura
 
 ```bash
-mkdir -p fixes/{slug}
+mkdir -p sprints/sprint-{N}/fixes/{slug}
 ```
 
 ### 2. `fix-task.md`
@@ -153,7 +153,7 @@ mkdir -p fixes/{slug}
 
 ### 4. Validar slug único
 
-Se `fixes/{slug}/` já existir:
+Se `sprints/sprint-{N}/fixes/{slug}/` já existir:
 - Perguntar se atualiza o existente ou usa slug diferente
 - Nunca sobrescrever sem confirmação
 
@@ -193,7 +193,7 @@ Após gerar, responda em português com:
 
 Se o usuário pedir alteração em fix já documentado:
 
-1. Ler `fixes/{slug}/fix-task.md` e `progress.md`
+1. Ler `sprints/sprint-{N}/fixes/{slug}/fix-task.md` e `progress.md`
 2. Aplicar mudanças mínimas
 3. Atualizar **Última atualização** e linha no **Histórico**
 4. Usar skill `fix-progress` se só for status/checklist
@@ -205,7 +205,7 @@ Se o usuário pedir alteração em fix já documentado:
 - Gerar fix-task sem reprodução **e** sem evidência
 - Critérios de aceite vagos
 - Duplicar meeting notes / business rules
-- Criar pasta em `features/` para bug simples
+- Criar pasta em `sprints/sprint-{N}/features/` para bug simples
 - Marcar status `pronta para sprint` — usar `rascunho` até revisão humana; após revisão pode ir para implementação via progress F2+
 
 ---

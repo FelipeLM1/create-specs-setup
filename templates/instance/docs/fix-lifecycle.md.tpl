@@ -1,18 +1,18 @@
 # Ciclo de vida de fix e ajuste ({{SPECS_REPO_SLUG}})
 
-Documento de referência para **bugs e ajustes** — fluxo enxuto, paralelo ao de features. O acompanhamento fica em `fixes/{slug}/progress.md`.
+Documento de referência para **bugs e ajustes** — fluxo enxuto, paralelo ao de features. O acompanhamento fica em `sprints/sprint-{N}/fixes/{slug}/progress.md`.
 
 ---
 
 ## Quando usar este fluxo
 
-| Situação | Usar `fixes/`? |
+| Situação | Usar `sprints/sprint-{N}/fixes/`? |
 |----------|----------------|
 | Bug reproduzível ou com evidência clara | Sim |
 | Ajuste de label, validação, filtro, texto | Sim |
-| Comportamento já definido em feature existente — só corrigir | Sim (+ link em `features/`) |
+| Comportamento já definido em feature existente — só corrigir | Sim (+ link em `sprints/sprint-{N}/features/`) |
 | Hotfix urgente em produção | **Não** — issue GitLab + MR direto |
-| Nova regra de negócio ou tela nova | **Não** — use `features/` (fluxo SDD completo) |
+| Nova regra de negócio ou tela nova | **Não** — use `sprints/sprint-{N}/features/` (fluxo SDD completo) |
 
 ---
 
@@ -21,7 +21,7 @@ Documento de referência para **bugs e ajustes** — fluxo enxuto, paralelo ao d
 1. **Um artefato principal** — `fix-task.md` (sem meeting notes, use case ou protótipo).
 2. **Perguntas antes de gerar** — a skill `quick-fix` só escreve arquivos quando o contexto mínimo estiver completo.
 3. **Issue GitLab curta** — seção "Texto para GitLab" copiável; investigação técnica fica no arquivo local.
-4. **Pasta separada** — `fixes/{slug}/`, nunca misturar com `features/`.
+4. **Pasta separada** — `sprints/sprint-{N}/fixes/{slug}/`, nunca misturar com `sprints/sprint-{N}/features/`.
 
 ---
 
@@ -40,7 +40,7 @@ Documento de referência para **bugs e ajustes** — fluxo enxuto, paralelo ao d
 
 | ID | Etapa | Artefato / saída | Skill |
 |----|-------|------------------|-------|
-| F1 | Fix task | `fixes/{slug}/fix-task.md` | `quick-fix` |
+| F1 | Fix task | `sprints/sprint-{N}/fixes/{slug}/fix-task.md` | `quick-fix` |
 | F2 | Issue GitLab | Link no fix-task e progress | — |
 | F3 | Implementação | MR em {{API_REPO}} / {{SPA_REPO}} / etc. | `implement-fix` |
 | F4 | Critérios de aceite | Checklist da issue verificada | — |
@@ -54,7 +54,7 @@ Não há revisão manual 🔍 obrigatória por etapa — code review no MR subst
 ## Estrutura de pastas
 
 ```
-fixes/{slug}/
+sprints/sprint-{N}/fixes/{slug}/
 ├── fix-task.md      ← especificação + texto GitLab
 └── progress.md      ← checklist F1–F6
 ```
@@ -80,7 +80,7 @@ Convenções: `docs/skill-conventions.md`
 
 ## Escalar para fluxo de feature
 
-Migrar para `features/{slug}/` se:
+Migrar para `sprints/sprint-{N}/features/{slug}/` se:
 
 - PO precisa decidir **novo** comportamento (não correção)
 - Surge regra de negócio nova ou contradiz spec existente

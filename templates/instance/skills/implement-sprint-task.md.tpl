@@ -12,7 +12,7 @@ description: Guia o dev na implementação de tarefa/feature no {{API_REPO}} e {
 - "desenvolva o backend/frontend de…"
 - "codifique a sprint task…"
 - "implemente conforme a issue #…"
-- Continuar etapa **C1–C4** de `features/{slug}/progress.md`
+- Continuar etapa **C1–C4** de `sprints/sprint-{N}/features/{slug}/progress.md`
 
 **Não usar quando:**
 - Hotfix urgente em produção → GitLab + MR direto
@@ -70,7 +70,7 @@ Coletar referências (perguntar o que faltar):
 
 | # | Campo | Pergunta |
 |---|-------|----------|
-| R1 | **Slug / pasta** | Qual `features/{slug}/`? |
+| R1 | **Slug / pasta** | Qual `sprints/sprint-{N}/features/{slug}/`? |
 | R2 | **Task** | Caminho de `tasks/sprint-task.md` ou link da issue GitLab? |
 | R3 | **RN / use case** | Há `spec/business-rules.md` e `spec/use-case.md`? Outros? |
 | R4 | **Camada** | Backend (`{{API_REPO}}`), frontend (`{{SPA_REPO}}`) ou ambos? |
@@ -78,9 +78,9 @@ Coletar referências (perguntar o que faltar):
 
 **Leitura obrigatória antes de codar:**
 
-- `features/{slug}/tasks/sprint-task.md`
-- `features/{slug}/spec/business-rules.md` (se existir)
-- `features/{slug}/spec/use-case.md` (se existir)
+- `sprints/sprint-{N}/features/{slug}/tasks/sprint-task.md`
+- `sprints/sprint-{N}/features/{slug}/spec/business-rules.md` (se existir)
+- `sprints/sprint-{N}/features/{slug}/spec/use-case.md` (se existir)
 - `steering/product.md`, `steering/engineering.md`
 - Código existente no domínio (Search-first em `{{API_REPO}}` / `{{SPA_REPO}}`)
 
@@ -173,7 +173,7 @@ Antes de encerrar:
 
 1. Percorrer **critérios de aceite** da task/spec
 2. Rodar testes afetados (comando do repo: Maven, `ng test`, etc.)
-3. Atualizar `features/{slug}/progress.md` — marcar **C1** / **C2** / **C3** / **C4** conforme aplicável
+3. Atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — marcar **C1** / **C2** / **C3** / **C4** conforme aplicável
 4. Informar ao dev: arquivos alterados, testes adicionados, pendências
 
 Mensagem de fechamento sugerida:

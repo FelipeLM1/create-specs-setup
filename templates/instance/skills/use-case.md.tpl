@@ -27,8 +27,8 @@ Traduzir as regras de negócio em um fluxo funcional completo — com happy path
 
 Antes de gerar, leia:
 
-- [ ] `features/{slug}/spec/meeting-notes.md`
-- [ ] `features/{slug}/spec/business-rules.md`
+- [ ] `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md`
+- [ ] `sprints/sprint-{N}/features/{slug}/spec/business-rules.md`
 
 Se business rules não existir → delegar `business-rules` primeiro.
 
@@ -130,7 +130,7 @@ Qualquer ponto que ficou sem resposta clara deve ir em **Pendências** com `[PEN
 
 ## Saída esperada
 
-Arquivo `features/{slug}/spec/use-case.md` com:
+Arquivo `sprints/sprint-{N}/features/{slug}/spec/use-case.md` com:
 - Resumo do use case (ator, objetivo, pré/pós-condições)
 - Fluxo principal passo a passo
 - Fluxos alternativos numerados (FA-XX)
@@ -142,7 +142,7 @@ Arquivo `features/{slug}/spec/use-case.md` com:
 
 ## Após gerar — progress e entrega
 
-1. Atualizar `features/{slug}/progress.md` — marcar **A3** `[x]` (skill `feature-progress`)
+1. Atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — marcar **A3** `[x]` (skill `feature-progress`)
 2. Responder ao usuário conforme `docs/skill-conventions.md`
 
 **Próximo passo:** A4 — Prototype spec (skill `prototype-spec`)

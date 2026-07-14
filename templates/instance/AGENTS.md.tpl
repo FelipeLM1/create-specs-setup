@@ -8,8 +8,8 @@ Instruções para agentes de IA trabalhando neste repositório.
 
 O **{{SPECS_REPO_SLUG}}** transforma conversas em artefatos rastreáveis:
 
-- **Features** → `features/{slug}/` (SDD completo)
-- **Bugs e ajustes** → `fixes/{slug}/` (fluxo enxuto)
+- **Features** → `sprints/sprint-{N}/features/{slug}/` (SDD completo)
+- **Bugs e ajustes** → `sprints/sprint-{N}/fixes/{slug}/` (fluxo enxuto)
 
 O usuário **não precisa conhecer** nomes de skills — comece sempre pelas boas-vindas.
 
@@ -112,13 +112,18 @@ Referência: `docs/feature-lifecycle.md` § Fluxo spec-from-code
 ## Estrutura
 
 ```
-features/{slug}/     spec, design, tasks, progress.md
-fixes/{slug}/        fix-task.md, progress.md
-templates/           templates vazios
-docs/                lifecycles + skill-conventions
-.agents/skills/      uma skill por etapa + orquestradores
-prototypes/          app Angular mockado; cada protótipo em src/app/feature/{task_ref}-{slug}/
+sprints/
+  sprint-{N}/
+    features/{slug}/   spec, design, tasks, progress.md
+    fixes/{slug}/      fix-task.md, progress.md
+    meetings/
+templates/             templates vazios
+docs/                  lifecycles + skill-conventions + sprint-layout
+.agents/skills/        uma skill por etapa + orquestradores
+prototypes/            app Angular mockado; cada protótipo em src/app/feature/{task_ref}-{slug}/
 ```
+
+Sprint atual: `workflow.current_sprint` em `sdd.config.yaml`. Ver `docs/sprint-layout.md`.
 
 ---
 

@@ -193,12 +193,21 @@ Gravar `steering/product.md` e `steering/engineering.md` (versão confirmada na 
 | `templates/instance/README.md.tpl` | `README.md` |
 | `templates/instance/docs/*.tpl` | `docs/*.md` |
 | `templates/instance/templates/*.md` | `templates/*.md` — ver § Templates de tarefas abaixo |
-| `templates/instance/fixes/README.md.tpl` | `fixes/README.md` |
+| `templates/instance/sprints/README.md.tpl` | `sprints/README.md` |
+| `templates/instance/fixes/README.md.tpl` | `sprints/sprint-1/fixes/README.md` |
 | `templates/instance/skills/welcome.md.tpl` | `.agents/skills/welcome/SKILL.md` |
 | `templates/instance/skills/specs-guide.md.tpl` | `.agents/skills/{GUIDE_SKILL_NAME}/SKILL.md` |
 | `templates/instance/skills/{nome}.md.tpl` | `.agents/skills/{nome}/SKILL.md` |
 
-Criar: `features/.gitkeep`
+Criar estrutura inicial da sprint 1:
+
+```
+sprints/sprint-1/features/.gitkeep
+sprints/sprint-1/fixes/README.md   # a partir do tpl
+sprints/sprint-1/meetings/.gitkeep
+```
+
+(`workflow.current_sprint: 1` no `sdd.config.yaml`)
 
 Substituir placeholders ao gravar (ver checklist e template).
 
@@ -240,7 +249,7 @@ Substituir placeholders ao gravar (ver checklist e template).
 | V4 | Cada `SKILL.md` com frontmatter `name` + `description` | primeiras linhas de cada skill |
 | V5 | `AGENTS.md` aponta para `welcome`; guide com nome real (`{GUIDE_SKILL_NAME}`) | leitura |
 | V6 | 14 arquivos em `templates/` | contagem |
-| V7 | `features/.gitkeep`, `fixes/README.md`, `ai-rules.md`, `steering/product.md`, `steering/engineering.md` | existência |
+| V7 | `sprints/README.md`, `sprints/sprint-1/features/.gitkeep`, `sprints/sprint-1/fixes/README.md`, `ai-rules.md`, `steering/product.md`, `steering/engineering.md` | existência |
 | V8 | Skills críticas referenciam `{{GUIDE_SKILL_NAME}}` já substituído (ex.: sprint-task) | buscar `{{` em `.agents/skills/` |
 | V9 | `ai-rules.md` contém seção Search-first | leitura |
 | V10 | Se `prototype.enabled`: `prototypes/package.json`, catálogo vazio em `registry/` e `src/app/feature/README.md` | só se protótipo ativo |

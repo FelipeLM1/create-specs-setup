@@ -27,7 +27,7 @@ Consolidar `prototype.md`, use case e regras de negócio em uma task **curta e a
 
 ## Pré-condições (gate)
 
-Ler em `features/{slug}/`:
+Ler em `sprints/sprint-{N}/features/{slug}/`:
 
 - [ ] `design/prototype.md` (obrigatório)
 - [ ] `spec/use-case.md`
@@ -118,7 +118,7 @@ A sprint task deve **referenciar** o link Figma/design task quando existir. Se o
 
 ## Saída esperada
 
-- Arquivo: `features/{slug}/tasks/design-task.md` (template `templates/design-task.md`)
+- Arquivo: `sprints/sprint-{N}/features/{slug}/tasks/design-task.md` (template `templates/design-task.md`)
 - Seção **Texto para GitLab** pronta para copiar
 
 ---
