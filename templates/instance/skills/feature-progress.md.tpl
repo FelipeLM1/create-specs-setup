@@ -72,6 +72,7 @@ Marcar `[x]` na etapa quando o artefato existir e estiver alinhado ao estado atu
 | B1 | `tasks/design-task.md` (ou `[-]` se N/A) |
 | B2 | `tasks/sprint-task.md` |
 | B5 | pasta `prototypes/src/app/feature/{task_ref}-{slug}/` + card no catálogo com `sprint` + rota |
+| Pós-B5 (opcional) | `design/screenshots/` + manifesto — skill `prototype-export-screenshots` |
 | D1 | `docs/system-manual.md` |
 
 ### Revisão manual 🔍
@@ -141,6 +142,7 @@ Quando acionado via `{{GUIDE_SKILL_NAME}}`:
 | `design-task` | B1 |
 | `sprint-task` | B2 |
 | `prototype-angular` | B5 |
+| `prototype-export-screenshots` | Prints pós-B5 |
 | `system-manual` | D1 |
 | Implementação {{API_REPO}} / {{SPA_REPO}} | C1 / C2 (nota com MR se informado) |
 

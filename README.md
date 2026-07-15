@@ -46,10 +46,10 @@ A instância inclui:
 
 - `steering/product.md` e `steering/engineering.md` — contexto de negócio e engenharia
 - `sdd.config.yaml` — repos, wiki RN, GitLab, protótipo, fluxo de trabalho
-- **17 skills** em `.agents/skills/` (welcome, guide, full-spec, spec-from-code, quick-fix, implement-sprint-task, implement-fix, A1–B2, B5, D1, progress)
-- **14 templates** vazios em `templates/`
+- **19 skills** em `.agents/skills/` (welcome, guide, full-spec, design-to-spec, spec-from-code, quick-fix, implement-sprint-task, implement-fix, A1–B2, B5, export de prints, D1, progress)
+- **15 templates** vazios em `templates/` (inclui `screenshot-manifest.json`)
 - `features/` e `fixes/` — artefatos do produto (vazios no setup)
-- `prototypes/` — só se protótipo Angular for confirmado na entrevista
+- `prototypes/` — só se protótipo Angular for confirmado na entrevista (inclui botão **Baixar print** + script de export em lote)
 
 **Não há scripts de setup** — o agente lê `templates/instance/`, substitui placeholders e grava os arquivos na pasta destino.
 

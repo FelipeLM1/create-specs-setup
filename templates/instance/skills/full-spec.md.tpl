@@ -148,6 +148,7 @@ sprints/sprint-{N}/features/{slug}/
 |-------|-------|--------|
 | B3 | — | Criar issues GitLab (design-task e/ou sprint-task) |
 | B5 | `prototype-angular` | Após A4 |
+| Pós-B5 | `prototype-export-screenshots` | Prints na pasta da feature |
 | B6 | `feature-progress` | Demo PO registrada |
 | C* | — | Implementação {{API_REPO}} / {{SPA_REPO}} |
 | D1 | `system-manual` | Pós-implementação |

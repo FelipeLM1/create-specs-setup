@@ -61,6 +61,7 @@ Se o usuário já descreveu o problema, **pule a lista** e vá direto à triagem
 | Comportamento errado vs esperado | Fix (doc) | `quick-fix` |
 | Implementar / codar tarefa ou feature | Implementação | `implement-sprint-task` |
 | Investigar e corrigir bug no código | Implementação fix | `implement-fix` |
+| Gerar/exportar prints do protótipo para a spec | Pós-B5 | `prototype-export-screenshots` |
 | Label, copy, filtro, tweak acordado | Fix (`adjustment`) | `quick-fix` |
 | "Onde paramos" / slug conhecido incompleto | Continuar | ver § Continuar abaixo |
 | "Status da feature X" | Consulta | `feature-progress` |
@@ -140,6 +141,7 @@ Posso continuar com {próxima etapa}? (farei perguntas se faltar contexto)
 | B1 | `design-task` |
 | B2 | `sprint-task` |
 | B5 | `prototype-angular` |
+| Pós-B5 | `prototype-export-screenshots` (prints na pasta da feature) |
 | B6 | atualizar `feature-progress` (registro demo) |
 | C1 | `implement-sprint-task` (backend) |
 | C2 | `implement-sprint-task` (frontend) |
@@ -167,6 +169,7 @@ Posso continuar com {próxima etapa}? (farei perguntas se faltar contexto)
 | `design-task` | B1 (UX/UI) |
 | `sprint-task` | B2 (dev) |
 | `prototype-angular` | B5 |
+| `prototype-export-screenshots` | Prints do protótipo → pasta da feature (pós-B5) |
 | `system-manual` | D1 |
 | `feature-progress` | Status / checklist feature |
 | `spec-from-code` | Spec de fluxo já implementado (código → artefatos) |

@@ -487,9 +487,13 @@ npm start
 - [ ] Filtros/busca da tela do protótipo funcionam com mock data
 - [ ] Layout responsivo funciona em mobile (DevTools responsive mode)
 - [ ] Botão "Voltar ao catálogo" funciona
+- [ ] Botão **Baixar print** aparece nas rotas `/prototype/*` e gera PNG sem controles internos
 - [ ] Não há erros no console do navegador
 - [ ] Não há imports de serviços de backend/auth
 
+**Controles internos (dev/PO):** marque com a classe `prototype-export-exclude` (toolbar de estados, notas técnicas, banners de demo, chips “Dados mockados”). Eles somem no print e no export em lote.
+
+**Prints em lote na pasta da feature:** skill `prototype-export-screenshots` (após B5).
 ---
 
 ### 11. Documentar observações técnicas
@@ -622,7 +626,7 @@ Ao final da execução desta skill, você deve ter:
 1. Atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — marcar **B5** `[x]`, link do catálogo na nota (skill `feature-progress`)
 2. Responder ao usuário conforme `docs/skill-conventions.md`
 
-**Próximo passo:** B5 — validação com stakeholder (registrar em progress)
+**Próximo passo:** exportar prints (`prototype-export-screenshots`) e/ou **B6** — validação com stakeholder (registrar em progress)
 
 ---
 

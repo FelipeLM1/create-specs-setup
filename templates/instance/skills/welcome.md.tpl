@@ -106,6 +106,7 @@ Apresentar por perfil — linguagem simples, sem exigir nomes de skills:
 | `design-task` · `sprint-task` | B1 · B2 |
 | `implement-sprint-task` · `implement-fix` | C* · F3 (dev) |
 | `prototype-angular` | B5 |
+| `prototype-export-screenshots` | Prints do protótipo → pasta da feature |
 | `system-manual` | D1 |
 | `feature-progress` · `fix-progress` | Status |
 

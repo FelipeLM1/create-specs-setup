@@ -104,8 +104,9 @@ Legenda: 🔴 obrigatório · 🟡 recomendado (pode `[PENDENTE]` não crítico)
 | 5.3 🔴 (se sim) | Confirmar SPA fonte dos componentes (= `repos.spa`) | `prototype.spa_source_repo` |
 | 5.4 🟡 | Copiar **todos** os shared components ou só subset? | decisão na cópia |
 | 5.5 🟡 | Versão Angular / Tailwind — seguir o SPA? | ler `package.json` |
-| 5.6 🟡 | Porta local do protótipo (padrão 4200)? | `prototype.dev_port` |
+| 5.6 🟡 | Porta local do protótipo (padrão 4201)? | `prototype.dev_port` |
 | 5.7 🔴 (se sim) | Após montar: rodar `npm install && npm start` para validar? | confirmação usuário |
+| 5.8 ℹ️ (se sim) | Setup inclui botão **Baixar print** + script de export em lote (Playwright) | skill `prototype-export-screenshots` |
 
 Se **não**: `prototype.enabled: false` — protótipo pode ser adicionado depois via `upgrade-specs` (com SPA no workspace).
 

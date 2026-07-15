@@ -1,0 +1,39 @@
+.prototype-screenshot-button {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 1000;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.25rem;
+  background: #1e3a8a;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(30, 58, 138, 0.28);
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.85;
+    cursor: wait;
+  }
+
+  &.is-capturing {
+    background: #334155;
+  }
+}
+
+@media (max-width: 600px) {
+  .prototype-screenshot-button {
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.65rem 1rem;
+    font-size: 0.8125rem;
+  }
+}

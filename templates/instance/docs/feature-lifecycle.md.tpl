@@ -69,6 +69,7 @@ Documento de referência: **todas as features** do {{PROJECT_NAME}} seguem estas
 | B3 | Issue no GitLab | Link nas tasks (design e/ou dev) | Sim |
 | B4 | Pendências de negócio/técnicas fechadas | Lista vazia nas tasks | Sim |
 | B5 | Protótipo navegável ({{SPECS_REPO_SLUG}}) | `prototypes/src/app/feature/{task_ref}-{slug}/` + catálogo | Sim |
+| Pós-B5 | Capturas na pasta da feature | `design/screenshots/` via `prototype-export-screenshots` ou botão **Baixar print** | Não |
 | B6 | Validação do protótipo com stakeholder | Registro em `progress.md` | Sim |
 
 **B1** pode ser `[-]` quando não há designer no fluxo — ir direto para **B2**.
@@ -156,6 +157,7 @@ sprints/sprint-{N}/features/{slug}/
 | B1 | `design-task` |
 | B2 | `sprint-task` |
 | B5 | `prototype-angular` |
+| Pós-B5 | `prototype-export-screenshots` |
 | C1–C4 | `implement-sprint-task` |
 | D1 | `system-manual` |
 | Spec from code | `spec-from-code` |

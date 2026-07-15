@@ -45,6 +45,8 @@ Reportar gaps ao usuário antes de alterar.
 | `docs/business-rules-store.md` | RN primária em spec; wiki condicional |
 | Skills `business-rules`, `sprint-task` | Gate wiki só se `wiki.enabled: true` |
 | `prototype-angular` | B5 (não B4); catálogo em `registry/` com `sprint` + busca/filtro na home; código por feature em `src/app/feature/{task_ref}-{slug}/` |
+| Skill `prototype-export-screenshots` | Adicionar se ausente (prints do protótipo → pasta da feature) |
+| Scaffold print (botão + script) | Se `prototypes/` existir: copiar `prototype-screenshot-button`, serviço, constantes, `scripts/export-spec-screenshots.mjs`, deps `html-to-image`/`playwright`, template `screenshot-manifest.json`; wire no layout se faltar (ver `LAYOUT-SCREENSHOT-WIRE.md`) |
 | `docs/feature-lifecycle.md` | A0 = steering validado |
 | `AGENTS.md`, `README.md` | Entrada `welcome`; links para steering e create-specs-setup |
 | Skill `welcome` | Adicionar se ausente (boas-vindas — entrada em `AGENTS.md`) |

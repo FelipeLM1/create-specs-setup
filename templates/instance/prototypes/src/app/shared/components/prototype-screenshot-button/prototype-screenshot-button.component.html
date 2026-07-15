@@ -1,0 +1,15 @@
+<button
+  type="button"
+  class="prototype-screenshot-button"
+  [class.is-capturing]="isCapturing"
+  [disabled]="isCapturing"
+  aria-label="Baixar print desta tela"
+  title="Baixar print desta tela"
+  (click)="downloadScreenshot()"
+>
+  @if (isCapturing) {
+    Gerando print...
+  } @else {
+    Baixar print
+  }
+</button>

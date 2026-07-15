@@ -145,6 +145,7 @@ Sprint atual (quando houver N): `workflow.current_sprint` em `sdd.config.yaml`. 
 | `design-task` | B1 (designer) |
 | `sprint-task` | B2 (dev) |
 | `prototype-angular` | B5 |
+| `prototype-export-screenshots` | Exportar prints do protótipo para a spec (pós-B5) |
 | `system-manual` | D1 |
 | `spec-from-code` | Documentar fluxo já implementado (código → spec) |
 | `implement-sprint-task` | Implementar tarefa/feature (C1–C4, guiado) |

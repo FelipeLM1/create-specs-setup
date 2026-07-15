@@ -93,6 +93,7 @@ Obrigatório ao final da skill `quick-fix`:
 | Bug / ajuste (documentar) | `quick-fix` |
 | Implementar tarefa/feature (C*) | `implement-sprint-task` |
 | Investigar e corrigir bug (F3) | `implement-fix` |
+| Exportar capturas do protótipo para a spec | `prototype-export-screenshots` |
 | Continuar spec existente | `{{GUIDE_SKILL_NAME}}` → modo continuar |
 | Consultar andamento feature | `feature-progress` |
 | Consultar andamento fix | `fix-progress` |

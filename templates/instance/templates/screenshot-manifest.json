@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost:4201",
+  "pages": [
+    {
+      "name": "01-{slug-tela}",
+      "path": "/prototype/{task_ref}-{feature-slug}",
+      "screenRef": "Tela 01 — {nome da tela}"
+    }
+  ]
+}

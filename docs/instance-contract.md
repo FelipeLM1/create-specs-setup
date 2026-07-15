@@ -27,7 +27,7 @@ Uma instância válida é o repositório `{projeto}-specs` gerado pelo `create-s
 ```
 {specs-repo}/
 ├── steering/
-├── templates/          # 14 templates vazios
+├── templates/          # 15 templates (inclui screenshot-manifest.json)
 ├── docs/
 │   ├── feature-lifecycle.md
 │   ├── fix-lifecycle.md
@@ -42,7 +42,7 @@ Uma instância válida é o repositório `{projeto}-specs` gerado pelo `create-s
 │       ├── features/   # .gitkeep
 │       ├── fixes/      # README.md
 │       └── meetings/   # .gitkeep
-├── .agents/skills/     # 17 skills (ver lista abaixo)
+├── .agents/skills/     # 19 skills (ver lista abaixo)
 └── prototypes/         # somente se prototype.enabled: true
     └── src/app/feature/   # um protótipo por pasta: {task_ref}-{slug}
 ```
@@ -54,6 +54,7 @@ Uma instância válida é o repositório `{projeto}-specs` gerado pelo `create-s
 | `welcome/` | Boas-vindas e visão de capacidades |
 | `{guide_name}/` | Triagem e roteamento |
 | `full-spec/` | Orquestrador feature |
+| `design-to-spec/` | Feature a partir de design/PNG pronto |
 | `quick-fix/` | Bug / ajuste |
 | `meeting-notes/` | A1 |
 | `business-rules/` | A2 |
@@ -62,6 +63,7 @@ Uma instância válida é o repositório `{projeto}-specs` gerado pelo `create-s
 | `design-task/` | B1 |
 | `sprint-task/` | B2 |
 | `prototype-angular/` | B5 |
+| `prototype-export-screenshots/` | Prints do protótipo → pasta da feature |
 | `system-manual/` | D1 |
 | `feature-progress/` | Status feature |
 | `fix-progress/` | Status fix |
@@ -85,6 +87,7 @@ Uma instância válida é o repositório `{projeto}-specs` gerado pelo `create-s
 - `implementation-gaps.md`
 - `evolution-insights.md`
 - `spec-from-code-progress.md`
+- `screenshot-manifest.json`
 
 ## sdd.config.yaml — campos mínimos
 
@@ -127,14 +130,14 @@ Gate obrigatório na skill `create-specs-setup` (Fase 7.5) — reportar ✅/❌ 
 |----|------|
 | V1 | `contract_version: 1` em `sdd.config.yaml` |
 | V2 | Nenhum arquivo gravado contém `{{` (placeholders) |
-| V3 | 17 pastas `.agents/skills/*/SKILL.md` |
+| V3 | 19 pastas `.agents/skills/*/SKILL.md` |
 | V4 | Cada skill com frontmatter YAML `name` + `description` |
 | V5 | `AGENTS.md` aponta para `welcome`; guide com nome real (sem placeholder) |
-| V6 | 14 templates em `templates/` |
+| V6 | 15 templates em `templates/` (inclui `screenshot-manifest.json`) |
 | V7 | `sprints/README.md`, `sprints/in-progress/features/.gitkeep`, `sprints/sprint-1/features/.gitkeep`, `sprints/sprint-1/fixes/README.md`, `ai-rules.md`, `steering/*` |
 | V8 | Skills sem referências `{{...}}` não substituídas |
 | V9 | `ai-rules.md` com seção Search-first |
-| V10 | Se `prototype.enabled`: `prototypes/package.json` + catálogo vazio em `registry/` (modelo com `sprint`) + página do catálogo com busca/filtro sprint + `src/app/feature/README.md` |
+| V10 | Se `prototype.enabled`: `prototypes/package.json` + catálogo vazio em `registry/` (modelo com `sprint`) + página do catálogo com busca/filtro sprint + botão/print (`prototype-screenshot-button`, script export) + `src/app/feature/README.md` |
 | V11 | Sem referências hardcoded a projetos externos (URLs/nomes de repos alheios) |
 
 ## Setup e upgrade

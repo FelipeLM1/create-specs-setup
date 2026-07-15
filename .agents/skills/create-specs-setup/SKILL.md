@@ -234,6 +234,10 @@ Substituir placeholders ao gravar (ver checklist e template).
    - padrão de layout (sidebar, header, footer) se existir no SPA
 4. **Montar estrutura SDD** em `prototypes/`:
    - Copiar referência de `templates/instance/prototypes/` (modelo `PrototypeCard` com `sprint`, catálogo vazio, página do catálogo com **busca por nome** + **filtro por sprint**)
+   - Copiar **print do protótipo:** botão `prototype-screenshot-button`, serviço, constantes, `scripts/export-spec-screenshots.mjs`, `QUICKSTART.md`
+   - Wire do botão no layout (ver `LAYOUT-SCREENSHOT-WIRE.md`) — só nas rotas `/prototype/*`
+   - Dependências: `html-to-image` + `playwright` (dev) + script `export:spec-screenshots` no `package.json`
+   - Template `templates/screenshot-manifest.json` na instância
    - `src/app/prototypes/registry/prototype-catalog.data.ts` — catálogo vazio
    - `src/app/catalog/pages/prototype-catalog-page.*` — toolbar (search + chips de sprint) + badge no card
    - `src/app/feature/README.md` — convenção `{task_ref}-{slug}`
@@ -249,14 +253,14 @@ Substituir placeholders ao gravar (ver checklist e template).
 |---|-------------|-------------|
 | V1 | `sdd.config.yaml` com `contract_version: 1` | leitura do arquivo |
 | V2 | **Nenhum** arquivo gravado contém `{{` (placeholders não substituídos) | buscar `{{` em `{TARGET_DIR}` |
-| V3 | 17 pastas em `.agents/skills/*/SKILL.md` | listar diretórios |
+| V3 | 19 pastas em `.agents/skills/*/SKILL.md` | listar diretórios |
 | V4 | Cada `SKILL.md` com frontmatter `name` + `description` | primeiras linhas de cada skill |
 | V5 | `AGENTS.md` aponta para `welcome`; guide com nome real (`{GUIDE_SKILL_NAME}`) | leitura |
-| V6 | 14 arquivos em `templates/` | contagem |
+| V6 | 15 arquivos em `templates/` (14 base + `screenshot-manifest.json`) | contagem |
 | V7 | `sprints/README.md`, `sprints/in-progress/features/.gitkeep`, `sprints/sprint-1/features/.gitkeep`, `sprints/sprint-1/fixes/README.md`, `ai-rules.md`, `steering/product.md`, `steering/engineering.md` | existência |
 | V8 | Skills críticas referenciam `{{GUIDE_SKILL_NAME}}` já substituído (ex.: sprint-task) | buscar `{{` em `.agents/skills/` |
 | V9 | `ai-rules.md` contém seção Search-first | leitura |
-| V10 | Se `prototype.enabled`: `prototypes/package.json`, catálogo vazio em `registry/` (com `sprint` no modelo), página do catálogo com busca/filtro sprint e `src/app/feature/README.md` | só se protótipo ativo |
+| V10 | Se `prototype.enabled`: `prototypes/package.json`, catálogo vazio em `registry/` (com `sprint` no modelo), página do catálogo com busca/filtro sprint, botão/print (`prototype-screenshot-button` + script `export:spec-screenshots`) e `src/app/feature/README.md` | só se protótipo ativo |
 | V11 | Nenhum arquivo gravado contém referências hardcoded a projetos externos (URLs ou nomes de repos alheios) | busca textual em `{TARGET_DIR}` |
 
 Apresentar tabela **✅ / ❌** ao usuário. Com qualquer ❌, corrigir antes do handoff.
