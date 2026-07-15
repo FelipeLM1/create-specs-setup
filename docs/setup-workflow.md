@@ -44,7 +44,7 @@ O agente:
 1. Valida `{spa}` no workspace e lê `package.json`, estrutura `src/app/`, estilos e `shared/components/`
 2. Inicializa `{specs}/prototypes/` com stack alinhada ao SPA
 3. Copia/adapta componentes, layout e tema do SPA (sem HTTP/auth)
-4. Cria catálogo vazio em `registry/` e pasta `src/app/feature/` (um protótipo por subpasta `{task_ref}-{slug}`)
+4. Cria catálogo vazio em `registry/` (com `sprint` no card), home com busca/filtro por sprint, e pasta `src/app/feature/` (um protótipo por subpasta `{task_ref}-{slug}`)
 
 Protótipos de telas específicas vêm depois, via skill `prototype-angular` — cada um em `feature/100-listagem-usuario/`, `feature/101-login/`, etc.
 

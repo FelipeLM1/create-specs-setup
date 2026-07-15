@@ -47,7 +47,7 @@ Antes de criar pastas ou arquivos, reunir:
 
 | # | Campo | Pergunta guia |
 |---|-------|---------------|
-| 0.0 | **Sprint** | Qual sprint? (default: `workflow.current_sprint` em `sdd.config.yaml`) |
+| 0.0 | **Local** | Já tem sprint? Se **não** (spec ainda em andamento / sem B2) → `in-progress`. Se **sim** → N (default: `workflow.current_sprint`) |
 | 0.1 | **Problema** | Qual dor ou oportunidade de negócio? |
 | 0.2 | **Usuário** | Quem usa (perfil)? |
 | 0.3 | **Processo atual** | Como resolvem hoje? |
@@ -58,18 +58,18 @@ Antes de criar pastas ou arquivos, reunir:
 | 0.8 | **Slug** | Propor kebab-case e confirmar |
 
 **Gate mínimo para iniciar A1:**
-- [ ] Sprint confirmada (`N` → pasta `sprints/sprint-{N}/`)
+- [ ] Local confirmado: `sprints/in-progress/` **ou** `sprints/sprint-{N}/`
 - [ ] Problema + usuário descritos
 - [ ] Escopo mínimo (mesmo com pendências)
 - [ ] Slug confirmado
 - [ ] Pelo menos 1 serviço impactado (ou `[PENDENTE]`)
 
 Ao passar o gate:
-1. Criar `sprints/sprint-{N}/features/{slug}/progress.md` (template `feature-progress.md`)
+1. Criar `{feature_root}/progress.md` — `sprints/in-progress/features/{slug}/` ou `sprints/sprint-{N}/features/{slug}/` (template `feature-progress.md`)
 2. Marcar **A0** `[x]`
 3. Informar modo (guiado/batch) e iniciar **A1**
 
-> Layout: `docs/sprint-layout.md`
+> Layout: `docs/sprint-layout.md`. Ao gerar B2 / definir sprint: **mover** de `in-progress/` → `sprint-{N}/`.
 
 ---
 

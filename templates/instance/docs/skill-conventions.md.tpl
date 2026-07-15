@@ -2,7 +2,7 @@
 
 Referência compartilhada por **todas** as skills em `.agents/skills/`. A IA deve seguir estas regras ao gerar artefatos.
 
-**Layout de pastas:** `docs/sprint-layout.md` — artefatos em `sprints/sprint-{N}/features|fixes|meetings/`. `N` = `workflow.current_sprint` em `sdd.config.yaml`, salvo indicação contrária do usuário.
+**Layout de pastas:** `docs/sprint-layout.md` — artefatos em `sprints/in-progress/` ou `sprints/sprint-{N}/features|fixes|meetings/`. `N` = `workflow.current_sprint` em `sdd.config.yaml`, salvo indicação contrária do usuário.
 
 ---
 

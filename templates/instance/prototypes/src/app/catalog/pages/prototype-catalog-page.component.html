@@ -1,0 +1,100 @@
+<app-header
+  title="Catálogo de Protótipos"
+  description="Protótipos de alta fidelidade para validação de UX antes da implementação no produto."
+/>
+
+<section class="catalog-toolbar" aria-label="Filtros do catálogo">
+  <label class="search-field">
+    <span class="sr-only">Buscar protótipo</span>
+    <input
+      type="search"
+      [(ngModel)]="searchQuery"
+      placeholder="Buscar por nome, descrição ou tag…"
+      autocomplete="off"
+    />
+  </label>
+
+  <div class="sprint-filters" role="group" aria-label="Filtrar por sprint">
+    <button
+      type="button"
+      class="sprint-chip"
+      [class.active]="selectedSprint === null"
+      (click)="selectSprint(null)"
+    >
+      Todas
+    </button>
+    @if (hasInProgressCards) {
+      <button
+        type="button"
+        class="sprint-chip"
+        [class.active]="selectedSprint === 'in-progress'"
+        (click)="selectSprint('in-progress')"
+      >
+        Em andamento
+      </button>
+    }
+    @for (sprint of availableSprints; track sprint) {
+      <button
+        type="button"
+        class="sprint-chip"
+        [class.active]="selectedSprint === sprint"
+        (click)="selectSprint(sprint)"
+      >
+        Sprint {{ sprint }}
+      </button>
+    }
+  </div>
+
+  @if (searchQuery || selectedSprint !== null) {
+    <button type="button" class="clear-filters" (click)="clearFilters()">
+      Limpar filtros
+    </button>
+  }
+</section>
+
+<p class="catalog-count">
+  {{ filteredCards.length }} de {{ allCards.length }} protótipos
+</p>
+
+@if (filteredCards.length === 0) {
+  <p class="catalog-empty">Nenhum protótipo encontrado com os filtros atuais.</p>
+} @else {
+  <section class="cards-grid">
+    @for (card of filteredCards; track card.id) {
+      <article class="prototype-card">
+        <div class="card-header">
+          <h2>{{ card.title }}</h2>
+          <div class="card-badges">
+            <span
+              class="sprint-badge"
+              [class.in-progress]="card.sprint == null"
+            >{{ sprintBadgeLabel(card) }}</span>
+            <span class="status-chip" [ngClass]="card.status">{{ getStatusLabel(card.status) }}</span>
+          </div>
+        </div>
+
+        <p class="card-description">{{ card.description }}</p>
+
+        <div class="card-meta">
+          <p class="card-task">
+            <strong>Task:</strong>
+            @if (card.taskRef) {
+              <span>#{{ card.taskRef }} — {{ card.taskRequirement }}</span>
+            } @else {
+              <span>{{ card.taskRequirement }}</span>
+            }
+          </p>
+          <p><strong>Atualizado:</strong> {{ card.updatedAt | date: 'dd/MM/yyyy' }}</p>
+        </div>
+
+        <div class="card-tags">
+          @for (tag of card.tags; track tag) {
+            <span class="tag">{{ tag }}</span>
+          }
+        </div>
+
+        <a class="btn-open" [routerLink]="card.route">Abrir protótipo</a>
+      </article>
+    }
+  </section>
+}

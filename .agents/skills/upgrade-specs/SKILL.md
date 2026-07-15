@@ -44,7 +44,7 @@ Reportar gaps ao usuário antes de alterar.
 | `steering/engineering.md` | Listar repos, stack, path SPA para protótipo |
 | `docs/business-rules-store.md` | RN primária em spec; wiki condicional |
 | Skills `business-rules`, `sprint-task` | Gate wiki só se `wiki.enabled: true` |
-| `prototype-angular` | B5 (não B4); catálogo em `registry/`; código por feature em `src/app/feature/{task_ref}-{slug}/` |
+| `prototype-angular` | B5 (não B4); catálogo em `registry/` com `sprint` + busca/filtro na home; código por feature em `src/app/feature/{task_ref}-{slug}/` |
 | `docs/feature-lifecycle.md` | A0 = steering validado |
 | `AGENTS.md`, `README.md` | Entrada `welcome`; links para steering e create-specs-setup |
 | Skill `welcome` | Adicionar se ausente (boas-vindas — entrada em `AGENTS.md`) |
@@ -62,6 +62,7 @@ Se `prototypes/` já existe com protótipos de domínio:
 - Só corrigir paths/docs inconsistentes (registry, `feature/` vs legado em `prototypes/pages`)
 - Se faltar `src/app/feature/README.md`, adicionar com convenção `{task_ref}-{slug}`
 - Se faltar `shared/components`, copiar do SPA conforme § Protótipo em `create-specs-setup`
+- **Catálogo por sprint:** garantir `PrototypeCard.sprint: number` em todos os cards; home com busca por nome + filtro por sprint (referência: `templates/instance/prototypes/`). Cards legados sem sprint → perguntar N ou usar `workflow.current_sprint`
 
 ### 4. Valores da instância
 

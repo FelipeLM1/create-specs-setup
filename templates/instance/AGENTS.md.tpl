@@ -113,6 +113,8 @@ Referência: `docs/feature-lifecycle.md` § Fluxo spec-from-code
 
 ```
 sprints/
+  in-progress/         specs em andamento (sem sprint definida)
+    features/{slug}/
   sprint-{N}/
     features/{slug}/   spec, design, tasks, progress.md
     fixes/{slug}/      fix-task.md, progress.md
@@ -123,7 +125,7 @@ docs/                  lifecycles + skill-conventions + sprint-layout
 prototypes/            app Angular mockado; cada protótipo em src/app/feature/{task_ref}-{slug}/
 ```
 
-Sprint atual: `workflow.current_sprint` em `sdd.config.yaml`. Ver `docs/sprint-layout.md`.
+Sprint atual (quando houver N): `workflow.current_sprint` em `sdd.config.yaml`. Specs sem sprint: `sprints/in-progress/`. Ver `docs/sprint-layout.md`.
 
 ---
 

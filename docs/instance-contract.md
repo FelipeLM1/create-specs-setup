@@ -36,6 +36,8 @@ Uma instância válida é o repositório `{projeto}-specs` gerado pelo `create-s
 │   └── sprint-layout.md
 ├── sprints/
 │   ├── README.md
+│   ├── in-progress/    # specs em andamento (sem sprint)
+│   │   └── features/   # .gitkeep
 │   └── sprint-1/       # current_sprint
 │       ├── features/   # .gitkeep
 │       ├── fixes/      # README.md
@@ -129,10 +131,10 @@ Gate obrigatório na skill `create-specs-setup` (Fase 7.5) — reportar ✅/❌ 
 | V4 | Cada skill com frontmatter YAML `name` + `description` |
 | V5 | `AGENTS.md` aponta para `welcome`; guide com nome real (sem placeholder) |
 | V6 | 14 templates em `templates/` |
-| V7 | `sprints/README.md`, `sprints/sprint-1/features/.gitkeep`, `sprints/sprint-1/fixes/README.md`, `ai-rules.md`, `steering/*` |
+| V7 | `sprints/README.md`, `sprints/in-progress/features/.gitkeep`, `sprints/sprint-1/features/.gitkeep`, `sprints/sprint-1/fixes/README.md`, `ai-rules.md`, `steering/*` |
 | V8 | Skills sem referências `{{...}}` não substituídas |
 | V9 | `ai-rules.md` com seção Search-first |
-| V10 | Se `prototype.enabled`: `prototypes/package.json` + catálogo vazio em `registry/` + `src/app/feature/README.md` |
+| V10 | Se `prototype.enabled`: `prototypes/package.json` + catálogo vazio em `registry/` (modelo com `sprint`) + página do catálogo com busca/filtro sprint + `src/app/feature/README.md` |
 | V11 | Sem referências hardcoded a projetos externos (URLs/nomes de repos alheios) |
 
 ## Setup e upgrade

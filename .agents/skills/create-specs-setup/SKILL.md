@@ -199,15 +199,17 @@ Gravar `steering/product.md` e `steering/engineering.md` (versão confirmada na 
 | `templates/instance/skills/specs-guide.md.tpl` | `.agents/skills/{GUIDE_SKILL_NAME}/SKILL.md` |
 | `templates/instance/skills/{nome}.md.tpl` | `.agents/skills/{nome}/SKILL.md` |
 
-Criar estrutura inicial da sprint 1:
+Criar estrutura inicial:
 
 ```
+sprints/in-progress/features/.gitkeep
+sprints/in-progress/README.md   # a partir de templates/instance/sprints/in-progress/README.md.tpl (ou conteúdo equivalente)
 sprints/sprint-1/features/.gitkeep
 sprints/sprint-1/fixes/README.md   # a partir do tpl
 sprints/sprint-1/meetings/.gitkeep
 ```
 
-(`workflow.current_sprint: 1` no `sdd.config.yaml`)
+(`workflow.current_sprint: 1` no `sdd.config.yaml`; specs sem sprint vão para `in-progress/`)
 
 Substituir placeholders ao gravar (ver checklist e template).
 
@@ -231,7 +233,9 @@ Substituir placeholders ao gravar (ver checklist e template).
    - estilos globais / variáveis de tema
    - padrão de layout (sidebar, header, footer) se existir no SPA
 4. **Montar estrutura SDD** em `prototypes/`:
+   - Copiar referência de `templates/instance/prototypes/` (modelo `PrototypeCard` com `sprint`, catálogo vazio, página do catálogo com **busca por nome** + **filtro por sprint**)
    - `src/app/prototypes/registry/prototype-catalog.data.ts` — catálogo vazio
+   - `src/app/catalog/pages/prototype-catalog-page.*` — toolbar (search + chips de sprint) + badge no card
    - `src/app/feature/README.md` — convenção `{task_ref}-{slug}`
    - rotas mínimas (catálogo + placeholder)
 5. Registrar `prototype.spa_source_repo` e `prototype.shared_components_path` em `sdd.config.yaml`
@@ -249,10 +253,10 @@ Substituir placeholders ao gravar (ver checklist e template).
 | V4 | Cada `SKILL.md` com frontmatter `name` + `description` | primeiras linhas de cada skill |
 | V5 | `AGENTS.md` aponta para `welcome`; guide com nome real (`{GUIDE_SKILL_NAME}`) | leitura |
 | V6 | 14 arquivos em `templates/` | contagem |
-| V7 | `sprints/README.md`, `sprints/sprint-1/features/.gitkeep`, `sprints/sprint-1/fixes/README.md`, `ai-rules.md`, `steering/product.md`, `steering/engineering.md` | existência |
+| V7 | `sprints/README.md`, `sprints/in-progress/features/.gitkeep`, `sprints/sprint-1/features/.gitkeep`, `sprints/sprint-1/fixes/README.md`, `ai-rules.md`, `steering/product.md`, `steering/engineering.md` | existência |
 | V8 | Skills críticas referenciam `{{GUIDE_SKILL_NAME}}` já substituído (ex.: sprint-task) | buscar `{{` em `.agents/skills/` |
 | V9 | `ai-rules.md` contém seção Search-first | leitura |
-| V10 | Se `prototype.enabled`: `prototypes/package.json`, catálogo vazio em `registry/` e `src/app/feature/README.md` | só se protótipo ativo |
+| V10 | Se `prototype.enabled`: `prototypes/package.json`, catálogo vazio em `registry/` (com `sprint` no modelo), página do catálogo com busca/filtro sprint e `src/app/feature/README.md` | só se protótipo ativo |
 | V11 | Nenhum arquivo gravado contém referências hardcoded a projetos externos (URLs ou nomes de repos alheios) | busca textual em `{TARGET_DIR}` |
 
 Apresentar tabela **✅ / ❌** ao usuário. Com qualquer ❌, corrigir antes do handoff.

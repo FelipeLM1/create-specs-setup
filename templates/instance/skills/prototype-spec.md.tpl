@@ -51,11 +51,13 @@ Cada "mudança significativa de interface" = uma tela no protótipo.
 - Tela de resultado/sucesso
 - Estado de erro
 
-### 2. Definir o ID do protótipo no catálogo
+### 2. Definir o ID do protótipo no catálogo e a sprint
 
-ID em kebab-case, igual ao slug da feature (ou mais específico se necessário):
-- `import-planilha-fornecedor`
-- `filtro-reparo-por-lote`
+ID em kebab-case, igual ao padrão `{task_ref}-{slug}` (ou mais específico se necessário):
+- `100-import-planilha-fornecedor`
+- `101-filtro-reparo-por-lote`
+
+**Sprint (`sprint: number`):** obrigatória no card do catálogo — igual a `N` de `sprints/sprint-{N}/features/{slug}/` (default: `workflow.current_sprint`). A home do catálogo filtra por sprint e exibe badge **Sprint {N}**.
 
 ### 3. Especificar cada tela
 

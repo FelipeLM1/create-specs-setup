@@ -3,6 +3,7 @@
 | Campo | Valor |
 |-------|-------|
 | **Feature** | `{slug-da-feature}` |
+| **Sprint** | `{N}` (`sprints/sprint-{N}/`) — badge/filtro no catálogo |
 | **Task ref** | `{task_ref}` (ex.: issue GitLab #100) |
 | **Pasta do protótipo** | `feature/{task_ref}-{slug}/` (ex.: `feature/100-listagem-usuario/`) |
 | **Status** | `rascunho` |
@@ -27,7 +28,8 @@ Protótipo navegável de alta fidelidade para validar fluxo e UX **antes** da im
 - [ ] Estados loading / error / empty implementados
 - [ ] Fluxo navegável ponta a ponta
 - [ ] Pasta isolada em `prototypes/src/app/feature/{task_ref}-{slug}/`
-- [ ] Registrado no catálogo (`prototypes/src/app/prototypes/registry/prototype-catalog.data.ts`)
+- [ ] Registrado no catálogo com campo `sprint` (`prototypes/src/app/prototypes/registry/prototype-catalog.data.ts`)
+- [ ] Badge Sprint {N} e filtros (busca + sprint) na home do catálogo
 - [ ] Acessível via `npm start` no diretório `prototypes/`
 
 ---

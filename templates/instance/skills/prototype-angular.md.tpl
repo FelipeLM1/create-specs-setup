@@ -87,9 +87,10 @@ Config em `sdd.config.yaml` → `prototype.feature_base_path` e `prototype.featu
 **Perguntas essenciais:**
 1. Qual o **task_ref** (número da issue GitLab ou ID da task)? — obrigatório para nomear a pasta
 2. Qual o **slug** da feature em kebab-case? (ex.: `listagem-usuario`)
-3. Qual o nome/título do protótipo?
-4. Quais os principais componentes visuais necessários? (tabelas, cards, filtros, gráficos, etc.)
-5. Quais estados precisam ser representados? (loading, empty, error, success)
+3. Qual a **sprint** (`N` de `sprints/sprint-{N}/`)? Default: `workflow.current_sprint` em `sdd.config.yaml`
+4. Qual o nome/título do protótipo?
+5. Quais os principais componentes visuais necessários? (tabelas, cards, filtros, gráficos, etc.)
+6. Quais estados precisam ser representados? (loading, empty, error, success)
 
 **Nome da pasta:** `{task_ref}-{slug}` → ex.: `100-listagem-usuario`, `101-login`
 
@@ -101,6 +102,10 @@ Config em `sdd.config.yaml` → `prototype.feature_base_path` e `prototype.featu
 
 **Arquivo:** `src/app/prototypes/registry/prototype-catalog.data.ts`
 
+**Modelo:** `src/app/core/models/prototype-card.model.ts` — campo obrigatório `sprint: number` (badge + filtro na home).
+
+**Catálogo (home):** busca por nome/descrição/tag + filtro por sprint (chips). Referência de scaffold: `create-specs-setup/templates/instance/prototypes/`.
+
 **Adicionar novo card:**
 ```typescript
 export const prototypeCatalog: PrototypeCard[] = [
@@ -111,13 +116,16 @@ export const prototypeCatalog: PrototypeCard[] = [
     description: 'Descrição objetiva...',    // 1-2 frases sobre o objetivo
     route: '/prototype/100-listagem-usuario', // = /prototype/{task_ref}-{slug}
     status: 'draft',                          // 'draft' | 'ready' | 'validated'
+    sprint: 52,                               // = N de sprints/sprint-{N}/ (obrigatório)
     taskRef: '100',                           // Número/ID da task
     taskRequirement: 'GitLab #100 — listagem de usuários',
-    tags: ['tag1', 'tag2'],                   // Tags para categorização
+    tags: ['tag1', 'tag2'],                   // Tags para categorização / busca
     updatedAt: 'YYYY-MM-DD'                   // Data ISO format
   }
 ];
 ```
+
+**Regra:** se a feature está em `sprints/sprint-{N}/`, preencher `sprint: N`. Se ainda está em `sprints/in-progress/`, **omitir** `sprint` (badge "Em andamento" no catálogo).
 
 ---
 
@@ -471,10 +479,12 @@ npm start
 
 **Checklist de validação visual:**
 - [ ] Protótipo aparece no catálogo inicial
-- [ ] Card exibe título, descrição, status e tags corretos
+- [ ] Card exibe título, descrição, badge **Sprint {N}**, status e tags corretos
+- [ ] Busca por nome no catálogo encontra o card
+- [ ] Filtro por sprint no catálogo isola o card
 - [ ] Clicar no card navega para a página do protótipo
 - [ ] Todos os 4 estados (loading, empty, error, success) renderizam corretamente
-- [ ] Filtros/busca funcionam com mock data
+- [ ] Filtros/busca da tela do protótipo funcionam com mock data
 - [ ] Layout responsivo funciona em mobile (DevTools responsive mode)
 - [ ] Botão "Voltar ao catálogo" funciona
 - [ ] Não há erros no console do navegador
@@ -515,14 +525,15 @@ Antes de considerar o protótipo completo, valide:
 - [ ] Acessibilidade básica (navegação por teclado, labels)
 
 ### Integração
-- [ ] Card registrado em `prototype-catalog.data.ts`
+- [ ] Card registrado em `prototype-catalog.data.ts` com `sprint` preenchido
 - [ ] Rota adicionada em `app.routes.ts`
-- [ ] Protótipo acessível a partir do catálogo inicial
+- [ ] Protótipo acessível a partir do catálogo inicial (busca + filtro sprint)
 - [ ] Navegação funcional (voltar ao catálogo)
 
 ### Processo
 - [ ] Pasta `feature/{task_ref}-{slug}/` criada com `data/` e `pages/`
 - [ ] Status inicial: `'draft'`
+- [ ] `sprint` = N da feature (`sprints/sprint-{N}/`)
 - [ ] `taskRef` e `taskRequirement` preenchidos no card
 - [ ] Tags descritivas adicionadas
 - [ ] Data de criação registrada

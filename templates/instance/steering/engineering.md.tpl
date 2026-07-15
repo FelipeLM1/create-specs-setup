@@ -48,7 +48,7 @@
 | Pasta raiz | `prototypes/` |
 | Pasta por feature | `prototypes/src/app/feature/{task_ref}-{slug}/` |
 | Padrão de pasta | `{task_ref}-{slug}` (ex.: `100-listagem-usuario`, `101-login`) |
-| Catálogo | `prototypes/src/app/prototypes/registry/prototype-catalog.data.ts` |
+| Catálogo | `prototypes/src/app/prototypes/registry/prototype-catalog.data.ts` (campo `sprint` + busca/filtro na home) |
 | Porta dev | {{PROTOTYPE_DEV_PORT}} |
 | Origem UI | `{{SPA_REPO}}/{{SPA_SHARED_COMPONENTS_PATH}}` |
 

@@ -114,7 +114,7 @@ create-specs-setup/
 1. Agente valida que o SPA existe e lê `package.json`, layout e `src/app/shared/components/`
 2. Inicializa `{specs}/prototypes/` alinhado à stack do SPA
 3. Copia/adapta componentes, estilos e layout do SPA (sem HTTP/auth)
-4. Monta catálogo vazio em `registry/` e pasta `src/app/feature/` (protótipos isolados por task)
+4. Monta catálogo vazio em `registry/` (campo `sprint`), página do catálogo com busca/filtro por sprint, e pasta `src/app/feature/` (protótipos isolados por task)
 
 Telas específicas vêm depois, via skill `prototype-angular` — uma pasta por feature (`feature/{task_ref}-{slug}/`).
 

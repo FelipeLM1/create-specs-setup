@@ -71,7 +71,7 @@ Marcar `[x]` na etapa quando o artefato existir e estiver alinhado ao estado atu
 | A4 | `design/prototype.md` |
 | B1 | `tasks/design-task.md` (ou `[-]` se N/A) |
 | B2 | `tasks/sprint-task.md` |
-| B5 | pasta `prototypes/src/app/feature/{task_ref}-{slug}/` + catálogo em `registry/prototype-catalog.data.ts` + rota |
+| B5 | pasta `prototypes/src/app/feature/{task_ref}-{slug}/` + card no catálogo com `sprint` + rota |
 | D1 | `docs/system-manual.md` |
 
 ### Revisão manual 🔍
