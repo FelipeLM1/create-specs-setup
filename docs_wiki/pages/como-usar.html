@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-motion="sutil" data-theme="suave" data-writing="narrativo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Como usar esta wiki — Create Specs Setup</title>
+  <meta name="description" content="Como navegar na wiki do Create Specs Setup.">
+  <link rel="stylesheet" href="../assets/css/themes/suave.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="stylesheet" href="../assets/css/motion.css">
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="../index.html">Create Specs Setup</a>
+      <ul class="nav">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="o-que-resolve.html">O que resolve</a></li>
+        <li><a href="como-comecar.html">Como começar</a></li>
+        <li><a href="depois-do-setup.html">Depois do setup</a></li>
+        <li><a href="como-usar.html" aria-current="page">Como usar esta wiki</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Orientação</p>
+      <h1 class="hero__title">Como usar esta wiki</h1>
+      <p class="hero__lead">
+        Um mapa rápido para encontrar respostas sobre o Create Specs Setup —
+        pensado para leitura agradável, não para manual técnico.
+      </p>
+    </div>
+  </section>
+
+  <div class="layout layout--with-sidebar">
+    <aside class="sidebar" data-reveal>
+      <p class="sidebar__title">Nesta página</p>
+      <nav>
+        <ul>
+          <li><a href="#para-quem">Para quem é</a></li>
+          <li><a href="#o-que-encontrar">O que encontrar</a></li>
+          <li><a href="#como-ler">Como ler</a></li>
+          <li><a href="#tema">Tema deste preview</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section data-reveal>
+        <h2 id="para-quem">Para quem é</h2>
+        <p>
+          Esta wiki serve a quem precisa entender ou apresentar o Create Specs Setup:
+          <strong>cliente</strong>, <strong>líder</strong>, <strong>PO</strong> e <strong>dev</strong> —
+          todos na mesma linguagem de produto.
+        </p>
+        <div class="callout">
+          <p class="callout__label">O que você não encontra aqui</p>
+          <p>Código-fonte, contratos de API ou detalhes de implementação. Isso fica no README técnico e nos templates do repositório.</p>
+        </div>
+      </section>
+
+      <section data-reveal>
+        <h2 id="o-que-encontrar">O que encontrar</h2>
+        <p>As páginas seguem um fio narrativo — e, quando ajuda, usam diagramas:</p>
+        <ol class="steps" data-reveal>
+          <li><strong>O problema</strong> — qual dor o produto ataca.</li>
+          <li><strong>O que resolve</strong> — o valor em linguagem de negócio.</li>
+          <li><strong>Como funciona</strong> — o comportamento esperado no processo (às vezes com fluxo visual).</li>
+          <li><strong>Como fazer</strong> — o passo a passo para começar e seguir.</li>
+        </ol>
+        <figure class="diagram-figure" data-reveal aria-label="Fluxo didático simplificado">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 88" fill="none" role="img">
+            <title>Problema → Solução → Como fazer</title>
+            <rect x="8" y="22" width="100" height="44" rx="10" stroke="currentColor" stroke-width="2"/>
+            <text x="58" y="48" text-anchor="middle" fill="currentColor" font-size="12" font-family="system-ui,sans-serif">Problema</text>
+            <path d="M118 44 H148" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M140 36 L152 44 L140 52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="160" y="22" width="100" height="44" rx="10" stroke="currentColor" stroke-width="2"/>
+            <text x="210" y="48" text-anchor="middle" fill="currentColor" font-size="12" font-family="system-ui,sans-serif">Solução</text>
+            <path d="M270 44 H300" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M292 36 L304 44 L292 52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="312" y="22" width="100" height="44" rx="10" stroke="currentColor" stroke-width="2"/>
+            <text x="362" y="48" text-anchor="middle" fill="currentColor" font-size="12" font-family="system-ui,sans-serif">Como fazer</text>
+          </svg>
+          <figcaption>Estrutura típica de uma página da wiki</figcaption>
+        </figure>
+      </section>
+
+      <section data-reveal>
+        <h2 id="como-ler">Como ler</h2>
+        <p>
+          Use o menu superior para navegar. Nas páginas longas, a barra lateral
+          destaca a seção em que você está.
+        </p>
+        <p>
+          Animações leves acompanham a leitura (e respeitam se o seu sistema pediu menos movimento).
+        </p>
+      </section>
+
+      <section data-reveal>
+        <h2 id="tema">Tema deste preview</h2>
+        <p>
+          Esta pasta <code>docs_wiki/</code> no repositório create-specs-setup é a wiki do próprio produto,
+          também usada para validar o visual gerado pelos templates.
+        </p>
+        <ul>
+          <li><strong>Tema:</strong> suave</li>
+          <li><strong>Cores:</strong> paleta do tema (sem override de marca)</li>
+          <li><strong>Escrita:</strong> narrativo</li>
+          <li><strong>Animação:</strong> sutil</li>
+        </ul>
+        <div class="callout callout--tip">
+          <p class="callout__label">Para o time</p>
+          <p>Para experimentar outro visual, troque o CSS do tema nos <code>&lt;link&gt;</code> e o atributo <code>data-motion</code> / <code>data-theme</code> no HTML.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/motion.js"></script>
+  <script src="../assets/js/nav.js"></script>
+  <script src="../assets/js/config-panel.js"></script>
+</body>
+</html>

@@ -33,6 +33,7 @@ Uma instância válida é o repositório `{projeto}-specs` gerado pelo `create-s
 │   ├── fix-lifecycle.md
 │   ├── skill-conventions.md
 │   ├── business-rules-store.md
+│   ├── docs-wiki.md        # se docs_wiki no contrato (sempre no template)
 │   └── sprint-layout.md
 ├── sprints/
 │   ├── README.md
@@ -42,7 +43,8 @@ Uma instância válida é o repositório `{projeto}-specs` gerado pelo `create-s
 │       ├── features/   # .gitkeep
 │       ├── fixes/      # README.md
 │       └── meetings/   # .gitkeep
-├── .agents/skills/     # 19 skills (ver lista abaixo)
+├── .agents/skills/     # 20 skills (ver lista abaixo)
+├── docs_wiki/          # somente se docs_wiki.enabled: true
 └── prototypes/         # somente se prototype.enabled: true
     └── src/app/feature/   # um protótipo por pasta: {task_ref}-{slug}
 ```
@@ -70,6 +72,7 @@ Uma instância válida é o repositório `{projeto}-specs` gerado pelo `create-s
 | `spec-from-code/` | Spec de fluxo já implementado |
 | `implement-sprint-task/` | C1–C4 — implementação guiada (dev) |
 | `implement-fix/` | F3 — investigação e correção guiada (dev) |
+| `docs-wiki-page/` | Página da docs wiki de produto (sob demanda) |
 
 ## Templates obrigatórios (`templates/`)
 
@@ -118,6 +121,15 @@ prototype:
   folder: "prototypes"
   feature_base_path: "src/app/feature"
   feature_folder_pattern: "{task_ref}-{slug}"  # ex.: 100-listagem-usuario
+docs_wiki:
+  enabled: boolean
+  path: "docs_wiki"
+  tema: "editorial" | "suave" | "marcante" | "minimalista"
+  usar_cores_marca: boolean
+  cor_principal: string   # vazio se usar_cores_marca: false
+  cor_destaque: string
+  escrita: "narrativo" | "didatico" | "conciso" | "personalizado"
+  animacao: "sutil" | "elaborado" | "nenhum"
 skills:
   guide_name: string
 ```
@@ -130,7 +142,7 @@ Gate obrigatório na skill `create-specs-setup` (Fase 7.5) — reportar ✅/❌ 
 |----|------|
 | V1 | `contract_version: 1` em `sdd.config.yaml` |
 | V2 | Nenhum arquivo gravado contém `{{` (placeholders) |
-| V3 | 19 pastas `.agents/skills/*/SKILL.md` |
+| V3 | 20 pastas `.agents/skills/*/SKILL.md` |
 | V4 | Cada skill com frontmatter YAML `name` + `description` |
 | V5 | `AGENTS.md` aponta para `welcome`; guide com nome real (sem placeholder) |
 | V6 | 15 templates em `templates/` (inclui `screenshot-manifest.json`) |
@@ -139,9 +151,11 @@ Gate obrigatório na skill `create-specs-setup` (Fase 7.5) — reportar ✅/❌ 
 | V9 | `ai-rules.md` com seção Search-first |
 | V10 | Se `prototype.enabled`: `prototypes/package.json` + catálogo vazio em `registry/` (modelo com `sprint`) + página do catálogo com busca/filtro sprint + botão/print (`prototype-screenshot-button`, script export) + `src/app/feature/README.md` |
 | V11 | Sem referências hardcoded a projetos externos (URLs/nomes de repos alheios) |
+| V12 | Se `docs_wiki.enabled`: `docs_wiki/index.html` + `pages/como-usar.html` + assets CSS/JS (inclui `diagrams.css`) + skill `docs-wiki-page` |
 
 ## Setup e upgrade
 
 - **Setup novo:** skill `create-specs-setup` — agente grava arquivos a partir de `templates/instance/` (sem scripts bash).
 - **Protótipo opcional:** requisito `repos.spa` no workspace. Agente lê o SPA do projeto (stack, layout, `shared/components`), monta `prototypes/` com catálogo vazio e pasta `src/app/feature/` para protótipos isolados por task. Sem shell genérico no bootstrap.
+- **Docs wiki opcional:** HTML estático de produto em `docs_wiki/` (tema/cores/escrita/animação). Páginas novas via skill `docs-wiki-page` (sob demanda). Não confundir com `business_rules.wiki` (GitLab RN).
 - **Upgrade:** skill `upgrade-specs` — retrofit sem apagar `features/` nem protótipos de domínio.

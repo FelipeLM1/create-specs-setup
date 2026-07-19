@@ -31,16 +31,16 @@ A skill `welcome` apresenta capacidades (PO, dev, líder) e delega ao roteamento
 
 ```
 {{GUIDE_SKILL_NAME}} → full-spec (modo guiado)
+  → Fase 0: contexto + "vai ter protótipo?" (sim/não)
   → meeting-notes (A1)
-  → business-rules (A2)
-  → use-case (A3)
-  → prototype-spec (A4)
-  → design-task (B1, UX/UI)
-  → sprint-task (B2, dev)
-  → progress.md atualizado a cada etapa
+  → se tem protótipo: perguntar ramo
+       · prototype-first (recomendado com tela) → prototype / Angular → depois RN + use case
+       · artifacts-first → business-rules → use-case → (protótipo depois)
+  → se sem protótipo: business-rules → use-case → sprint-task (sem etapas de protótipo)
+  → progress.md atualizado a cada etapa (ordem pós-A1 é flexível)
 ```
 
-Referência: `docs/feature-lifecycle.md`
+Referência: `docs/feature-lifecycle.md` § Ramos pós Meeting notes
 
 ### Implementação (dev — guiada)
 
@@ -95,6 +95,15 @@ Referência: `docs/feature-lifecycle.md` § Fluxo spec-from-code
 {{GUIDE_SKILL_NAME}} → lê progress.md → delega próxima skill
 ```
 
+### Docs wiki (produto — sob demanda)
+
+```
+{{GUIDE_SKILL_NAME}} → docs-wiki-page
+  → página HTML em docs_wiki/pages/ (se docs_wiki.enabled)
+```
+
+Referência: `docs/docs-wiki.md` · skill `docs-wiki-page`
+
 ---
 
 ## Regras obrigatórias
@@ -106,6 +115,7 @@ Referência: `docs/feature-lifecycle.md` § Fluxo spec-from-code
 5. **Atualizar progress** após cada artefato gerado
 6. Responder em **português**
 7. Modo **guiado** por padrão — batch só se usuário pedir explicitamente
+8. **Protótipo:** decidir na Fase 0; após Meeting notes, se sim → perguntar ramo (protótipo primeiro vs RN/use case). Sem protótipo → não oferecer etapas de protótipo
 
 ---
 
@@ -120,8 +130,9 @@ sprints/
     fixes/{slug}/      fix-task.md, progress.md
     meetings/
 templates/             templates vazios
-docs/                  lifecycles + skill-conventions + sprint-layout
+docs/                  lifecycles + skill-conventions + sprint-layout + docs-wiki
 .agents/skills/        uma skill por etapa + orquestradores
+docs_wiki/             wiki HTML de produto (se docs_wiki.enabled)
 prototypes/            app Angular mockado; cada protótipo em src/app/feature/{task_ref}-{slug}/
 ```
 
@@ -135,7 +146,7 @@ Sprint atual (quando houver N): `workflow.current_sprint` em `sdd.config.yaml`. 
 |-------|-----|
 | `welcome` | Boas-vindas e visão de capacidades |
 | `{{GUIDE_SKILL_NAME}}` | Triagem e roteamento |
-| `full-spec` | Orquestrador feature A1–B2 |
+| `full-spec` | Orquestrador feature — Meeting notes + ramos flexíveis pós-A1 |
 | `design-to-spec` | Feature a partir de design visual pronto (PNG) — A1 via walkthrough, pula A4/B1/B5/B6 |
 | `quick-fix` | Bug/ajuste |
 | `meeting-notes` | A1 |
@@ -150,6 +161,7 @@ Sprint atual (quando houver N): `workflow.current_sprint` em `sdd.config.yaml`. 
 | `spec-from-code` | Documentar fluxo já implementado (código → spec) |
 | `implement-sprint-task` | Implementar tarefa/feature (C1–C4, guiado) |
 | `implement-fix` | Investigar e corrigir bug (F3, guiado) |
+| `docs-wiki-page` | Página da docs wiki de produto (sob demanda) |
 | `feature-progress` | Status feature |
 | `fix-progress` | Status fix |
 

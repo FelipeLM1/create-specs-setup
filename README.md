@@ -45,11 +45,12 @@ O agente usa `welcome` da instância → apresenta opções para PO, dev ou líd
 A instância inclui:
 
 - `steering/product.md` e `steering/engineering.md` — contexto de negócio e engenharia
-- `sdd.config.yaml` — repos, wiki RN, GitLab, protótipo, fluxo de trabalho
-- **19 skills** em `.agents/skills/` (welcome, guide, full-spec, design-to-spec, spec-from-code, quick-fix, implement-sprint-task, implement-fix, A1–B2, B5, export de prints, D1, progress)
+- `sdd.config.yaml` — repos, wiki RN, docs wiki, GitLab, protótipo, fluxo de trabalho
+- **20 skills** em `.agents/skills/` (welcome, guide, full-spec, design-to-spec, spec-from-code, quick-fix, implement-sprint-task, implement-fix, docs-wiki-page, A1–B2, B5, export de prints, D1, progress)
 - **15 templates** vazios em `templates/` (inclui `screenshot-manifest.json`)
 - `features/` e `fixes/` — artefatos do produto (vazios no setup)
 - `prototypes/` — só se protótipo Angular for confirmado na entrevista (inclui botão **Baixar print** + script de export em lote)
+- `docs_wiki/` — só se docs wiki for confirmada na entrevista (HTML estático de produto)
 
 **Não há scripts de setup** — o agente lê `templates/instance/`, substitui placeholders e grava os arquivos na pasta destino.
 
@@ -68,7 +69,7 @@ A instância inclui:
 2. Workspace Cursor multi-root com todos os repos
 3. Agent → diga "Olá" ou descreva o objetivo → `welcome` → entrevista guiada (`create-specs-setup`)
 4. Confirmar rascunhos de steering + resumo final (sim explícito)
-5. Agente grava instância + validação V1–V11 (tabela ✅/❌)
+5. Agente grava instância + validação V1–V12 (tabela ✅/❌)
 6. (Opcional) protótipo: agente lê o **SPA do projeto** no workspace e monta `prototypes/` (sem shell genérico no bootstrap)
 7. Trabalhar só em {projeto}-specs
 ```
@@ -88,7 +89,7 @@ create-specs-setup/
 ├── docs/
 │   ├── setup-workflow.md
 │   ├── setup-interview-checklist.md
-│   └── instance-contract.md  # contrato v1 + validação V1–V11
+│   └── instance-contract.md  # contrato v1 + validação V1–V12
 └── templates/
     └── instance/             # árvore completa da instância (.tpl)
 ```

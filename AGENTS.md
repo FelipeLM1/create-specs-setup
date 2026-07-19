@@ -32,7 +32,7 @@ Trabalhe **somente** no repositório de specs gerado (ex.: `my-product-specs`). 
 3. **Não gravar** na instância até o resumo final confirmado pelo usuário (Fase 6).
 4. **Não inventar** paths, URLs, stack ou glossário — validar no disco e perguntar o que faltar.
 5. Idioma padrão das instâncias: **pt-BR** (confirmar na entrevista).
-6. Após gravar: executar validação **V1–V11** ([`docs/instance-contract.md`](docs/instance-contract.md)) e reportar tabela ✅/❌ antes do handoff.
+6. Após gravar: executar validação **V1–V12** ([`docs/instance-contract.md`](docs/instance-contract.md)) e reportar tabela ✅/❌ antes do handoff.
 7. Responder em português.
 
 ---

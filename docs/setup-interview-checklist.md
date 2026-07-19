@@ -114,6 +114,68 @@ Se **não**: `prototype.enabled: false` — protótipo pode ser adicionado depoi
 
 ---
 
+## Fase 5b — Docs wiki do produto (opcional)
+
+Wiki HTML estática em `docs_wiki/` — foco **negócio/produto** (cliente, usuário final e time). Sem detalhes técnicos. Fácil de abrir no navegador ou empacotar para envio.
+
+**Não confundir** com a wiki externa de RN (`business_rules.wiki`, Fase 3).
+
+| # | Pergunta | Campo |
+|---|----------|-------|
+| 5b.1 🔴 | Criar **docs wiki** do produto agora? sim/não | `docs_wiki.enabled` |
+| 5b.2 🔴 (se sim) | **Tema visual** — ver descrições abaixo | `docs_wiki.tema` |
+| 5b.3 🔴 (se sim) | Quer **usar as cores da marca** do produto (em vez da paleta do tema)? sim/não | `docs_wiki.usar_cores_marca` |
+| 5b.3a 🔴 (se sim nas cores) | Cor **principal** e cor de **destaque** (hex ou descrição) | `cor_principal`, `cor_destaque` → `tokens.css` |
+| 5b.4 🔴 (se sim) | **Estilo de escrita** — ver descrições abaixo | `docs_wiki.escrita` |
+| 5b.4a 🟡 (se personalizado) | Descrever o tom desejado | `docs_wiki.escrita_notas` |
+| 5b.5 🔴 (se sim) | **Nível de animação** — ver descrições abaixo | `docs_wiki.animacao` |
+| 5b.6 🟡 (se sim) | Além de Home + “Como usar esta wiki”, quer **páginas iniciais** extras agora? | skill `docs-wiki-page` na gravação ou depois |
+
+**Didática visual (agente — ao gravar/gerar páginas):** narrativa + diagramas (`diagrams.css`: fluxo, split, decisão) + SVG só **MIT**; estático/offline; animar conforme `animacao`. Ver skill `create-specs-setup` § Fase 5b e skill `docs-wiki-page`.
+
+Se **não**: `docs_wiki.enabled: false` — pode adicionar depois via `upgrade-specs`.
+
+### Textos sugeridos ao usuário (com descrições)
+
+**5b.1 — Criar docs wiki?**
+
+> Quer criar uma **docs wiki** do produto? É um site HTML estático (sem framework) para cliente, usuário e time: explica o que o sistema resolve e como fazer as coisas no dia a dia — sem código. Dá para abrir no navegador ou enviar a pasta pronta.
+
+**5b.2 — Tema visual** (cada tema já inclui tipografia **e** uma paleta de cores pronta):
+
+| Opção | Descrição |
+|-------|-----------|
+| **editorial** | Leitura confortável, tipografia forte, ritmo de revista — elegante sem ser frio |
+| **suave** | Leve, acolhedor, muito espaço em branco — tom amigável |
+| **marcante** | Contraste alto, hierarquia marcada, mais presença na primeira tela |
+| **minimalista** | Só o essencial — limpo, sóbrio, quase sem enfeite |
+
+**5b.3 — Cores da marca?** (pergunta simples — não é um menu de “tipos de cor”)
+
+> O tema que você escolheu já vem com cores. Quer **manter essas cores** ou **trocar pelas cores da marca** do produto?
+
+- **Não** — fica a paleta do tema (`usar_cores_marca: false`)
+- **Sim** — informe a cor principal e a de destaque (ex.: verde da marca + laranja de destaque)
+
+**5b.4 — Estilo de escrita** (padrão recomendado: **narrativo**):
+
+| Opção | Descrição |
+|-------|-----------|
+| **narrativo** | Conta a história: problema → solução → como fazer (bom para cliente) |
+| **didatico** | Mais tutorial e passo a passo (“como faço X”) |
+| **conciso** | Direto e curto; menos prosa |
+| **personalizado** | Você descreve o tom |
+
+**5b.5 — Animação** (padrão recomendado: **sutil**):
+
+| Opção | Descrição |
+|-------|-----------|
+| **sutil** | Seções aparecem ao rolar + hovers — agradável sem exagero |
+| **elaborado** | Mais elaborado: abertura animada, passos em sequência, barra de leitura |
+| **nenhum** | Quase sem animação |
+
+> A wiki também respeita se o computador do visitante pediu para reduzir movimento.---
+
 ## Fase 6 — Resumo e confirmação (gate final)
 
 Antes de gravar **qualquer** arquivo, apresentar tabela resumo:
@@ -127,6 +189,7 @@ Antes de gravar **qualquer** arquivo, apresentar tabela resumo:
 | GitLab | sim/não |
 | Templates de tarefas | padrão / custom (do time) |
 | Protótipo | sim/não |
+| Docs wiki | sim/não (+ tema / cores da marca? / escrita / animação se sim) |
 | Pendências não críticas | lista ou "nenhuma" |
 
 Pergunta obrigatória:
@@ -139,7 +202,8 @@ Somente após **sim** explícito → gravar arquivos.
 
 ## Fase 7 — Pós-gravação
 
-- **Verificação obrigatória V1–V11** (`docs/instance-contract.md`) — tabela ✅/❌ antes do handoff
+- **Verificação obrigatória V1–V12** (`docs/instance-contract.md`) — tabela ✅/❌ antes do handoff
 - Listar arquivos criados
 - Indicar `[PENDENTE]` remanescentes (não críticos) e como preencher depois
 - Handoff: usar `{GUIDE_SKILL_NAME}` no repo specs
+- Se docs wiki ativa: lembrar de abrir `docs_wiki/index.html`

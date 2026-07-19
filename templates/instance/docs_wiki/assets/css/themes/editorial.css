@@ -1,0 +1,32 @@
+/* Tema: editorial — leitura confortável, tipografia forte, ritmo de revista */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap");
+
+:root {
+  --font-heading: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+  --font-size-body: 1.0625rem;
+  --line-height: 1.7;
+  --heading-weight: 700;
+  --heading-tracking: -0.02em;
+  --brand-tracking: 0.02em;
+  --content-max: 68rem;
+  --radius: 0.35rem;
+  --card-padding: 1.25rem 1.35rem;
+
+  --color-bg: #f6f1e8;
+  --color-surface: #fffdf8;
+  --color-text: #1c1914;
+  --color-muted: #5c564c;
+  --color-border: #ddd4c4;
+  --color-primary: #1f4b3a;
+  --color-accent: #b45309;
+  --color-on-accent: #fffdf8;
+
+  --hero-bg:
+    radial-gradient(ellipse 80% 60% at 10% 0%, color-mix(in srgb, var(--color-accent) 18%, transparent), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 90% 10%, color-mix(in srgb, var(--color-primary) 14%, transparent), transparent 50%),
+    var(--color-bg);
+
+  --shadow-card: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
+  --shadow-card-hover: 0 12px 28px color-mix(in srgb, var(--color-text) 10%, transparent);
+}

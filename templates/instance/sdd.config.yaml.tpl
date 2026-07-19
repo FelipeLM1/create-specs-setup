@@ -43,6 +43,20 @@ prototype:
   feature_base_path: "src/app/feature"
   feature_folder_pattern: "{task_ref}-{slug}"  # ex.: 100-listagem-usuario, 101-login
 
+# Wiki HTML estática de produto (cliente/usuário/time) — não confundir com business_rules.wiki
+docs_wiki:
+  enabled: {{DOCS_WIKI_ENABLED}}
+  path: "docs_wiki"
+  tema: "{{DOCS_WIKI_TEMA}}"           # editorial | suave | marcante | minimalista
+  # Cores: cada tema já traz uma paleta. Só sobrescreve se usar_cores_marca: true
+  usar_cores_marca: {{DOCS_WIKI_USAR_CORES_MARCA}}
+  cor_principal: "{{DOCS_WIKI_COR_PRINCIPAL}}"   # ex.: #1f4b3a — vazio se usar_cores_marca: false
+  cor_destaque: "{{DOCS_WIKI_COR_DESTAQUE}}"     # ex.: #b45309
+  escrita: "{{DOCS_WIKI_ESCRITA}}"     # narrativo | didatico | conciso | personalizado
+  escrita_notas: "{{DOCS_WIKI_ESCRITA_NOTAS}}"
+  animacao: "{{DOCS_WIKI_ANIMACAO}}"   # sutil | elaborado | nenhum
+  # Se usar_cores_marca: true → preencher assets/css/tokens.css com cor_principal / cor_destaque
+
 skills:
   guide_name: "{{GUIDE_SKILL_NAME}}"
 

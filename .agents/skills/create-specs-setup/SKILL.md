@@ -136,6 +136,31 @@ Se **sim** e SPA ok:
 
 > **Não há shell genérico no bootstrap.** O protótipo é montado lendo o SPA real do projeto — layout, estilos e componentes compartilhados.
 
+### Fase 5b — Docs wiki do produto (opcional)
+
+Pergunta 🔴: criar **docs wiki** HTML estática agora? (site de produto para cliente/usuário/time — sem código)
+
+Se **não** → `docs_wiki.enabled: false`.
+
+Se **sim**, perguntar com **descrições breves** de cada opção (ver `docs/setup-interview-checklist.md` § Fase 5b):
+
+1. **Tema** — `editorial` · `suave` · `marcante` · `minimalista` (já inclui paleta de cores)
+2. **Cores da marca?** — sim/não. Se sim: cor principal + destaque
+3. **Escrita** — `narrativo` (padrão) · `didatico` · `conciso` · `personalizado`
+4. **Animação** — `sutil` (padrão) · `elaborado` · `nenhum`
+5. Páginas extras além de Home + “Como usar”? (🟡 — senão só a base)
+
+**Não confundir** com `business_rules.wiki` (GitLab RN).
+
+**Didática visual (obrigatório lembrar ao gravar / gerar páginas):**
+
+- Preferir páginas prazerosas de ler: narrativa + **diagramas** (fluxo, decisão, comparação) + SVG quando ajudar
+- Usar componentes de `assets/css/diagrams.css` (`.flow`, `.flow--row`, `.split`, `.decision`, `.diagram-figure`)
+- SVG só com licença **MIT** (ou criado pelo agente) — Lucide, Heroicons, Phosphor; sem CC / origem duvidosa
+- Sem Mermaid/CDN obrigatório — tudo estático (offline / dois cliques)
+- Animar conforme `docs_wiki.animacao` (`data-reveal` nos blocos)
+- Páginas iniciais e extras na gravação devem seguir o mesmo padrão da skill `docs-wiki-page` (tom de produto, sem código)
+
 ---
 
 ## Fase 6 — Resumo final (gate antes de gravar)
@@ -175,9 +200,13 @@ workflow:
   sprint_task_split_default: single | backend_frontend
 prototype:
   enabled, spa_source_repo, folder, dev_port, feature_base_path, feature_folder_pattern
+docs_wiki:
+  enabled, path, tema, usar_cores_marca, cor_principal, cor_destaque, escrita, escrita_notas, animacao
 skills:
   guide_name
 ```
+
+Se `docs_wiki.enabled: false`, gravar o bloco com `enabled: false` e defaults seguros (`tema: editorial`, `usar_cores_marca: false`, `escrita: narrativo`, `animacao: sutil`, cores e notas vazias).
 
 ### 2. Steering
 
@@ -198,6 +227,7 @@ Gravar `steering/product.md` e `steering/engineering.md` (versão confirmada na 
 | `templates/instance/skills/welcome.md.tpl` | `.agents/skills/welcome/SKILL.md` |
 | `templates/instance/skills/specs-guide.md.tpl` | `.agents/skills/{GUIDE_SKILL_NAME}/SKILL.md` |
 | `templates/instance/skills/{nome}.md.tpl` | `.agents/skills/{nome}/SKILL.md` |
+| `templates/instance/docs_wiki/` (se enabled) | `docs_wiki/` — ver § Docs wiki abaixo |
 
 Criar estrutura inicial:
 
@@ -217,6 +247,20 @@ Substituir placeholders ao gravar (ver checklist e template).
 
 - **`default`:** copiar `sprint-task.md`, `design-task.md`, `fix-task.md` do bootstrap; substituir `{{GITLAB_BASE_URL}}`, `{{WIKI_HOST_REPO}}`, `{{API_REPO}}`, `{{SPA_REPO}}`, `{{SPECS_REPO_SLUG}}` pelos valores do `sdd.config.yaml`.
 - **`custom`:** usar o exemplo do time como fonte de verdade; reescrever os templates da instância mantendo nomes de arquivo (`sprint-task.md`, etc.) para as skills continuarem funcionando. Documentar no resumo final quais templates foram personalizados.
+
+### 3b. Docs wiki (se `docs_wiki.enabled: true`)
+
+1. Copiar `templates/instance/docs_wiki/` → `{TARGET_DIR}/docs_wiki/` (inclui `assets/css/diagrams.css`)
+2. Renomear/processar `*.tpl` → arquivos finais (`index.html`, `pages/como-usar.html`, `README.md`, `templates/page.html`)
+3. Substituir placeholders: `{{PROJECT_NAME}}`, `{{PROJECT_LANGUAGE}}`, `{{DOCS_WIKI_TEMA}}`, `{{DOCS_WIKI_ANIMACAO}}`, `{{DOCS_WIKI_ESCRITA}}`
+4. Se `usar_cores_marca: true`: preencher `assets/css/tokens.css` com `--color-primary` / `--color-accent` a partir de `cor_principal` / `cor_destaque`
+5. Copiar skill `docs-wiki-page.md.tpl` → `.agents/skills/docs-wiki-page/SKILL.md` (**sempre** copiar a skill; se wiki desabilitada, a skill orienta a habilitar via upgrade)
+6. Copiar `docs/docs-wiki.md.tpl` → `docs/docs-wiki.md`
+7. Se o usuário pediu páginas extras na entrevista → gerar com o mesmo padrão da skill `docs-wiki-page` **após** a base pronta (narrativa + diagramas/SVG MIT quando didático; ver § Fase 5b)
+
+Garantir que as páginas HTML linkam `diagrams.css` junto com `base.css` / `motion.css`.
+
+Se `docs_wiki.enabled: false`: **não** criar a pasta `docs_wiki/`; ainda assim gravar `docs/docs-wiki.md` (explica o recurso) e a skill `docs-wiki-page` (detecta disabled).
 
 ### 4. Protótipo (se `prototype.enabled: true`)
 
@@ -253,7 +297,7 @@ Substituir placeholders ao gravar (ver checklist e template).
 |---|-------------|-------------|
 | V1 | `sdd.config.yaml` com `contract_version: 1` | leitura do arquivo |
 | V2 | **Nenhum** arquivo gravado contém `{{` (placeholders não substituídos) | buscar `{{` em `{TARGET_DIR}` |
-| V3 | 19 pastas em `.agents/skills/*/SKILL.md` | listar diretórios |
+| V3 | 20 pastas em `.agents/skills/*/SKILL.md` | listar diretórios |
 | V4 | Cada `SKILL.md` com frontmatter `name` + `description` | primeiras linhas de cada skill |
 | V5 | `AGENTS.md` aponta para `welcome`; guide com nome real (`{GUIDE_SKILL_NAME}`) | leitura |
 | V6 | 15 arquivos em `templates/` (14 base + `screenshot-manifest.json`) | contagem |
@@ -262,8 +306,9 @@ Substituir placeholders ao gravar (ver checklist e template).
 | V9 | `ai-rules.md` contém seção Search-first | leitura |
 | V10 | Se `prototype.enabled`: `prototypes/package.json`, catálogo vazio em `registry/` (com `sprint` no modelo), página do catálogo com busca/filtro sprint, botão/print (`prototype-screenshot-button` + script `export:spec-screenshots`) e `src/app/feature/README.md` | só se protótipo ativo |
 | V11 | Nenhum arquivo gravado contém referências hardcoded a projetos externos (URLs ou nomes de repos alheios) | busca textual em `{TARGET_DIR}` |
+| V12 | Se `docs_wiki.enabled`: `docs_wiki/index.html`, `pages/como-usar.html`, `assets/css/base.css`, `assets/css/diagrams.css`, `assets/js/motion.js`; skill `docs-wiki-page` presente | só se docs wiki ativa |
 
-Apresentar tabela **✅ / ❌** ao usuário. Com qualquer ❌, corrigir antes do handoff.
+Apresentar tabela **✅ / ❌** ao usuário (V1–V12). Com qualquer ❌, corrigir antes do handoff.
 
 Referência: `docs/instance-contract.md` § Validação pós-setup.
 
@@ -293,12 +338,13 @@ O repositório create-specs-setup pode sair do workspace.
 - Gravar arquivos antes do resumo confirmado
 - Assumir paths de API/SPA sem verificar no workspace
 - Assumir stack sem ler repos
-- Pular wiki / GitLab / hotfix / templates de tarefas sem perguntar
+- Pular wiki RN / docs wiki / GitLab / hotfix / templates de tarefas sem perguntar
 - Deixar `steering/product.md` com `[PENDENTE]` em problema/usuários/valor/escopo
 - Executar scripts bash
 - Criar `features/{slug}` durante setup
 - Ativar protótipo sem SPA do projeto no workspace
 - Montar `prototypes/` com assets ou código de outro produto — sempre derivar do SPA configurado
 - Copiar protótipos de domínio de outro projeto
-- Encerrar setup sem rodar a verificação V1–V11 (§ Fase 7.5)
+- Encerrar setup sem rodar a verificação V1–V12 (§ Fase 7.5)
 - Gravar templates com URLs ou nomes de repos de um projeto específico (usar placeholders do `sdd.config.yaml`)
+- Confundir `docs_wiki` (HTML de produto) com `business_rules.wiki` (GitLab RN)

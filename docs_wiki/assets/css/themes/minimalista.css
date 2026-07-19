@@ -1,0 +1,43 @@
+/* Tema: minimalista — só o essencial, limpo e sóbrio */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap");
+
+:root {
+  --font-heading: "DM Sans", "Segoe UI", sans-serif;
+  --font-body: "DM Sans", "Segoe UI", sans-serif;
+  --font-size-body: 1.05rem;
+  --line-height: 1.7;
+  --heading-weight: 600;
+  --heading-tracking: -0.015em;
+  --brand-tracking: 0.06em;
+  --content-max: 60rem;
+  --radius: 0.25rem;
+  --card-padding: 1.1rem 1.15rem;
+
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #171717;
+  --color-muted: #525252;
+  --color-border: #e5e5e5;
+  --color-primary: #171717;
+  --color-accent: #404040;
+  --color-on-accent: #fafafa;
+
+  --hero-bg: var(--color-bg);
+
+  --shadow-card: none;
+  --shadow-card-hover: none;
+}
+
+.card:hover {
+  transform: none;
+  border-color: var(--color-text);
+}
+
+.hero {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.hero__title {
+  max-width: 18ch;
+}

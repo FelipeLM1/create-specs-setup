@@ -1,0 +1,101 @@
+/* Animação — níveis via data-motion no <html>: nenhum | sutil | elaborado */
+
+[data-reveal] {
+  --reveal-distance: 1.1rem;
+}
+
+html[data-motion="sutil"] [data-reveal],
+html[data-motion="elaborado"] [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+html[data-motion="sutil"] [data-reveal].is-visible,
+html[data-motion="elaborado"] [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+html[data-motion="elaborado"] [data-reveal] {
+  --reveal-distance: 1.6rem;
+  transition-duration: 0.7s;
+}
+
+html[data-motion="elaborado"] .hero__eyebrow,
+html[data-motion="elaborado"] .hero__title,
+html[data-motion="elaborado"] .hero__lead {
+  opacity: 0;
+  transform: translateY(1rem);
+  animation: wiki-hero-in 0.8s ease forwards;
+}
+
+html[data-motion="elaborado"] .hero__eyebrow {
+  animation-delay: 0.05s;
+}
+
+html[data-motion="elaborado"] .hero__title {
+  animation-delay: 0.18s;
+}
+
+html[data-motion="elaborado"] .hero__lead {
+  animation-delay: 0.32s;
+}
+
+html[data-motion="elaborado"] .steps li {
+  opacity: 0;
+  transform: translateY(0.8rem);
+}
+
+html[data-motion="elaborado"] .steps.is-visible li {
+  animation: wiki-hero-in 0.55s ease forwards;
+}
+
+html[data-motion="elaborado"] .steps.is-visible li:nth-child(1) { animation-delay: 0.05s; }
+html[data-motion="elaborado"] .steps.is-visible li:nth-child(2) { animation-delay: 0.15s; }
+html[data-motion="elaborado"] .steps.is-visible li:nth-child(3) { animation-delay: 0.25s; }
+html[data-motion="elaborado"] .steps.is-visible li:nth-child(4) { animation-delay: 0.35s; }
+html[data-motion="elaborado"] .steps.is-visible li:nth-child(5) { animation-delay: 0.45s; }
+html[data-motion="elaborado"] .steps.is-visible li:nth-child(6) { animation-delay: 0.55s; }
+
+html[data-motion="elaborado"] .reading-progress {
+  display: block;
+}
+
+html:not([data-motion="elaborado"]) .reading-progress {
+  display: none;
+}
+
+@keyframes wiki-hero-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html[data-motion] [data-reveal],
+  html[data-motion="elaborado"] .hero__eyebrow,
+  html[data-motion="elaborado"] .hero__title,
+  html[data-motion="elaborado"] .hero__lead,
+  html[data-motion="elaborado"] .steps li {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .card {
+    transition: none;
+  }
+
+  .reading-progress {
+    display: none !important;
+  }
+}

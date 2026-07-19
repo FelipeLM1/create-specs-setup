@@ -1,0 +1,40 @@
+/* Tema: marcante — contraste alto, hierarquia marcada, presença forte */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --font-heading: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-size-body: 1.05rem;
+  --line-height: 1.65;
+  --heading-weight: 700;
+  --heading-tracking: -0.03em;
+  --brand-tracking: 0.08em;
+  --content-max: 70rem;
+  --radius: 0.2rem;
+  --card-padding: 1.2rem 1.25rem;
+
+  --color-bg: #0f1218;
+  --color-surface: #1a2030;
+  --color-text: #f2f4f8;
+  --color-muted: #a7b0c0;
+  --color-border: #2c3648;
+  --color-primary: #f4c430;
+  --color-accent: #5eead4;
+  --color-on-accent: #0f1218;
+
+  --hero-bg:
+    radial-gradient(circle at 80% 10%, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 32%),
+    radial-gradient(circle at 10% 80%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 40%),
+    #0f1218;
+
+  --shadow-card: 0 0 0 1px var(--color-border);
+  --shadow-card-hover: 0 0 0 1px var(--color-accent), 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.hero__title {
+  max-width: 14ch;
+}
+
+.card:hover {
+  transform: translateY(-2px) scale(1.01);
+}

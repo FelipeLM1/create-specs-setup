@@ -47,11 +47,17 @@ Reportar gaps ao usuário antes de alterar.
 | `prototype-angular` | B5 (não B4); catálogo em `registry/` com `sprint` + busca/filtro na home; código por feature em `src/app/feature/{task_ref}-{slug}/` |
 | Skill `prototype-export-screenshots` | Adicionar se ausente (prints do protótipo → pasta da feature) |
 | Scaffold print (botão + script) | Se `prototypes/` existir: copiar `prototype-screenshot-button`, serviço, constantes, `scripts/export-spec-screenshots.mjs`, deps `html-to-image`/`playwright`, template `screenshot-manifest.json`; wire no layout se faltar (ver `LAYOUT-SCREENSHOT-WIRE.md`) |
-| `docs/feature-lifecycle.md` | A0 = steering validado |
-| `AGENTS.md`, `README.md` | Entrada `welcome`; links para steering e create-specs-setup |
+| `docs/feature-lifecycle.md` | A0 = steering; § Ramos pós Meeting notes (protótipo-primeiro vs artefatos-primeiro) |
+| `AGENTS.md`, `README.md` | Entrada `welcome`; links para steering e create-specs-setup; fluxo feature com decisão de protótipo |
+| Skill `full-spec` | Fase 0 com "vai ter protótipo?"; branch pós Meeting notes |
+| Skill `meeting-notes` | Pós-A1 oferece ramo se houver protótipo |
+| Skill `prototype-spec` | Gate mínimo = Meeting notes (não exige use case no ramo protótipo-primeiro) |
+| Template `feature-progress.md` | Campos **Vai ter protótipo?** e **Ramo pós Meeting notes** |
 | Skill `welcome` | Adicionar se ausente (boas-vindas — entrada em `AGENTS.md`) |
 | Skill `spec-from-code` | Adicionar se ausente (spec de fluxo já implementado) |
 | Skills `implement-sprint-task`, `implement-fix` | Adicionar se ausentes (implementação guiada para dev) |
+| Skill `docs-wiki-page` + `docs/docs-wiki.md` | Adicionar se ausentes |
+| `docs_wiki/` | **Opt-in** — perguntar se quer criar a wiki HTML de produto; se sim, copiar `templates/instance/docs_wiki/` (inclui `diagrams.css`), preencher `docs_wiki` no `sdd.config.yaml` e seguir didática visual da Fase 5b (diagramas + SVG MIT) |
 | Templates `analysis-context`, `implementation-gaps`, `evolution-insights`, `spec-from-code-progress` | Adicionar em `templates/` se ausentes |
 
 Usar templates em `create-specs-setup/templates/instance/` como referência — copiar conteúdo já parametrizado para o projeto.
@@ -74,13 +80,14 @@ Ler `sdd.config.yaml` existente ou confirmar na entrevista curta:
 |-------|------|
 | `skills.guide_name` | Manter nome atual do guide, salvo pedido do time |
 | `business_rules.wiki.enabled` | Preservar decisão do projeto |
+| `docs_wiki.enabled` | Preservar; se ausente, perguntar opt-in (Fase 5b do checklist) |
 | `primary_store` | `specs_repo` (padrão contrato v1) |
 
 ---
 
 ## Validação
 
-Mesmo gate **V1–V11** de `create-specs-setup` (§ Fase 7.5) e `docs/instance-contract.md`. Instância pode ter conteúdo legado adicional em `features/` e `prototypes/` — não falhar V7/V10 por isso.
+Mesmo gate **V1–V12** de `create-specs-setup` (§ Fase 7.5) e `docs/instance-contract.md`. Instância pode ter conteúdo legado adicional em `features/` e `prototypes/` — não falhar V7/V10/V12 por conteúdo extra.
 
 ---
 

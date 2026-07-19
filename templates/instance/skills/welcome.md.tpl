@@ -37,7 +37,8 @@ Aqui conversas viram artefatos rastreáveis: features em `sprints/sprint-{N}/fea
 3. **Bug ou ajuste** — correção pontual
 4. **Continuar** — retomar spec ou fix em andamento
 5. **Status** — andamento de feature ou fix
-6. **Ver todas as capacidades** — lista completa para PO / dev / líder
+6. **Docs wiki** — página de produto para cliente/usuário (se habilitada)
+7. **Ver todas as capacidades** — lista completa para PO / dev / líder
 
 Descreva em uma frase ou escolha o número.
 ```
@@ -55,7 +56,8 @@ Se o usuário já descreveu a necessidade, **pule o menu** e delegue direto.
 | 3 · bug · ajuste · comportamento errado | `.agents/skills/{{GUIDE_SKILL_NAME}}/SKILL.md` → `quick-fix` |
 | 4 · continuar · onde paramos | `.agents/skills/{{GUIDE_SKILL_NAME}}/SKILL.md` → § Continuar |
 | 5 · status | `.agents/skills/{{GUIDE_SKILL_NAME}}/SKILL.md` → `feature-progress` / `fix-progress` |
-| 6 · capacidades · ajuda | § Capacidades abaixo + perguntar próximo passo |
+| 6 · docs wiki · página para cliente | `.agents/skills/docs-wiki-page/SKILL.md` (se `docs_wiki.enabled`) |
+| 7 · capacidades · ajuda | § Capacidades abaixo + perguntar próximo passo |
 
 **Triagem fina** (ambiguidade, hotfix, etapa isolada): sempre `.agents/skills/{{GUIDE_SKILL_NAME}}/SKILL.md`.
 
@@ -73,6 +75,7 @@ Apresentar por perfil — linguagem simples, sem exigir nomes de skills:
 | Documentar fluxo já na tela | "Documente o cadastro que já existe" |
 | Ver andamento | "Qual o status da feature X?" |
 | Registrar reunião / RN / use case | "Meeting notes de…" / "Regras de negócio de…" |
+| Página na docs wiki (cliente/produto) | "Gere uma página da wiki sobre…" |
 
 ### Para dev
 
@@ -108,6 +111,7 @@ Apresentar por perfil — linguagem simples, sem exigir nomes de skills:
 | `prototype-angular` | B5 |
 | `prototype-export-screenshots` | Prints do protótipo → pasta da feature |
 | `system-manual` | D1 |
+| `docs-wiki-page` | Docs wiki de produto (HTML) |
 | `feature-progress` · `fix-progress` | Status |
 
 Perguntar: *"Qual dessas opções quer seguir agora?"*

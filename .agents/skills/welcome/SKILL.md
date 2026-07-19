@@ -59,7 +59,7 @@ Resumir em poucas linhas:
 
 1. Workspace multi-root: bootstrap + repos de código + pasta `{projeto}-specs`
 2. Entrevista completa → confirmação → agente grava arquivos (sem scripts)
-3. Validação V1–V11 → handoff para `{projeto}-specs`
+3. Validação V1–V12 → handoff para `{projeto}-specs`
 4. Protótipo Angular opcional
 
 Links: `docs/setup-workflow.md` · `docs/setup-interview-checklist.md` · `docs/instance-contract.md`

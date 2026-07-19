@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-motion="sutil" data-theme="suave" data-writing="narrativo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Depois do setup — Create Specs Setup</title>
+  <meta name="description" content="Como viver no repositório de specs após o Create Specs Setup.">
+  <link rel="stylesheet" href="../assets/css/themes/suave.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="stylesheet" href="../assets/css/motion.css">
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="../index.html">Create Specs Setup</a>
+      <ul class="nav">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="o-que-resolve.html">O que resolve</a></li>
+        <li><a href="como-comecar.html">Como começar</a></li>
+        <li><a href="depois-do-setup.html" aria-current="page">Depois do setup</a></li>
+        <li><a href="como-usar.html">Como usar esta wiki</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Dia a dia</p>
+      <h1 class="hero__title">Depois do setup</h1>
+      <p class="hero__lead">
+        O bootstrap terminou. Agora o time trabalha só no <strong>{projeto}-specs</strong> —
+        especificando, acompanhando status e (quando quiser) gerando páginas desta docs wiki.
+      </p>
+    </div>
+  </section>
+
+  <div class="layout layout--with-sidebar">
+    <aside class="sidebar" data-reveal>
+      <p class="sidebar__title">Nesta página</p>
+      <nav>
+        <ul>
+          <li><a href="#onde">Onde trabalhar</a></li>
+          <li><a href="#pedir">O que você pode pedir</a></li>
+          <li><a href="#fluxos">Principais fluxos</a></li>
+          <li><a href="#wiki">Docs wiki ao longo do tempo</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section data-reveal>
+        <h2 id="onde">Onde trabalhar</h2>
+        <p>
+          Abra o chat no repositório <strong>{projeto}-specs</strong> e diga o que precisa.
+          O assistente de boas-vindas mostra as opções e encaminha o fluxo certo —
+          sem exigir que você saiba o nome de cada skill.
+        </p>
+        <div class="diagram">
+          <p class="diagram__title">Dois repositórios, papéis diferentes</p>
+          <div class="split">
+            <div class="split__card">
+              <h4>create-specs-setup</h4>
+              <p>Configurar ou atualizar a instância. Usado poucas vezes.</p>
+            </div>
+            <div class="split__vs">vs</div>
+            <div class="split__card">
+              <h4>{projeto}-specs</h4>
+              <p>Feature, bug, status, implementação e docs wiki. Casa do dia a dia.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-reveal>
+        <h2 id="pedir">O que você pode pedir</h2>
+        <ul>
+          <li>“Quero especificar uma feature nova”</li>
+          <li>“Documente o fluxo que já está na tela”</li>
+          <li>“Tenho um bug na listagem”</li>
+          <li>“Onde paramos na feature X?”</li>
+          <li>“Implemente a tarefa Y” / “Investigue o bug Z”</li>
+          <li>“Gere uma página da wiki sobre…”</li>
+        </ul>
+      </section>
+
+      <section data-reveal>
+        <h2 id="fluxos">Principais fluxos (em linguagem de produto)</h2>
+        <ol class="steps" data-reveal>
+          <li><strong>Feature nova</strong> — da conversa/reunião até regras, casos de uso, tasks e (se quiser) protótipo.</li>
+          <li><strong>Documentar o que já existe</strong> — ler o sistema atual e gerar a spec a partir do comportamento real.</li>
+          <li><strong>Bug ou ajuste</strong> — registro enxuto do problema e do que deve mudar.</li>
+          <li><strong>Implementar</strong> — o dev avança com plano confirmado, alinhado à spec e aos padrões do projeto.</li>
+        </ol>
+        <div class="callout">
+          <p class="callout__label">Hotfix urgente</p>
+          <p>Produção quebrada não passa pela pasta de fixes do specs: vai direto no GitLab com MR, conforme o fluxo do time.</p>
+        </div>
+      </section>
+
+      <section data-reveal>
+        <h2 id="wiki">Docs wiki ao longo do tempo</h2>
+        <p>
+          Se a docs wiki foi habilitada no setup (como esta que você está lendo),
+          novas páginas nascem <strong>sob demanda</strong>: peça para documentar um tema ou uma feature
+          em tom de produto — útil para cliente, usuário e para o próprio time lembrar regras sem abrir código.
+        </p>
+        <div class="callout callout--tip">
+          <p class="callout__label">Lembrete</p>
+          <p>A wiki de produto é diferente da wiki de regras de negócio no GitLab (quando o time usa). Uma conta a história; a outra numera RNs para as tasks.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><a href="como-comecar.html">← Como começar</a> · <a href="../index.html">Início</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/motion.js"></script>
+  <script src="../assets/js/nav.js"></script>
+  <script src="../assets/js/config-panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+/* Diagramas didáticos — fluxo, passos horizontais, comparação */
+
+.diagram {
+  margin: 1.75rem 0;
+  padding: 1.25rem 1.15rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  max-width: 48rem;
+}
+
+.diagram__title {
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.flow__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+}
+
+.flow__step + .flow__step {
+  margin-top: 0.15rem;
+}
+
+.flow__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+}
+
+.flow__dot {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-on-accent);
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.flow__line {
+  width: 2px;
+  flex: 1;
+  min-height: 1.25rem;
+  margin: 0.25rem 0;
+  background: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+}
+
+.flow__step:last-child .flow__line {
+  display: none;
+}
+
+.flow__body {
+  padding-bottom: 1.15rem;
+}
+
+.flow__label {
+  margin: 0.2rem 0 0.25rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.flow__text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+/* Fluxo horizontal (desktop) */
+.flow--row {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 800px) {
+  .flow--row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .flow--row .flow__step {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .flow--row .flow__rail {
+    flex-direction: row;
+    justify-content: center;
+    min-height: auto;
+    margin-bottom: 0.65rem;
+  }
+
+  .flow--row .flow__line {
+    width: auto;
+    height: 2px;
+    flex: 1;
+    min-height: 0;
+    margin: 0 0.25rem;
+  }
+
+  .flow--row .flow__step:last-child .flow__line {
+    display: none;
+  }
+
+  .flow--row .flow__body {
+    padding-bottom: 0;
+  }
+}
+
+/* Dois caminhos / bifurcação */
+.split {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 720px) {
+  .split {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+  }
+}
+
+.split__card {
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.split__card h4 {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+.split__card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-muted);
+}
+
+.split__vs {
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  padding: 0.5rem 0;
+}
+
+/* Caixa de decisão */
+.decision {
+  margin: 1.5rem 0;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius);
+  border: 2px dashed color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
+  max-width: 40rem;
+  text-align: center;
+}
+
+.decision strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+}
+
+.decision p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* Figura SVG genérica */
+.diagram-figure {
+  margin: 1.5rem 0;
+  max-width: 36rem;
+}
+
+.diagram-figure svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  color: var(--color-primary);
+}
+
+.diagram-figure figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+html[data-motion="sutil"] .flow__step,
+html[data-motion="elaborado"] .flow__step {
+  opacity: 0;
+  transform: translateY(0.75rem);
+}
+
+html[data-motion="sutil"] .flow.is-visible .flow__step,
+html[data-motion="elaborado"] .flow.is-visible .flow__step {
+  animation: wiki-hero-in 0.5s ease forwards;
+}
+
+html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(1),
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(1) { animation-delay: 0.05s; }
+html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(2),
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(2) { animation-delay: 0.12s; }
+html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(3),
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(3) { animation-delay: 0.19s; }
+html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(4),
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(4) { animation-delay: 0.26s; }
+html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(5),
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(5) { animation-delay: 0.33s; }
+html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(6),
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(6) { animation-delay: 0.4s; }
+html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(7),
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(7) { animation-delay: 0.47s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-motion] .flow__step {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

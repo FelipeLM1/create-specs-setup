@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-motion="sutil" data-theme="suave" data-writing="narrativo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O que resolve — Create Specs Setup</title>
+  <meta name="description" content="O problema e o valor do Create Specs Setup.">
+  <link rel="stylesheet" href="../assets/css/themes/suave.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="stylesheet" href="../assets/css/motion.css">
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="../index.html">Create Specs Setup</a>
+      <ul class="nav">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="o-que-resolve.html" aria-current="page">O que resolve</a></li>
+        <li><a href="como-comecar.html">Como começar</a></li>
+        <li><a href="depois-do-setup.html">Depois do setup</a></li>
+        <li><a href="como-usar.html">Como usar esta wiki</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Produto</p>
+      <h1 class="hero__title">O que o Create Specs Setup resolve</h1>
+      <p class="hero__lead">
+        Times misturam decisão de produto em e-mail, wiki, issue e conversa —
+        e na hora de implementar ninguém sabe o que ficou acordado.
+      </p>
+    </div>
+  </section>
+
+  <div class="layout layout--with-sidebar">
+    <aside class="sidebar" data-reveal>
+      <p class="sidebar__title">Nesta página</p>
+      <nav>
+        <ul>
+          <li><a href="#problema">O problema</a></li>
+          <li><a href="#resolve">O que resolve</a></li>
+          <li><a href="#funciona">Como funciona</a></li>
+          <li><a href="#para-quem">Para quem é</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section data-reveal>
+        <h2 id="problema">O problema</h2>
+        <p>
+          Especificar software no dia a dia costuma ser fragmentado: a conversa some,
+          a regra de negócio fica só na cabeça de alguém, e a task no GitLab não conta a história completa.
+        </p>
+        <p>
+          Quando o time cresce ou o projeto já está em produção, falta um lugar único —
+          com linguagem de produto — onde feature, ajuste e status vivam juntos.
+        </p>
+      </section>
+
+      <section data-reveal>
+        <h2 id="resolve">O que o sistema resolve</h2>
+        <p>
+          O Create Specs Setup <strong>não é</strong> onde você especifica features todos os dias.
+          Ele é o <strong>bootstrap</strong>: uma entrevista guiada que monta o repositório
+          <code>{projeto}-specs</code> completo — prontinho para o time trabalhar.
+        </p>
+        <div class="callout callout--tip">
+          <p class="callout__label">Analogia</p>
+          <p>Como o create-react-app para apps: você configura uma vez; depois vive no projeto gerado.</p>
+        </div>
+        <p>Na prática, o valor aparece em três frentes:</p>
+        <ul>
+          <li><strong>Alinhamento</strong> — negócio e engenharia descritos no steering desde o primeiro dia</li>
+          <li><strong>Ritmo</strong> — skills e templates prontos para feature, bug, spec a partir do código, implementação guiada</li>
+          <li><strong>Continuidade</strong> — upgrade de instâncias antigas sem apagar o que já existe</li>
+        </ul>
+      </section>
+
+      <section data-reveal>
+        <h2 id="funciona">Como funciona (visão de produto)</h2>
+        <div class="diagram">
+          <p class="diagram__title">Do bootstrap ao dia a dia</p>
+          <ol class="flow flow--row" data-reveal>
+            <li class="flow__step">
+              <div class="flow__rail">
+                <span class="flow__dot">1</span>
+                <span class="flow__line" aria-hidden="true"></span>
+              </div>
+              <div class="flow__body">
+                <p class="flow__label">Conversar</p>
+                <p class="flow__text">Você abre o chat no create-specs-setup.</p>
+              </div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__rail">
+                <span class="flow__dot">2</span>
+                <span class="flow__line" aria-hidden="true"></span>
+              </div>
+              <div class="flow__body">
+                <p class="flow__label">Entrevistar</p>
+                <p class="flow__text">O assistente pergunta e monta o resumo.</p>
+              </div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__rail">
+                <span class="flow__dot">3</span>
+                <span class="flow__line" aria-hidden="true"></span>
+              </div>
+              <div class="flow__body">
+                <p class="flow__label">Confirmar</p>
+                <p class="flow__text">Só grava depois do seu “sim”.</p>
+              </div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__rail">
+                <span class="flow__dot">4</span>
+                <span class="flow__line" aria-hidden="true"></span>
+              </div>
+              <div class="flow__body">
+                <p class="flow__label">Viver no specs</p>
+                <p class="flow__text">O dia a dia muda para {projeto}-specs.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <ol class="steps" data-reveal>
+          <li><strong>Você abre o chat</strong> no repositório create-specs-setup e diz o que precisa (setup novo ou atualização).</li>
+          <li><strong>O assistente entrevista</strong> em etapas — produto, engenharia, wiki de RN, GitLab, protótipo, docs wiki — e só grava depois do seu “sim”.</li>
+          <li><strong>Nasce o {projeto}-specs</strong> com pastas, skills e configuração do seu time.</li>
+          <li><strong>O dia a dia muda de casa</strong>: feature, bug e status acontecem no repositório de specs, não no bootstrap.</li>
+        </ol>
+      </section>
+
+      <section data-reveal>
+        <h2 id="para-quem">Para quem é</h2>
+        <p>
+          Para times que querem especificação guiada por conversa (PO, dev, líder),
+          com artefatos versionados e um contrato claro do que a instância SDD precisa ter.
+        </p>
+        <div class="callout">
+          <p class="callout__label">Fora de escopo aqui</p>
+          <p>Esta página não ensina a implementar código nem lista endpoints. O foco é o papel do produto no processo do time.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><a href="../index.html">← Voltar ao início</a> · <a href="como-comecar.html">Próximo: Como começar →</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/motion.js"></script>
+  <script src="../assets/js/nav.js"></script>
+  <script src="../assets/js/config-panel.js"></script>
+</body>
+</html>

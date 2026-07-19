@@ -42,7 +42,8 @@ Posso ajudar no {{SPECS_REPO_SLUG}}. O que você precisa fazer?
 3. **Bug ou ajuste** — correção pontual (fluxo enxuto em fixes/)
 4. **Continuar** — retomar spec ou fix já iniciado
 5. **Status** — ver andamento de feature ou fix
-6. **Hotfix urgente** — produção (sem pasta no {{SPECS_REPO_SLUG}})
+6. **Docs wiki** — página de produto para cliente/usuário (se habilitada)
+7. **Hotfix urgente** — produção (sem pasta no {{SPECS_REPO_SLUG}})
 
 Descreva em uma frase ou escolha o número.
 ```
@@ -62,6 +63,7 @@ Se o usuário já descreveu o problema, **pule a lista** e vá direto à triagem
 | Implementar / codar tarefa ou feature | Implementação | `implement-sprint-task` |
 | Investigar e corrigir bug no código | Implementação fix | `implement-fix` |
 | Gerar/exportar prints do protótipo para a spec | Pós-B5 | `prototype-export-screenshots` |
+| Página da docs wiki / documentação de produto para cliente | Docs wiki | `docs-wiki-page` |
 | Label, copy, filtro, tweak acordado | Fix (`adjustment`) | `quick-fix` |
 | "Onde paramos" / slug conhecido incompleto | Continuar | ver § Continuar abaixo |
 | "Status da feature X" | Consulta | `feature-progress` |
@@ -83,7 +85,8 @@ Se o usuário já descreveu o problema, **pule a lista** e vá direto à triagem
 2. Perguntar: *"Você tem um design visual (print/PNG de tela) pronto?"*
    - Sim → delegar `.agents/skills/design-to-spec/SKILL.md`
    - Não → delegar `full-spec` em **modo guiado** (padrão)
-3. Se usuário pedir batch: delegar `full-spec` em **modo batch**.
+3. No `full-spec`, a Fase 0 inclui **"vai ter protótipo?"**; após Meeting notes, se sim → perguntar ramo (protótipo primeiro vs RN/use case). Ver `docs/feature-lifecycle.md` § Ramos pós Meeting notes.
+4. Se usuário pedir batch: delegar `full-spec` em **modo batch** (respeitando o ramo).
 
 ### Spec a partir do código
 
@@ -97,6 +100,12 @@ Se o usuário já descreveu o problema, **pule a lista** e vá direto à triagem
 2. **Feature/task** → delegar `.agents/skills/implement-sprint-task/SKILL.md`
 3. **Bug/fix no código** → delegar `.agents/skills/implement-fix/SKILL.md`
 4. Se só documentar bug → `quick-fix` (não confundir com implement-fix)
+
+### Docs wiki (produto)
+
+1. Verificar `docs_wiki.enabled` em `sdd.config.yaml`.
+2. Se **false** → informar que a wiki não está ativa; sugerir upgrade/setup para habilitar.
+3. Se **true** → delegar `.agents/skills/docs-wiki-page/SKILL.md`.
 
 ### Bug / ajuste (documentação)
 
@@ -114,7 +123,7 @@ Se o usuário já descreveu o problema, **pule a lista** e vá direto à triagem
 
 1. Identificar slug (perguntar se necessário).
 2. Ler `progress.md` correspondente.
-3. Encontrar **primeira etapa incompleta** no checklist.
+3. Encontrar a **próxima etapa** pelo progress — respeitar **Vai ter protótipo?** e **Ramo pós Meeting notes** (não assumir ordem A2→A3→A4).
 4. Informar ao usuário:
 
 ```markdown

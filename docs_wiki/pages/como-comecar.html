@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-motion="sutil" data-theme="suave" data-writing="narrativo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Como começar — Create Specs Setup</title>
+  <meta name="description" content="Como iniciar o setup do Create Specs Setup.">
+  <link rel="stylesheet" href="../assets/css/themes/suave.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="stylesheet" href="../assets/css/motion.css">
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="../index.html">Create Specs Setup</a>
+      <ul class="nav">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="o-que-resolve.html">O que resolve</a></li>
+        <li><a href="como-comecar.html" aria-current="page">Como começar</a></li>
+        <li><a href="depois-do-setup.html">Depois do setup</a></li>
+        <li><a href="como-usar.html">Como usar esta wiki</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Primeiros passos</p>
+      <h1 class="hero__title">Como começar</h1>
+      <p class="hero__lead">
+        Você não precisa memorizar nomes de skills. Abra o chat, diga olá —
+        e o assistente conduz a entrevista.
+      </p>
+    </div>
+  </section>
+
+  <div class="layout layout--with-sidebar">
+    <aside class="sidebar" data-reveal>
+      <p class="sidebar__title">Nesta página</p>
+      <nav>
+        <ul>
+          <li><a href="#preparar">Preparar o workspace</a></li>
+          <li><a href="#conversar">Começar a conversa</a></li>
+          <li><a href="#entrevista">O que a entrevista cobre</a></li>
+          <li><a href="#gravar">Quando grava</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section data-reveal>
+        <h2 id="preparar">Preparar o workspace</h2>
+        <p>Antes de começar, deixe no mesmo workspace do Cursor:</p>
+        <ul>
+          <li>Este repositório (<strong>create-specs-setup</strong>)</li>
+          <li>Os repositórios de código do produto (API e SPA, se existirem)</li>
+          <li>A pasta destino do <strong>{projeto}-specs</strong> (pode estar vazia)</li>
+        </ul>
+        <div class="callout callout--tip">
+          <p class="callout__label">Dica</p>
+          <p>Se for só atualizar uma instância que já existe, o caminho do specs já preenchido basta — o fluxo de upgrade entra na conversa.</p>
+        </div>
+      </section>
+
+      <section data-reveal>
+        <h2 id="conversar">Começar a conversa</h2>
+        <p>No Agent, diga algo natural, por exemplo:</p>
+        <ul>
+          <li>“Olá”</li>
+          <li>“Quero configurar o SDD do meu projeto”</li>
+          <li>“Tenho uma instância antiga e quero atualizar”</li>
+        </ul>
+        <p>
+          O assistente apresenta as opções (setup novo, upgrade ou só entender o fluxo)
+          e segue guiando — no máximo poucas perguntas por vez.
+        </p>
+      </section>
+
+      <section data-reveal>
+        <h2 id="entrevista">O que a entrevista cobre</h2>
+        <div class="diagram">
+          <p class="diagram__title">Mapa da entrevista</p>
+          <ol class="flow" data-reveal>
+            <li class="flow__step">
+              <div class="flow__rail">
+                <span class="flow__dot">1</span>
+                <span class="flow__line" aria-hidden="true"></span>
+              </div>
+              <div class="flow__body">
+                <p class="flow__label">Escopo</p>
+                <p class="flow__text">Onde fica o specs, nome do produto, idioma.</p>
+              </div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__rail">
+                <span class="flow__dot">2</span>
+                <span class="flow__line" aria-hidden="true"></span>
+              </div>
+              <div class="flow__body">
+                <p class="flow__label">Negócio</p>
+                <p class="flow__text">Problema, usuários, valor, limites.</p>
+              </div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__rail">
+                <span class="flow__dot">3</span>
+                <span class="flow__line" aria-hidden="true"></span>
+              </div>
+              <div class="flow__body">
+                <p class="flow__label">Engenharia</p>
+                <p class="flow__text">Pastas da API e do SPA, stack, convenções.</p>
+              </div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__rail">
+                <span class="flow__dot">4</span>
+                <span class="flow__line" aria-hidden="true"></span>
+              </div>
+              <div class="flow__body">
+                <p class="flow__label">RN · GitLab · tarefas</p>
+                <p class="flow__text">Wiki externa de RN, issues, hotfix, template de task.</p>
+              </div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__rail">
+                <span class="flow__dot">5</span>
+                <span class="flow__line" aria-hidden="true"></span>
+              </div>
+              <div class="flow__body">
+                <p class="flow__label">Protótipo · Docs wiki</p>
+                <p class="flow__text">Angular mockado (opcional) e wiki HTML de produto (opcional).</p>
+              </div>
+            </li>
+            <li class="flow__step">
+              <div class="flow__rail">
+                <span class="flow__dot">6</span>
+                <span class="flow__line" aria-hidden="true"></span>
+              </div>
+              <div class="flow__body">
+                <p class="flow__label">Resumo e gravação</p>
+                <p class="flow__text">Você confirma → arquivos na pasta destino → validação ✅/❌.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="decision" data-reveal>
+          <strong>Ponto de decisão</strong>
+          <p>Setup novo ou upgrade? Se a instância já existe, o fluxo muda para atualizar sem apagar features.</p>
+        </div>
+      </section>
+
+      <section data-reveal>
+        <h2 id="gravar">Quando grava</h2>
+        <p>
+          Nada é criado na pasta destino até você confirmar o <strong>resumo final</strong>.
+          Depois do “sim”, o assistente grava os arquivos, valida (checklist ✅/❌)
+          e faz o handoff: a partir daí, o trabalho diário é no <code>{projeto}-specs</code>.
+        </p>
+        <div class="callout">
+          <p class="callout__label">Importante</p>
+          <p>O create-specs-setup pode sair do workspace depois. Quem manda no dia a dia é a instância gerada.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><a href="o-que-resolve.html">← O que resolve</a> · <a href="depois-do-setup.html">Próximo: Depois do setup →</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/motion.js"></script>
+  <script src="../assets/js/nav.js"></script>
+  <script src="../assets/js/config-panel.js"></script>
+</body>
+</html>
