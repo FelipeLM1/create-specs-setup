@@ -10,6 +10,7 @@ Documento de referência: **todas as features** do {{PROJECT_NAME}} seguem estas
 2. **Revisão manual é obrigatória** nas etapas marcadas com 🔍 — não fechar só porque a IA gerou o arquivo.
 3. **Uma fonte de verdade por feature** — ao perguntar "qual o status?", ler `sprints/sprint-{N}/features/{slug}/progress.md`.
 4. **Checklist curta** — observações em uma linha; detalhes ficam nos artefatos (`spec/`, `design/`, `tasks/`).
+5. **Meeting notes primeiro; o resto é flexível** — após Meeting notes, a ordem das etapas depende do ramo (protótipo primeiro vs artefatos de negócio primeiro). Ver § Ramos pós Meeting notes.
 
 ---
 
@@ -72,7 +73,34 @@ Documento de referência: **todas as features** do {{PROJECT_NAME}} seguem estas
 | Pós-B5 | Capturas na pasta da feature | `design/screenshots/` via `prototype-export-screenshots` ou botão **Baixar print** | Não |
 | B6 | Validação do protótipo com stakeholder | Registro em `progress.md` | Sim |
 
-**B1** pode ser `[-]` quando não há designer no fluxo — ir direto para **B2**.
+**B1** pode ser `[-]` quando não há designer no fluxo.
+
+**A4 / B1 / B5 / B6** devem ser `[-]` quando a feature **não** terá protótipo (decisão no início da spec, Fase 0 do `full-spec`).
+
+---
+
+## Ramos pós Meeting notes
+
+No início da feature (Fase 0), registrar se **vai ter protótipo**. Depois de **Meeting notes** (A1):
+
+| Situação | Comportamento |
+|----------|---------------|
+| **Sem protótipo** | Seguir Business rules → Use case → Sprint task. Não perguntar nada de protótipo. |
+| **Com protótipo** | Perguntar o ramo: **protótipo primeiro** ou **artefatos de negócio primeiro**. |
+
+### Protótipo primeiro (recomendado com tela nova)
+
+Motivo: o protótipo fecha fluxos e telas; Meeting notes + protótipo alimentam Business rules e Use case com mais precisão e menos retrabalho.
+
+Ordem sugerida: Prototype spec → (Design task, se houver) → Protótipo Angular → Validação → Business rules → Use case → Sprint task.
+
+### Artefatos de negócio primeiro
+
+Ordem sugerida: Business rules → Use case → Prototype spec → (Design task) → Protótipo Angular → Sprint task.
+
+**Design task:** útil como brief enquanto o protótipo ainda será construído; após o protótipo fechado, vira histórico — não é o guia da próxima ação.
+
+Orquestração: skill `full-spec`.
 
 ---
 
@@ -167,5 +195,5 @@ Convenções: `docs/skill-conventions.md`
 
 ---
 
-**Versão:** 1.1  
-**Última atualização:** 2026-05-31
+**Versão:** 1.2  
+**Última atualização:** 2026-07-16

@@ -43,7 +43,21 @@ Se faltar informação: perguntar — **máximo 3 perguntas por mensagem**, agru
 | Modo | Quando | Comportamento |
 |------|--------|---------------|
 | **Guiado** (padrão) | Sempre, salvo pedido explícito | 1 artefato → atualiza progress → pergunta se continua |
-| **Batch** | Usuário pede "gerar tudo de uma vez" / "full spec completo sem pausas" | Sequência A1–B2 com checkpoint só no final |
+| **Batch** | Usuário pede "gerar tudo de uma vez" / "full spec completo sem pausas" | Sequência do **ramo** escolhido (protótipo-primeiro ou artefatos-primeiro); checkpoint só no final |
+
+---
+
+## Ramos pós Meeting notes (features)
+
+Após Meeting notes, a ordem **não** é fixa. Ver `docs/feature-lifecycle.md` § Ramos pós Meeting notes e `full-spec`.
+
+| Decisão | Efeito |
+|--------|--------|
+| **Vai ter protótipo? = não** | Prototype spec / Design task / Protótipo Angular / Validação = `[-]`; não perguntar sobre eles |
+| **Ramo prototype-first** | Preferir fechar protótipo antes de Business rules e Use case |
+| **Ramo artifacts-first** | Business rules → Use case → protótipo |
+
+Na mensagem **Próximo:** oferecer o próximo passo do ramo, não uma sequência global rígida.
 
 ---
 

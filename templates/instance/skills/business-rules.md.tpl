@@ -1,6 +1,6 @@
 ---
 name: business-rules
-description: Gera regras de negócio (RN-{code}.{seq}) e requisitos funcionais (RF-{code}.{seq}) em sprints/sprint-{N}/features/{slug}/spec/business-rules.md a partir de meeting notes. Wiki externa opcional se sdd.config.yaml wiki.enabled. Use para business rules, regras de negócio ou antes de sprint task.
+description: Gera regras de negócio (RN-{code}.{seq}) e requisitos funcionais (RF-{code}.{seq}) em sprints/sprint-{N}/features/{slug}/spec/business-rules.md a partir de meeting notes (e protótipo, se existir). Wiki externa opcional se sdd.config.yaml wiki.enabled. Use para business rules, regras de negócio ou antes de sprint task.
 ---
 
 # Skill: Regras de negócio (spec primário)
@@ -48,6 +48,7 @@ Convenção: `docs/business-rules-store.md`.
 - [ ] `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md` com conteúdo suficiente
 - [ ] `steering/product.md` lido (contexto de domínio)
 - [ ] Usuário informou **código da RN** (ex.: `100`) — obrigatório
+- [ ] Se existirem: `design/prototype.md` e/ou protótipo Angular — **ler como fonte** (especialmente no ramo `prototype-first`)
 
 Se faltar código → **perguntar antes de escrever** (máx. 3 perguntas).
 
@@ -76,9 +77,14 @@ Exemplo (code `100`): `https://{{GITLAB_BASE_URL}}/{{WIKI_HOST_REPO}}/-/wikis/bu
 
 ## Passo a passo
 
-### 1. Ler meeting notes
+### 1. Ler fontes de negócio
 
-Absorver `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md`: problema, comportamentos, restrições, decisões, pendências.
+Absorver, nesta ordem:
+1. `spec/meeting-notes.md` — problema, comportamentos, restrições, decisões, pendências
+2. `design/prototype.md` e/ou protótipo Angular, **se existirem** — fluxos e estados de tela já fechados (ramo `prototype-first`)
+3. Conversa atual com o usuário
+
+No ramo protótipo-primeiro, preferir alinhar RNs ao que o protótipo já validou — evitar reinventar fluxo que a tela já define.
 
 ### 1b. Consultar código (search-first)
 
@@ -194,4 +200,4 @@ Se a feature tiver muitos blocos de UI/API com filtros distintos, incluir seçã
 1. Atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — **A2** `[x]` (`feature-progress`)
 2. Responder conforme `docs/skill-conventions.md`
 
-**Próximo passo:** A3 `use-case` · depois B2 `sprint-task` (exige RN/RF prontos)
+**Próximo passo:** Use case (`use-case`) · depois Sprint task (`sprint-task`) — ou Prototype spec se o ramo ainda for `artifacts-first` e o protótipo não foi feito

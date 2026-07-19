@@ -8,6 +8,8 @@
 | **Responsável** | {nome ou time} |
 | **GitLab** | {link ou —} |
 | **Protótipo** | {link ou —} |
+| **Vai ter protótipo?** | `sim` \| `não` (definir na Fase 0) |
+| **Ramo pós Meeting notes** | `prototype-first` \| `artifacts-first` \| `—` (só se vai ter protótipo) |
 
 ---
 
@@ -55,7 +57,7 @@ Revisão manual 🔍: sub-item `[ ]` / `[x]` + quem/data na nota.
 
 - [ ] **A4** Prototype spec → `design/prototype.md` 🔍  
   - Revisão: [ ] —  
-  - Nota:
+  - Nota: `[-]` se **Vai ter protótipo?** = `não`
 
 - [ ] **A5** Coerência entre artefatos (full-spec checklist) 🔍  
   - Revisão: [ ] —  
@@ -65,7 +67,7 @@ Revisão manual 🔍: sub-item `[ ]` / `[x]` + quem/data na nota.
 
 - [ ] **B1** Design task (UX/UI) → `tasks/design-task.md` 🔍  
   - Revisão: [ ] —  
-  - Nota: `[-]` se o time não usa designer formal
+  - Nota: `[-]` se sem protótipo ou se o time não usa designer formal
 
 - [ ] **B2** Sprint task (dev) → `tasks/sprint-task.md` 🔍  
   - Revisão: [ ] —  
@@ -81,11 +83,11 @@ Revisão manual 🔍: sub-item `[ ]` / `[x]` + quem/data na nota.
 
 - [ ] **B5** Protótipo Angular → `prototypes/src/app/feature/{task_ref}-{slug}/` + catálogo 🔍  
   - Revisão: [ ] —  
-  - Nota:
+  - Nota: `[-]` se **Vai ter protótipo?** = `não`
 
 - [ ] **B6** Validação com stakeholder (demo protótipo) 🔍  
   - Revisão: [ ] —  
-  - Nota:
+  - Nota: `[-]` se **Vai ter protótipo?** = `não`
 
 ### Fase C — Implementação
 

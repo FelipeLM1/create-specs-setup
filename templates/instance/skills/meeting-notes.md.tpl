@@ -19,7 +19,7 @@ Use esta skill quando o usuário fornecer o contexto de uma reunião ou conversa
 
 ## Objetivo
 
-Transformar contexto verbal/informal em um `meeting-notes.md` estruturado, rastreável e pronto para avançar para business rules — sem inventar informações além do que foi fornecido.
+Transformar contexto verbal/informal em um `meeting-notes.md` estruturado e rastreável — base para as próximas etapas (protótipo e/ou business rules / use case), sem inventar informações além do que foi fornecido.
 
 ---
 
@@ -33,6 +33,7 @@ Antes de gerar, verifique se você tem:
 - [ ] Um slug sugerido para a feature (ou você propõe um)
 - [ ] Data da reunião (se disponível — senão usar a data atual)
 - [ ] Participantes (se disponível — senão deixar em aberto)
+- [ ] Se veio via `full-spec`: decisão **vai ter protótipo?** já registrada no progress (ou perguntar agora)
 
 > Se o contexto for muito raso, **não escreva o arquivo** — pergunte (máx. 3 por mensagem). Ver `docs/skill-conventions.md`.
 
@@ -106,5 +107,24 @@ Arquivo `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md` pronto, com:
 
 1. Criar ou atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — marcar **A0** e **A1** `[x]` (skill `feature-progress`)
 2. Responder ao usuário conforme `docs/skill-conventions.md`
+3. **Oferecer o próximo passo conforme o ramo** (não assumir Business rules sempre):
 
-**Próximo passo:** A2 — Business rules (skill `business-rules`)
+**Se vai ter protótipo = não:**
+
+```
+**Próximo:** Business rules (skill `business-rules`)
+**Continuo com a próxima etapa?**
+```
+
+**Se vai ter protótipo = sim** (perguntar, sugerindo protótipo primeiro quando há tela):
+
+```
+Meeting notes prontas. Qual caminho seguir?
+
+1. **Protótipo primeiro** (recomendado com tela nova) — fecha fluxos nas telas; depois RN e use case com mais precisão
+2. **Artefatos de negócio primeiro** — Business rules → Use case → protótipo depois
+
+Qual prefere?
+```
+
+Registrar a escolha em `progress.md` → **Ramo pós Meeting notes:** `prototype-first` | `artifacts-first`.

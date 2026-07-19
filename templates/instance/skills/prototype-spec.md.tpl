@@ -7,7 +7,7 @@ description: Especifica telas, estados, mock data e navegação do protótipo em
 
 ## Quando usar
 
-Use esta skill quando o `use-case.md` estiver pronto e o usuário pedir para especificar o protótipo de alta fidelidade da feature.
+Use esta skill quando o usuário pedir para especificar o protótipo de alta fidelidade da feature — **após Meeting notes**, no ramo protótipo-primeiro, **ou** após use case no ramo artefatos-primeiro.
 
 **Gatilhos:**
 - "gerar spec do protótipo de..."
@@ -19,7 +19,7 @@ Use esta skill quando o `use-case.md` estiver pronto e o usuário pedir para esp
 
 ## Objetivo
 
-Traduzir o use case em uma especificação de protótipo navegável — descrevendo telas, estados, mock data e navegação — que será a base para a implementação do protótipo em Angular (veja `.agents/skills/prototype-angular/SKILL.md`).
+Traduzir o contexto da feature (Meeting notes e, se existirem, use case / business rules) em uma especificação de protótipo navegável — telas, estados, mock data e navegação — base para o protótipo Angular (`.agents/skills/prototype-angular/SKILL.md`).
 
 > Esta skill gera o **documento de spec** (`prototype.md`). A **implementação** do protótipo em Angular é feita pela skill `.agents/skills/prototype-angular/SKILL.md`.
 
@@ -27,20 +27,26 @@ Traduzir o use case em uma especificação de protótipo navegável — descreve
 
 ## Pré-condições (gate)
 
-Antes de gerar, leia:
+Antes de gerar, leia o que existir em `sprints/sprint-{N}/features/{slug}/`:
 
-- [ ] `sprints/sprint-{N}/features/{slug}/spec/use-case.md`
-- [ ] `sprints/sprint-{N}/features/{slug}/spec/business-rules.md`
+- [ ] `spec/meeting-notes.md` — **obrigatório** (mínimo no ramo protótipo-primeiro)
+- [ ] `spec/use-case.md` — se existir (ramo artefatos-primeiro ou já gerado)
+- [ ] `spec/business-rules.md` — se existir
 
-Se use case não existir → delegar `use-case` primeiro.
+Se **Meeting notes** não existir → delegar `meeting-notes` primeiro.
 
-> Ver `docs/skill-conventions.md`.
+**Não** exigir use case / business rules quando o ramo for `prototype-first` — o protótipo ajuda a fechá-los depois.
+
+> Ver `docs/skill-conventions.md` · `docs/feature-lifecycle.md` § Ramos pós Meeting notes.
 
 ## Passo a passo
 
 ### 1. Mapear as telas necessárias
 
-A partir do happy path e dos fluxos alternativos, identifique cada tela ou estado visual distinto.
+Fontes, nesta ordem de disponibilidade:
+1. Use case (happy path e fluxos alternativos), se existir
+2. Meeting notes (o que foi pedido, decisões, restrições)
+3. Conversa atual com o usuário
 
 Cada "mudança significativa de interface" = uma tela no protótipo.
 
@@ -150,4 +156,6 @@ Arquivo `sprints/sprint-{N}/features/{slug}/design/prototype.md` com:
 1. Atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — marcar **A4** `[x]` (skill `feature-progress`)
 2. Responder ao usuário conforme `docs/skill-conventions.md`
 
-**Próximos passos:** B1 — Sprint task (`sprint-task`) ou B4 — Protótipo Angular (`prototype-angular`)
+**Próximos passos** (conforme ramo no progress):
+- Ramo `prototype-first`: Protótipo Angular (`prototype-angular`) ou Design task (`design-task`); depois Business rules / Use case
+- Ramo `artifacts-first` ou já com RN/use case: Protótipo Angular (`prototype-angular`) ou Sprint task (`sprint-task`)

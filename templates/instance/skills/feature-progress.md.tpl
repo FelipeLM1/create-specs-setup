@@ -94,9 +94,11 @@ Se um artefato for reescrito de forma relevante, voltar revisão para `[ ]` naqu
 1. Confirmar `slug` (kebab-case).
 2. Copiar `templates/feature-progress.md` → `sprints/sprint-{N}/features/{slug}/progress.md`.
 3. Preencher título, responsável, links se conhecidos.
-4. Marcar `[x]` / `[~]` conforme artefatos já existentes no disco.
-5. Preencher **Resumo**, **Próximo passo**, **Pendências** a partir de sprint task / meeting notes.
-6. Adicionar linha no **Histórico**.
+4. Preencher **Vai ter protótipo?** (`sim`/`não`) e, se sim, **Ramo pós Meeting notes** quando conhecido.
+5. Se **Vai ter protótipo? = não** → marcar A4, B1, B5, B6 como `[-]`.
+6. Marcar `[x]` / `[~]` conforme artefatos já existentes no disco.
+7. Preencher **Resumo**, **Próximo passo**, **Pendências** a partir de sprint task / meeting notes (próximo passo conforme o ramo — ver `docs/feature-lifecycle.md`).
+8. Adicionar linha no **Histórico**.
 
 ### 2. Atualizar após mudança
 
@@ -123,10 +125,11 @@ Não inventar progresso — só o que consta no arquivo ou nos artefatos verific
 
 Quando acionado via `{{GUIDE_SKILL_NAME}}`:
 
-1. Identificar primeira etapa com `[ ]` no checklist (prioridade A → B → C → D)
-2. Mapear etapa → skill (tabela em `{{GUIDE_SKILL_NAME}}`)
-3. Perguntar: *"Posso continuar com {ID} — {nome}?"*
-4. Se sim, delegar skill — **não** gerar artefato nesta skill
+1. Ler **Vai ter protótipo?** e **Ramo pós Meeting notes** no cabeçalho
+2. Identificar próxima etapa incompleta — **não** assumir ordem A2→A3→A4; se `prototype-first` e A1 feito, priorizar A4/B5 antes de A2/A3; pular etapas `[-]`
+3. Mapear etapa → skill (tabela em `{{GUIDE_SKILL_NAME}}`)
+4. Perguntar: *"Posso continuar com {ID} — {nome}?"*
+5. Se sim, delegar skill — **não** gerar artefato nesta skill
 
 ---
 
@@ -152,6 +155,7 @@ Ao concluir `full-spec`, garantir que `progress.md` existe e A0–A4 refletem o 
 
 ## Anti-patterns
 
+- Não assumir ordem rígida A2→A3→A4 ao sugerir próximo passo — respeitar ramo e etapas `[-]`.
 - Não criar um único `progress.md` global para todas as features.
 - Não duplicar business rules ou critérios de aceite inteiros no progress — só referência + nota curta.
 - Não marcar B6 (stakeholder) sem demo/validação real.

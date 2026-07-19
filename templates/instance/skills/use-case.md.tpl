@@ -19,8 +19,7 @@ Use esta skill quando o `business-rules.md` estiver pronto e o usuário pedir pa
 
 ## Objetivo
 
-Traduzir as regras de negócio em um fluxo funcional completo — com happy path, fluxos alternativos e edge cases — que sirva de base para o protótipo e para a implementação.
-
+Traduzir as regras de negócio (e o protótipo, se já existir) em um fluxo funcional completo — happy path, fluxos alternativos e edge cases — base para implementação e, se ainda não feito, para o protótipo.
 ---
 
 ## Pré-condições (gate)
@@ -29,6 +28,7 @@ Antes de gerar, leia:
 
 - [ ] `sprints/sprint-{N}/features/{slug}/spec/meeting-notes.md`
 - [ ] `sprints/sprint-{N}/features/{slug}/spec/business-rules.md`
+- [ ] `design/prototype.md` e/ou protótipo Angular — se existirem (ramo `prototype-first`)
 
 Se business rules não existir → delegar `business-rules` primeiro.
 
@@ -145,4 +145,6 @@ Arquivo `sprints/sprint-{N}/features/{slug}/spec/use-case.md` com:
 1. Atualizar `sprints/sprint-{N}/features/{slug}/progress.md` — marcar **A3** `[x]` (skill `feature-progress`)
 2. Responder ao usuário conforme `docs/skill-conventions.md`
 
-**Próximo passo:** A4 — Prototype spec (skill `prototype-spec`)
+**Próximo passo** (conforme progress / ramo):
+- Se ainda falta protótipo (`artifacts-first` ou protótipo pendente): Prototype spec (`prototype-spec`)
+- Se protótipo já fechado ou feature sem protótipo: Sprint task (`sprint-task`)

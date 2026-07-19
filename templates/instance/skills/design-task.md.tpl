@@ -7,7 +7,7 @@ description: Gera task de design (UX/UI) para designer — telas, componentes vi
 
 ## Quando usar
 
-Use quando a spec (A1–A4) estiver pronta e o usuário precisar de uma **issue para design**, separada da task de **dev**.
+Use quando o usuário precisar de uma **issue para design**, separada da task de **dev** — tipicamente no caminho com protótipo (brief enquanto o protótipo ainda será construído).
 
 **Gatilhos:**
 - "gerar task de design de..."
@@ -16,12 +16,15 @@ Use quando a spec (A1–A4) estiver pronta e o usuário precisar de uma **issue 
 - "especificação visual para o design..."
 
 **Não usar** para implementação — delegar `sprint-task` (dev).
+**Não usar** se a feature marcou **Vai ter protótipo? = não** (etapa `[-]`).
+
+Após o protótipo fechado e validado, o design task tende a ser só histórico — o artefato vivo é o protótipo.
 
 ---
 
 ## Objetivo
 
-Consolidar `prototype.md`, use case e regras de negócio em uma task **curta e acionável** para o designer: o que desenhar, como deve se comportar na tela e como validar — **sem** detalhes de código.
+Consolidar contexto visual (prototype.md e/ou Meeting notes) em uma task **curta e acionável** para o designer: o que desenhar, como deve se comportar na tela e como validar — **sem** detalhes de código.
 
 ---
 
@@ -29,11 +32,11 @@ Consolidar `prototype.md`, use case e regras de negócio em uma task **curta e a
 
 Ler em `sprints/sprint-{N}/features/{slug}/`:
 
-- [ ] `design/prototype.md` (obrigatório)
-- [ ] `spec/use-case.md`
-- [ ] `spec/business-rules.md` (regras que afetam UI)
+- [ ] `spec/meeting-notes.md` (obrigatório)
+- [ ] `design/prototype.md` — preferível; se ainda não existir no ramo protótipo-primeiro, pode gerar brief a partir de Meeting notes e depois alinhar
+- [ ] `spec/use-case.md` / `spec/business-rules.md` — se existirem
 
-Se A4 incompleto → delegar `prototype-spec` via `{{GUIDE_SKILL_NAME}}`.
+Se não houver Meeting notes → delegar `meeting-notes` via `{{GUIDE_SKILL_NAME}}`.
 
 ---
 
