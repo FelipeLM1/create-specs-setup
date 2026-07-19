@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>create-specs-setup · Apresentação</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #181c27;
+      --surface-2: #222836;
+      --border: #2e3648;
+      --text: #eef1f6;
+      --muted: #9aa8be;
+      --accent: #5b9cf6;
+      --accent-2: #6ee7c8;
+      --warm: #fbbf24;
+      --po: #a78bfa;
+      --design: #f472b6;
+      --dev: #5b9cf6;
+      --qa: #34d399;
+      --lead: #fb923c;
+      --radius: 16px;
+      --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 45% at 10% 0%, rgba(91, 156, 246, 0.1), transparent),
+        radial-gradient(ellipse 50% 35% at 95% 90%, rgba(110, 231, 200, 0.07), transparent);
+      pointer-events: none;
+    }
+
+    .deck {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(24, 28, 39, 0.9);
+      backdrop-filter: blur(10px);
+      flex-shrink: 0;
+      gap: 12px;
+    }
+
+    .topbar-left { display: flex; align-items: center; gap: 12px; }
+
+    .logo {
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 13px; color: #0f1117;
+    }
+
+    .topbar-title { font-size: 13px; color: var(--muted); }
+    .topbar-title strong { color: var(--text); }
+
+    .chapter-tabs { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+
+    .chapter-tab {
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: var(--font);
+    }
+
+    .chapter-tab:hover { border-color: var(--accent); color: var(--text); }
+    .chapter-tab.active { background: var(--accent); border-color: var(--accent); color: #0f1117; }
+
+    .slide-counter { font-size: 12px; color: var(--muted); min-width: 52px; text-align: right; }
+
+    .slides { flex: 1; position: relative; overflow: hidden; }
+
+    .slide {
+      position: absolute; inset: 0;
+      padding: 40px 56px 72px;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s, transform 0.3s;
+      overflow-y: auto;
+    }
+
+    .slide.active { display: flex; opacity: 1; transform: none; }
+    .slide.chapter-intro { justify-content: center; }
+
+    .chapter-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 12px; border-radius: 999px;
+      background: rgba(91, 156, 246, 0.12);
+      border: 1px solid rgba(91, 156, 246, 0.3);
+      color: var(--accent);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .video-hint {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 22px; padding: 9px 16px;
+      border-radius: var(--radius);
+      background: rgba(251, 191, 36, 0.08);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      color: var(--warm);
+      font-size: 12px; font-weight: 600;
+    }
+    .video-hint::before { content: "▶"; font-size: 10px; }
+
+    h1 {
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 800; line-height: 1.12;
+      letter-spacing: -0.02em; margin-bottom: 14px;
+    }
+
+    h1 .hl {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      font-weight: 700; margin-bottom: 18px;
+    }
+
+    .subtitle {
+      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+      color: var(--muted); line-height: 1.65;
+      max-width: 680px; margin-bottom: 28px;
+    }
+
+    .subtitle strong { color: var(--text); font-weight: 600; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1000px; width: 100%; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 1000px; width: 100%; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 1000px; width: 100%; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+    }
+
+    .card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .card p, .card li { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
+    .card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .card .emoji { font-size: 1.5rem; margin-bottom: 8px; }
+
+    .card.po { border-color: rgba(167, 139, 250, 0.35); }
+    .card.design { border-color: rgba(244, 114, 182, 0.35); }
+    .card.dev { border-color: rgba(91, 156, 246, 0.35); }
+    .card.qa { border-color: rgba(52, 211, 153, 0.35); }
+    .card.lead { border-color: rgba(251, 146, 60, 0.35); }
+    .card.success { border-color: rgba(52, 211, 153, 0.35); background: rgba(52, 211, 153, 0.04); }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+    .tag.po { background: rgba(167,139,250,.15); color: var(--po); }
+    .tag.design { background: rgba(244,114,182,.15); color: var(--design); }
+    .tag.dev { background: rgba(91,156,246,.15); color: var(--dev); }
+    .tag.qa { background: rgba(52,211,153,.15); color: var(--qa); }
+    .tag.lead { background: rgba(251,146,60,.15); color: var(--lead); }
+    .tag.all { background: rgba(110,231,200,.12); color: var(--accent-2); }
+
+    .callout {
+      border-left: 3px solid var(--accent);
+      padding: 14px 18px;
+      background: rgba(91, 156, 246, 0.06);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      max-width: 720px;
+      margin: 14px 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .callout strong { color: var(--text); }
+    .callout.green { border-color: var(--qa); background: rgba(52,211,153,.06); }
+    .callout.warm { border-color: var(--warm); background: rgba(251,191,36,.06); }
+
+    .big-idea {
+      font-size: 1.35rem;
+      font-weight: 600;
+      line-height: 1.5;
+      max-width: 700px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .steps { list-style: none; display: flex; flex-direction: column; gap: 12px; max-width: 760px; }
+    .steps li { display: flex; gap: 14px; align-items: flex-start; }
+    .step-num {
+      flex-shrink: 0; width: 30px; height: 30px;
+      border-radius: 50%; background: var(--accent);
+      color: #0f1117; font-weight: 800; font-size: 0.8rem;
+      display: grid; place-items: center;
+    }
+    .step-body strong { display: block; font-size: 0.92rem; margin-bottom: 3px; }
+    .step-body span { font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+
+    .chat { display: flex; flex-direction: column; gap: 10px; max-width: 580px; margin: 14px 0; }
+    .bubble {
+      padding: 12px 16px; border-radius: 14px;
+      font-size: 0.88rem; line-height: 1.55; max-width: 92%;
+    }
+    .bubble.you {
+      background: rgba(91, 156, 246, 0.18);
+      border: 1px solid rgba(91, 156, 246, 0.3);
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .bubble.ai {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      color: var(--muted);
+    }
+    .bubble .who {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 5px; color: var(--accent-2);
+    }
+
+    .pipeline {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+      max-width: 960px; margin: 16px 0;
+    }
+    .pipe-step {
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      font-size: 0.8rem; font-weight: 600;
+      text-align: center;
+    }
+    .pipe-step.you { background: rgba(110,231,200,.1); border-color: rgba(110,231,200,.35); color: var(--accent-2); }
+    .pipe-step.key { background: rgba(91,156,246,.12); border-color: rgba(91,156,246,.4); color: var(--accent); }
+    .pipe-arrow { color: var(--muted); font-size: 1rem; }
+
+    .folder-tree {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      font-size: 0.84rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 520px;
+    }
+    .folder-tree .hl { color: var(--accent-2); font-weight: 600; }
+    .folder-tree .note { color: #6b7a94; font-size: 0.78rem; }
+
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; width: 100%; }
+    .compare-col { border-radius: var(--radius); padding: 20px; border: 1px solid var(--border); }
+    .compare-col.bad { background: rgba(248,113,113,.04); border-color: rgba(248,113,113,.2); }
+    .compare-col.good { background: rgba(52,211,153,.04); border-color: rgba(52,211,153,.25); }
+    .compare-col h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .compare-col.bad h4 { color: #f87171; }
+    .compare-col.good h4 { color: var(--qa); }
+    .compare-col ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .compare-col li { font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
+    .compare-col.bad li::before { content: "✗ "; color: #f87171; }
+    .compare-col.good li::before { content: "✓ "; color: var(--qa); }
+
+    .phrase-list {
+      display: flex; flex-direction: column; gap: 8px;
+      max-width: 640px;
+    }
+    .phrase {
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--text);
+      font-style: italic;
+    }
+    .phrase::before { content: "💬 "; font-style: normal; }
+
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 24px;
+      border-top: 1px solid var(--border);
+      background: rgba(24, 28, 39, 0.9);
+      flex-shrink: 0;
+    }
+
+    .nav-btn {
+      padding: 9px 20px; border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text); font-size: 13px; font-weight: 600;
+      cursor: pointer; font-family: var(--font);
+    }
+    .nav-btn:hover:not(:disabled) { border-color: var(--accent); }
+    .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .nav-btn.primary { background: var(--accent); border-color: var(--accent); color: #0f1117; }
+
+    .progress-dots { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; max-width: 480px; }
+    .dot-btn { width: 7px; height: 7px; border-radius: 50%; border: none; background: var(--border); cursor: pointer; padding: 0; }
+    .dot-btn.active { background: var(--accent); transform: scale(1.35); }
+    .dot-btn.ch-start { background: var(--accent-2); }
+
+    .kbd-hint { font-size: 10px; color: var(--muted); text-align: center; margin-top: 4px; }
+    kbd { padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); font-size: 10px; }
+
+    .glossary {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; max-width: 800px;
+    }
+    .gloss-item {
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .gloss-item .term { font-weight: 700; font-size: 0.88rem; color: var(--accent-2); margin-bottom: 4px; }
+    .gloss-item .def { font-size: 0.82rem; color: var(--muted); line-height: 1.45; }
+
+    .name-hero {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 8px;
+      background: rgba(91, 156, 246, 0.15);
+      border: 1px solid rgba(91, 156, 246, 0.35);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .name-card {
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .name-card .name-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--accent-2);
+      margin-bottom: 4px;
+    }
+    .name-card .name-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .name-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
+    .name-card .when {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--warm);
+    }
+    .name-card.primary {
+      border-color: rgba(91, 156, 246, 0.45);
+      background: rgba(91, 156, 246, 0.06);
+    }
+
+    @media (max-width: 900px) {
+      .slide { padding: 28px 22px 64px; }
+      .grid-2, .grid-3, .grid-4, .compare, .glossary { grid-template-columns: 1fr; }
+      .chapter-tabs { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="logo">CS</div>
+        <div class="topbar-title"><strong>create-specs-setup</strong> · Apresentação para o time</div>
+      </div>
+      <nav class="chapter-tabs" id="chapterTabs">
+        <button class="chapter-tab active" data-chapter="0">Vídeo 1 · O que é</button>
+        <button class="chapter-tab" data-chapter="1">Vídeo 2 · Por que usar</button>
+        <button class="chapter-tab" data-chapter="2">Vídeo 3 · create-specs-setup</button>
+        <button class="chapter-tab" data-chapter="3">Vídeo 4 · Primeiro acesso</button>
+        <button class="chapter-tab" data-chapter="4">Vídeo 5 · Dia a dia</button>
+      </nav>
+      <div class="slide-counter" id="counter">1 / 36</div>
+    </header>
+
+    <main class="slides" id="slides">
+
+      <!-- ═══ VÍDEO 1 — O QUE É ═══ -->
+
+      <section class="slide chapter-intro active" data-chapter="0">
+        <div class="chapter-badge">Vídeo 1 de 5</div>
+        <h1><span class="hl">create-specs-setup</span></h1>
+        <p class="subtitle" style="font-size:1.15rem;margin-bottom:12px">
+          Como o <strong>create-react-app</strong>, mas para o repositório de <strong>especificações</strong> do seu produto.
+        </p>
+        <p class="subtitle">
+          Roda <strong>uma vez</strong> → nasce o <strong>{projeto}-specs</strong> pronto para PO, designer, dev, QA e requisitos trabalharem no dia a dia — conversando com um assistente no Cursor.
+        </p>
+        <div class="video-hint">Apresente o nome logo no início: create-specs-setup</div>
+      </section>
+
+      <section class="slide" data-chapter="0">
+        <h2>Três nomes — não confunda</h2>
+        <p class="subtitle" style="margin-bottom:18px">Cada um tem um papel. Só um deles você usa todo dia.</p>
+        <div class="grid-3">
+          <div class="name-card">
+            <div class="name-title">create-specs-setup</div>
+            <div class="name-sub">ferramenta de configuração</div>
+            <p>Instalador. Usado <strong>uma vez</strong> (ou para atualizar). Conduz a entrevista e cria o repositório do produto.</p>
+            <div class="when">⏱️ Setup · Vídeo 3</div>
+          </div>
+          <div class="name-card primary">
+            <div class="name-title">{projeto}-specs</div>
+            <div class="name-sub">repositório do produto · ex.: nexus-specs</div>
+            <p>Onde ficam features, fixes, modelos e contexto. <strong>Todo o time usa aqui</strong>, todos os dias.</p>
+            <div class="when">📋 Dia a dia · Vídeos 4 e 5</div>
+          </div>
+          <div class="name-card">
+            <div class="name-title">Assistente (Cursor)</div>
+            <div class="name-sub">chat de IA no editor</div>
+            <p>Você conversa em português; ele segue roteiros e monta os documentos certos, etapa por etapa.</p>
+            <div class="when">💬 Em ambos os repos</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="0">
+        <h2>O problema que o create-specs-setup resolve</h2>
+        <div class="compare">
+          <div class="compare-col bad">
+            <h4>Hoje, muitas vezes…</h4>
+            <ul>
+              <li>A informação fica espalhada: e-mail, wiki, GitLab, conversa</li>
+              <li>Cada pessoa escreve a task de um jeito</li>
+              <li>Ninguém sabe "onde paramos" na feature</li>
+              <li>Quem chega novo perde tempo procurando contexto</li>
+              <li>Documentação fica desatualizada</li>
+            </ul>
+          </div>
+          <div class="compare-col good">
+            <h4>Depois do create-specs-setup…</h4>
+            <ul>
+              <li>Tudo fica num lugar só, versionado no Git</li>
+              <li>Modelos padronizados para cada tipo de documento</li>
+              <li>Andamento visível em um arquivo por feature</li>
+              <li>Contexto do produto sempre à mão</li>
+              <li>Um assistente guia passo a passo</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="0">
+        <h2>Em uma frase</h2>
+        <p class="big-idea">
+          O <strong>create-specs-setup</strong> configura o <strong>nexus-specs</strong> (ou outro <code>{projeto}-specs</code>);
+          a partir daí, o time documenta o produto <strong>conversando com o assistente no Cursor</strong> — sem montar estrutura na mão.
+        </p>
+        <div class="callout green">
+          <strong>Você não precisa decorar comandos.</strong> Diga "Olá" ou descreva o que precisa. O assistente mostra opções e faz as perguntas certas.
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="0">
+        <h2>O que o create-specs-setup entrega</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="emoji">🧭</div>
+            <h4>Contexto do produto</h4>
+            <p>steering/ — negócio e engenharia. O assistente sempre sabe <strong>do que se trata o sistema</strong>.</p>
+          </div>
+          <div class="card">
+            <div class="emoji">📐</div>
+            <h4>Modelos padronizados</h4>
+            <p>14 templates — meeting notes, regras, use case, tasks de design e dev, etc.</p>
+          </div>
+          <div class="card">
+            <div class="emoji">🤖</div>
+            <h4>Roteiros do assistente</h4>
+            <p>17 fluxos guiados no nexus-specs — feature, bug, implementação, status.</p>
+          </div>
+        </div>
+        <div class="callout warm" style="margin-top:18px">
+          Tudo isso nasce na <strong>entrevista guiada</strong> do create-specs-setup — ver <strong>Vídeo 3</strong>. Depois, o time usa só o <strong>nexus-specs</strong>.
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="0">
+        <h2>Glossário rápido (sem mistério)</h2>
+        <div class="glossary">
+          <div class="gloss-item">
+            <div class="term">create-specs-setup</div>
+            <div class="def">Ferramenta que <strong>cria e configura</strong> o repositório de specs de um produto. Usada uma vez no setup.</div>
+          </div>
+          <div class="gloss-item">
+            <div class="term">{projeto}-specs</div>
+            <div class="def">Repositório gerado — ex.: <strong>nexus-specs</strong>. Onde o time trabalha no dia a dia.</div>
+          </div>
+          <div class="gloss-item">
+            <div class="term">Cursor</div>
+            <div class="def">Editor de código com chat de IA. É onde você conversa com o assistente.</div>
+          </div>
+          <div class="gloss-item">
+            <div class="term">Assistente / Agente</div>
+            <div class="def">O chat de IA. Pense nele como um colega que segue um roteiro e ajuda a escrever docs.</div>
+          </div>
+          <div class="gloss-item">
+            <div class="term">Specs / Especificações</div>
+            <div class="def">Documentos do produto: o que a feature faz, regras, telas, tarefas para dev e design.</div>
+          </div>
+          <div class="gloss-item">
+            <div class="term">Feature</div>
+            <div class="def">Uma funcionalidade nova ou mudança grande — tem sua própria pasta com todos os artefatos.</div>
+          </div>
+          <div class="gloss-item">
+            <div class="term">Fix / Ajuste</div>
+            <div class="def">Correção de bug ou mudança pequena — fluxo mais curto que uma feature.</div>
+          </div>
+          <div class="gloss-item">
+            <div class="term">Revisão humana</div>
+            <div class="def">A IA gera rascunho; <strong>você valida</strong> antes de considerar pronto. Nada sai "no automático".</div>
+          </div>
+        </div>
+        <p class="subtitle" style="margin-top:16px; font-size:0.88rem">
+          Termos como "skill" ou "agent" existem por baixo dos panos — <strong>você não precisa usá-los no dia a dia</strong>.
+        </p>
+      </section>
+
+      <section class="slide" data-chapter="0">
+        <h2>O que existe dentro do repositório</h2>
+        <div class="folder-tree">
+          <span class="hl">nexus-specs/</span>  <span class="note">← exemplo real</span><br>
+          ├── <span class="hl">features/</span>     <span class="note">cada feature numa pasta</span><br>
+          ├── <span class="hl">fixes/</span>        <span class="note">bugs e ajustes pontuais</span><br>
+          ├── steering/     <span class="note">contexto fixo do produto</span><br>
+          ├── templates/    <span class="note">modelos de documento</span><br>
+          └── prototypes/   <span class="note">app Angular mockado (quando houver)</span><br>
+              └── src/app/feature/   <span class="note">um protótipo por pasta: 100-listagem-usuario, 101-login…</span>
+        </div>
+        <div class="callout" style="margin-top:18px">
+          Na prática, <strong>você quase só mexe em features/ e fixes/</strong>. O assistente cria e atualiza os arquivos; você revisa e responde às perguntas.
+        </div>
+      </section>
+
+      <!-- ═══ VÍDEO 2 — POR QUE USAR ═══ -->
+
+      <section class="slide chapter-intro" data-chapter="1">
+        <div class="chapter-badge">Vídeo 2 de 5</div>
+        <h1>Por que usar o<br><span class="hl">create-specs-setup</span></h1>
+        <p class="subtitle">Benefícios concretos para quem especifica, desenha, desenvolve, testa ou coordena.</p>
+        <div class="video-hint">Mostre um exemplo do seu perfil — PO, designer, dev ou QA</div>
+      </section>
+
+      <section class="slide" data-chapter="1">
+        <h2>Para todos os perfis</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h4>🗣️ Fale naturalmente</h4>
+            <p>Sem comandos especiais. Uma frase em português já basta para começar.</p>
+          </div>
+          <div class="card">
+            <h4>📐 Sempre no mesmo formato</h4>
+            <p>Meeting notes, regras, use case, task de design, task de dev — modelos padronizados.</p>
+          </div>
+          <div class="card">
+            <h4>👁️ Você no controle</h4>
+            <p>A IA sugere; você revisa. Etapas importantes exigem validação humana explícita.</p>
+          </div>
+        </div>
+        <div class="pipeline" style="margin-top:20px">
+          <div class="pipe-step you">Você conversa</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Assistente pergunta</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Gera rascunho</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step you">Você revisa</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step key">Próxima etapa</div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="1">
+        <h2>PO · Requisitos · Analista</h2>
+        <span class="tag po">Negócio</span>
+        <div class="grid-2">
+          <div class="card po">
+            <h4>O que você ganha</h4>
+            <ul>
+              <li>Reunião vira meeting notes estruturadas</li>
+              <li>Regras de negócio numeradas e rastreáveis</li>
+              <li>Use cases claros para alinhar com dev e QA</li>
+              <li>"Onde paramos?" — resposta em segundos</li>
+            </ul>
+          </div>
+          <div class="card po">
+            <h4>Como pedir (exemplos)</h4>
+            <div class="phrase-list">
+              <div class="phrase">Quero especificar o cadastro de etapas</div>
+              <div class="phrase">Registre as notas da reunião de ontem</div>
+              <div class="phrase">Qual o status da feature de contratos?</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="1">
+        <h2>Designer · UX/UI</h2>
+        <span class="tag design">Design</span>
+        <div class="grid-2">
+          <div class="card design">
+            <h4>O que você ganha</h4>
+            <ul>
+              <li>Spec de protótipo alinhada ao que PO pediu</li>
+              <li>Task de design no GitLab no formato do time</li>
+              <li>Protótipo navegável (quando o projeto tiver)</li>
+              <li>Menos ida e volta por falta de contexto</li>
+            </ul>
+          </div>
+          <div class="card design">
+            <h4>Como pedir (exemplos)</h4>
+            <div class="phrase-list">
+              <div class="phrase">Preciso da task de design para a tela de cadastro</div>
+              <div class="phrase">Monte o protótipo da listagem de projetos</div>
+              <div class="phrase">O que já foi especificado para essa feature?</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="1">
+        <h2>Desenvolvedor</h2>
+        <span class="tag dev">Dev</span>
+        <div class="grid-2">
+          <div class="card dev">
+            <h4>O que você ganha</h4>
+            <ul>
+              <li>Sprint task com critérios de aceite claros</li>
+              <li>Links para regras de negócio na wiki</li>
+              <li>Assistente ajuda a implementar (com plano confirmado)</li>
+              <li>Spec a partir do código para o que já existe</li>
+            </ul>
+          </div>
+          <div class="card dev">
+            <h4>Como pedir (exemplos)</h4>
+            <div class="phrase-list">
+              <div class="phrase">Gere a task de dev da feature cadastro-etapas</div>
+              <div class="phrase">Implemente a sprint task de filtros</div>
+              <div class="phrase">Documente o módulo de contratos que já está no código</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="1">
+        <h2>QA · Testes</h2>
+        <span class="tag qa">Qualidade</span>
+        <div class="grid-2">
+          <div class="card qa">
+            <h4>O que você ganha</h4>
+            <ul>
+              <li>Critérios de aceite nas tasks — base para casos de teste</li>
+              <li>Use cases e regras de negócio como referência</li>
+              <li>Rastreio: bug documentado em fixes/ com contexto</li>
+              <li>Status da feature antes de testar</li>
+            </ul>
+          </div>
+          <div class="card qa">
+            <h4>Como pedir (exemplos)</h4>
+            <div class="phrase-list">
+              <div class="phrase">Quais são os critérios de aceite da feature X?</div>
+              <div class="phrase">O que mudou no fix da listagem?</div>
+              <div class="phrase">A feature de contratos já está pronta para teste?</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="1">
+        <h2>Líder · Coordenação</h2>
+        <span class="tag lead">Gestão</span>
+        <div class="grid-2">
+          <div class="card lead">
+            <h4>O que você ganha</h4>
+            <ul>
+              <li>Visão do andamento por feature (progress.md)</li>
+              <li>Artefatos versionados — histórico no Git</li>
+              <li>Fluxo repetível entre projetos e times</li>
+              <li>Hotfix urgente continua indo direto no GitLab</li>
+            </ul>
+          </div>
+          <div class="card lead">
+            <h4>Como pedir (exemplos)</h4>
+            <div class="phrase-list">
+              <div class="phrase">Onde estamos na feature de pipeline?</div>
+              <div class="phrase">Liste as features em andamento</div>
+              <div class="phrase">O que falta para fechar a spec de contratos?</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ VÍDEO 3 — SETUP ═══ -->
+
+      <section class="slide chapter-intro" data-chapter="2">
+        <div class="chapter-badge">Vídeo 3 de 5</div>
+        <h1>Rodando o<br><span class="hl">create-specs-setup</span></h1>
+        <p class="subtitle">
+          A ferramenta em ação: entrevista guiada no Cursor → confirmação → nasce o <strong>{projeto}-specs</strong> pronto para o time.
+        </p>
+        <div class="video-hint">Demo ao vivo no repositório create-specs-setup</div>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>Dois repositórios, dois momentos</h2>
+        <div class="grid-2">
+          <div class="card" style="border-color:rgba(251,191,36,.35)">
+            <div class="emoji">🏗️</div>
+            <h4>create-specs-setup</h4>
+            <p><strong>Ferramenta de configuração.</strong> Usada na primeira vez (ou para atualizar uma instância antiga). Fica fora do dia a dia.</p>
+            <p style="margin-top:10px;font-size:0.82rem;color:var(--muted)">Analogia: o instalador do create-react-app — não é o app em si.</p>
+          </div>
+          <div class="card" style="border-color:rgba(52,211,153,.35)">
+            <div class="emoji">📋</div>
+            <h4>{projeto}-specs</h4>
+            <p><strong>Repositório do produto.</strong> Onde o time trabalha todos os dias. Exemplo real: <strong>nexus-specs</strong>.</p>
+            <p style="margin-top:10px;font-size:0.82rem;color:var(--muted)">Analogia: o projeto React que o time desenvolve depois.</p>
+          </div>
+        </div>
+        <div class="callout green" style="margin-top:18px">
+          Depois do setup, o time pode <strong>remover create-specs-setup do workspace</strong> e usar só o <strong>nexus-specs</strong>.
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>Quem faz o setup?</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h4>👤 Idealmente</h4>
+            <ul>
+              <li>Tech lead ou dev sênior</li>
+              <li>Alguém com visão de produto (PO)</li>
+              <li>Quem conhece API, SPA e GitLab do projeto</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>⏱️ Quanto tempo</h4>
+            <ul>
+              <li>Uma sessão de entrevista (30–90 min)</li>
+              <li>Respostas em português, no chat</li>
+              <li>Revisão dos rascunhos antes de gravar</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>🎯 Resultado</h4>
+            <ul>
+              <li>Repo specs versionado no Git</li>
+              <li>Time inteiro pode começar a usar</li>
+              <li>Mesmo fluxo replicável em outros produtos</li>
+            </ul>
+          </div>
+        </div>
+        <p class="subtitle" style="margin-top:16px;font-size:0.88rem">
+          <strong>PO e designer não precisam rodar o setup</strong> — só participam das perguntas de negócio e validam os rascunhos.
+        </p>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>Antes de começar — checklist</h2>
+        <ol class="steps">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <strong>Clonar os repositórios</strong>
+              <span>create-specs-setup + API + SPA + pasta vazia para o specs (ex.: nexus-specs).</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <strong>Abrir tudo no mesmo workspace do Cursor</strong>
+              <span>Multi-root: todos os repos visíveis na barra lateral. O assistente precisa "enxergar" API e SPA para validar paths e stack.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <strong>Ter respostas sobre o produto</strong>
+              <span>Problema que resolve, quem usa, links do GitLab, se há wiki de regras de negócio, padrão de tasks do time.</span>
+            </div>
+          </li>
+        </ol>
+        <div class="folder-tree" style="margin-top:14px">
+          workspace/<br>
+          ├── create-specs-setup/  <span class="note">← ferramenta (temporária)</span><br>
+          ├── nexus-specs/         <span class="note">← destino (pasta vazia)</span><br>
+          ├── nexus-api/<br>
+          └── nexus-spa/
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>Como iniciar o setup</h2>
+        <p class="subtitle">Abra o chat do Agent com o workspace aberto e diga, por exemplo:</p>
+        <div class="phrase-list">
+          <div class="phrase">Olá</div>
+          <div class="phrase">Quero configurar o specs do projeto Nexus</div>
+          <div class="phrase">Preciso criar o repositório de specs</div>
+        </div>
+        <div class="pipeline" style="margin-top:18px">
+          <div class="pipe-step you">Você conversa</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step key">Boas-vindas</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step key">Entrevista guiada</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Confirmação</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step you">Gravação</div>
+        </div>
+        <div class="callout">
+          <strong>Você não precisa saber comandos.</strong> O assistente faz perguntas em etapas (máx. 3 por mensagem) e monta tudo automaticamente.
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>A entrevista — 7 fases</h2>
+        <table style="width:100%;max-width:920px;border-collapse:collapse;font-size:0.84rem">
+          <thead>
+            <tr style="background:var(--surface-2)">
+              <th style="padding:9px 12px;border:1px solid var(--border);text-align:left;color:var(--accent-2)">Fase</th>
+              <th style="padding:9px 12px;border:1px solid var(--border);text-align:left;color:var(--accent-2)">O que pergunta</th>
+              <th style="padding:9px 12px;border:1px solid var(--border);text-align:left;color:var(--accent-2)">Vira o quê</th>
+            </tr>
+          </thead>
+          <tbody style="color:var(--muted)">
+            <tr><td style="padding:8px 12px;border:1px solid var(--border)"><strong>0</strong> Escopo</td><td style="padding:8px 12px;border:1px solid var(--border)">Nome do produto, pasta destino, idioma</td><td style="padding:8px 12px;border:1px solid var(--border)">sdd.config.yaml</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid var(--border)"><strong>1</strong> Negócio</td><td style="padding:8px 12px;border:1px solid var(--border)">Problema, usuários, valor, escopo</td><td style="padding:8px 12px;border:1px solid var(--border)">steering/product.md</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid var(--border)"><strong>2</strong> Engenharia</td><td style="padding:8px 12px;border:1px solid var(--border)">Paths API/SPA, stack, convenções</td><td style="padding:8px 12px;border:1px solid var(--border)">steering/engineering.md</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid var(--border)"><strong>3</strong> Regras</td><td style="padding:8px 12px;border:1px solid var(--border)">Wiki de RN? URL, padrão de página</td><td style="padding:8px 12px;border:1px solid var(--border)">Config wiki</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid var(--border)"><strong>4</strong> GitLab</td><td style="padding:8px 12px;border:1px solid var(--border)">Issues, hotfix, template de tasks do time</td><td style="padding:8px 12px;border:1px solid var(--border)">templates/*.md</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid var(--border)"><strong>5</strong> Protótipo</td><td style="padding:8px 12px;border:1px solid var(--border)">Incluir app Angular mockado agora?</td><td style="padding:8px 12px;border:1px solid var(--border)">prototypes/ (opcional)</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid var(--border)"><strong>6</strong> Resumo</td><td style="padding:8px 12px;border:1px solid var(--border)">Tabela com tudo → você diz <strong>sim</strong></td><td style="padding:8px 12px;border:1px solid var(--border)">Gate final</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid var(--border)"><strong>7</strong> Gravação</td><td style="padding:8px 12px;border:1px solid var(--border)">Cria arquivos + validação automática</td><td style="padding:8px 12px;border:1px solid var(--border)">Instância pronta</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>Fases 1 e 2 — o coração do setup</h2>
+        <div class="grid-2">
+          <div class="card po">
+            <span class="tag po">Negócio</span>
+            <h4 style="margin-top:10px">steering/product.md</h4>
+            <ul>
+              <li>Qual problema o sistema resolve?</li>
+              <li>Quem são os usuários?</li>
+              <li>O que entrega de valor?</li>
+              <li>O que está dentro e fora do escopo?</li>
+            </ul>
+            <p style="margin-top:10px;font-size:0.82rem">O assistente monta um rascunho → <strong>você revisa e confirma</strong> antes de seguir.</p>
+          </div>
+          <div class="card dev">
+            <span class="tag dev">Engenharia</span>
+            <h4 style="margin-top:10px">steering/engineering.md</h4>
+            <ul>
+              <li>Onde ficam API e SPA no workspace?</li>
+              <li>Stack (Java, Angular, etc.)</li>
+              <li>Convenções do time</li>
+              <li>O assistente <strong>lê os repos</strong> — não inventa</li>
+            </ul>
+            <p style="margin-top:10px;font-size:0.82rem">Esse arquivo orienta dev e IA em todas as specs futuras.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>Decisões importantes na entrevista</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h4>📚 Wiki de regras de negócio</h4>
+            <p>O time publica RNs numa wiki do GitLab (ex.: nexus-spa)? Se sim, o assistente configura links e numeração padrão (<code>RN-{code}.{seq}</code>).</p>
+          </div>
+          <div class="card">
+            <h4>📝 Template de tasks</h4>
+            <p>O time já tem formato de issue no GitLab? Pode <strong>manter o de vocês</strong> ou usar o template padrão do setup. O assistente adapta os modelos.</p>
+          </div>
+          <div class="card">
+            <h4>🚨 Hotfix urgente</h4>
+            <p>Correção crítica em produção vai <strong>direto no GitLab</strong>, sem passar pelo fluxo de specs. O setup registra essa regra.</p>
+          </div>
+          <div class="card">
+            <h4>🖥️ Protótipo Angular</h4>
+            <p>Opcional. O assistente copia componentes visuais do SPA real e monta um app navegável mockado — útil para validar telas com PO e designer.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>Regra de ouro do setup</h2>
+        <p class="big-idea" style="font-size:1.2rem">
+          <strong>Nenhum arquivo é criado</strong> até você ver o resumo final e dizer <strong>"sim"</strong> explicitamente.
+        </p>
+        <div class="pipeline">
+          <div class="pipe-step">Entrevista</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Rascunhos de steering</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step key">Resumo em tabela</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step you">Você confirma</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Só então grava</div>
+        </div>
+        <div class="callout warm" style="margin-top:18px">
+          Se faltar informação, o assistente <strong>pergunta</strong> — não inventa paths, URLs nem stack. Itens não críticos podem ficar marcados como pendente.
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>Demo — conversa no setup</h2>
+        <div class="chat">
+          <div class="bubble you">
+            <div class="who">Tech lead</div>
+            Quero configurar o specs do projeto Nexus
+          </div>
+          <div class="bubble ai">
+            <div class="who">Assistente · create-specs-setup</div>
+            Vou rodar o create-specs-setup. Para começar:<br>
+            1. Caminho da pasta de specs?<br>
+            2. Setup novo ou atualização?<br>
+            3. Nome do produto?
+          </div>
+          <div class="bubble you">
+            <div class="who">Tech lead</div>
+            nexus-specs · novo · Nexus
+          </div>
+          <div class="bubble ai">
+            <div class="who">Assistente</div>
+            Fase 1 — Negócio. Qual problema o Nexus resolve? Quem usa o sistema?
+          </div>
+          <div class="bubble you">
+            <div class="who">PO (na mesma sessão)</div>
+            Acompanha projetos de implantação de máquinas Acer… usuários são coordenadores e técnicos…
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>O que nasce depois do "sim"</h2>
+        <div class="grid-2">
+          <div class="card success">
+            <h4>Arquivos criados automaticamente</h4>
+            <ul>
+              <li><strong>sdd.config.yaml</strong> — mapa do projeto</li>
+              <li><strong>steering/</strong> — contexto de negócio e engenharia</li>
+              <li><strong>templates/</strong> — 14 modelos de documento</li>
+              <li><strong>.agents/skills/</strong> — roteiros do assistente (17 no Nexus)</li>
+              <li><strong>features/</strong> e <strong>fixes/</strong> — pastas vazias, prontas</li>
+              <li><strong>prototypes/</strong> — se confirmado na entrevista</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Validação antes do handoff</h4>
+            <ul>
+              <li>Checklist automático (V1–V11)</li>
+              <li>Nenhum placeholder <code>{{…}}</code> solto</li>
+              <li>Tabela ✅ / ❌ apresentada a você</li>
+              <li>Lista de pendências não críticas</li>
+            </ul>
+            <p style="margin-top:10px;font-size:0.82rem">Só encerra quando tudo estiver consistente.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="2">
+        <h2>Handoff — liberando o time</h2>
+        <ol class="steps">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <strong>Commit e push do nexus-specs</strong>
+              <span>Repositório versionado — todo o time clona e usa.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <strong>Atualizar workspace do time</strong>
+              <span>Incluir nexus-specs + API + SPA. Reload do Cursor para o assistente reconhecer os roteiros.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <strong>Comunicar: "diga Olá no chat"</strong>
+              <span>A partir daí, PO, designer, dev e QA usam o fluxo do <strong>Vídeo 5 (dia a dia)</strong>.</span>
+            </div>
+          </li>
+        </ol>
+        <div class="callout green">
+          <strong>Caso Nexus:</strong> setup já concluído — nexus-specs no GitLab, protótipo Angular ativo, 17 roteiros do assistente prontos.
+        </div>
+      </section>
+
+      <!-- ═══ VÍDEO 4 — PRIMEIRO ACESSO ═══ -->
+
+      <section class="slide chapter-intro" data-chapter="3">
+        <div class="chapter-badge">Vídeo 4 de 5</div>
+        <h1>Seu <span class="hl">primeiro acesso</span></h1>
+        <p class="subtitle">Depois que o <strong>create-specs-setup</strong> gerou o <strong>nexus-specs</strong> (<strong>Vídeo 3</strong>), qualquer pessoa do time pode começar.</p>
+        <div class="video-hint">Demo ao vivo: abrir Cursor, workspace e primeira mensagem "Olá"</div>
+      </section>
+
+      <section class="slide" data-chapter="3">
+        <h2>O que você precisa ter</h2>
+        <ol class="steps">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <strong>Cursor instalado</strong>
+              <span>O mesmo editor que o time de desenvolvimento usa — você também conversa no chat dele.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <strong>Workspace do projeto aberto</strong>
+              <span>Normalmente inclui nexus-specs + código (API e SPA). Peça ao time se ainda não tiver o arquivo de workspace.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <strong>Repositório de specs clonado</strong>
+              <span>Ex.: nexus-specs. É <strong>esta pasta</strong> que você usa no dia a dia — não precisa do repositório de configuração inicial.</span>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="slide" data-chapter="3">
+        <h2>Como abrir o assistente</h2>
+        <ol class="steps">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <strong>Abra o Cursor com o workspace do Nexus</strong>
+              <span>Você verá pastas como nexus-specs, nexus-api, nexus-spa na barra lateral.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <strong>Abra o chat do Agent</strong>
+              <span>Painel de conversa com IA — onde você digita em português.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <strong>Digite "Olá" ou descreva sua necessidade</strong>
+              <span>O assistente apresenta um menu simples com 6 opções. Escolha pelo número ou continue descrevendo.</span>
+            </div>
+          </li>
+        </ol>
+        <div class="callout green">
+          <strong>Dica:</strong> não precisa mencionar nomes técnicos, pastas ou comandos. Fale como falaria com um colega.
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="3">
+        <h2>O menu de boas-vindas</h2>
+        <p class="subtitle">Ao dizer "Olá", o assistente pergunta o que você precisa:</p>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Opções principais</h4>
+            <ul>
+              <li><strong>1.</strong> Feature nova — especificar do zero</li>
+              <li><strong>2.</strong> Documentar o que já existe na tela</li>
+              <li><strong>3.</strong> Bug ou ajuste pontual</li>
+              <li><strong>4.</strong> Continuar de onde parou</li>
+              <li><strong>5.</strong> Ver andamento / status</li>
+              <li><strong>6.</strong> Ver tudo que o sistema permite</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Se você já sabe o que quer</h4>
+            <p style="margin-bottom:12px">Pule o menu — descreva direto:</p>
+            <div class="phrase-list">
+              <div class="phrase">Quero especificar o fluxo de visita técnica</div>
+              <div class="phrase">Tenho um bug no filtro de projetos</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="3">
+        <h2>Demo — primeira conversa</h2>
+        <div class="chat">
+          <div class="bubble you">
+            <div class="who">Você (PO)</div>
+            Olá
+          </div>
+          <div class="bubble ai">
+            <div class="who">Assistente</div>
+            Bem-vindo ao <strong>nexus-specs</strong>!<br><br>
+            O que você precisa?<br>
+            1. Feature nova · 2. Documentar tela existente · 3. Bug/ajuste · 4. Continuar · 5. Status · 6. Ver capacidades
+          </div>
+          <div class="bubble you">
+            <div class="who">Você</div>
+            Quero especificar o cadastro de etapas customizadas
+          </div>
+          <div class="bubble ai">
+            <div class="who">Assistente</div>
+            Perfeito. Vou criar a pasta da feature e começar pelas <strong>notas de reunião</strong>.<br>
+            Conte o contexto: qual problema isso resolve? Quem usa?
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="3">
+        <h2>Regras simples para todo mundo</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h4>✅ Faça</h4>
+            <ul>
+              <li>Responda as perguntas do assistente com o que você sabe</li>
+              <li>Revise o rascunho antes de seguir para a próxima etapa</li>
+              <li>Diga "não sei" ou "pendente" — o assistente marca</li>
+              <li>Use "continuar" quando retomar trabalho antigo</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>⛔ Evite</h4>
+            <ul>
+              <li>Assumir que o rascunho está 100% certo sem ler</li>
+              <li>Pular etapas porque "já sabe" — o fluxo existe por um motivo</li>
+              <li>Documentar hotfix urgente aqui — vai direto no GitLab</li>
+              <li>Ter medo de errar — tudo fica no Git e pode ser corrigido</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ VÍDEO 5 — DIA A DIA ═══ -->
+
+      <section class="slide chapter-intro" data-chapter="4">
+        <div class="chapter-badge">Vídeo 5 de 5</div>
+        <h1>O <span class="hl">nexus-specs</span> no dia a dia</h1>
+        <p class="subtitle">O que o create-specs-setup criou — agora em uso por PO, designer, dev, QA e requisitos.</p>
+        <div class="video-hint">Grave cenários separados: feature nova · bug · consulta de status</div>
+      </section>
+
+      <section class="slide" data-chapter="4">
+        <h2>Três fluxos que você vai usar</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="emoji">✨</div>
+            <h4>Feature nova</h4>
+            <p>Do zero até tasks no GitLab. Mais longo, mais completo. PO e requisitos lideram o início; design e dev entram depois.</p>
+          </div>
+          <div class="card">
+            <div class="emoji">🔧</div>
+            <h4>Bug ou ajuste</h4>
+            <p>Fluxo curto. Descreva o problema → task de correção → dev implementa. Ideal para QA e dev.</p>
+          </div>
+          <div class="card">
+            <div class="emoji">📷</div>
+            <h4>Já existe no sistema</h4>
+            <p>Tela ou módulo já implementado, falta documentar. Dev ou requisitos pedem; assistente lê o código e gera a spec.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="4">
+        <h2>Feature nova — etapas (visão geral)</h2>
+        <p class="subtitle">Não precisa decorar — o assistente guia uma etapa por vez. Visão para entender o caminho:</p>
+        <div class="pipeline">
+          <div class="pipe-step">Notas de reunião</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Regras de negócio</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Use case</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Spec de protótipo</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Task design</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step key">Task dev</div>
+        </div>
+        <div class="callout">
+          Cada etapa gera um arquivo na pasta da feature. O arquivo <strong>progress.md</strong> mostra o que já foi feito e o que falta — qualquer pessoa pode consultar.
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="4">
+        <h2>Quem faz o quê — feature nova</h2>
+        <table style="width:100%;max-width:900px;border-collapse:collapse;font-size:0.85rem">
+          <thead>
+            <tr style="background:var(--surface-2)">
+              <th style="padding:10px 14px;border:1px solid var(--border);text-align:left;color:var(--accent-2)">Etapa</th>
+              <th style="padding:10px 14px;border:1px solid var(--border);text-align:left;color:var(--accent-2)">Quem lidera</th>
+              <th style="padding:10px 14px;border:1px solid var(--border);text-align:left;color:var(--accent-2)">Saída</th>
+            </tr>
+          </thead>
+          <tbody style="color:var(--muted)">
+            <tr><td style="padding:9px 14px;border:1px solid var(--border)">Notas de reunião</td><td style="padding:9px 14px;border:1px solid var(--border)">PO / Requisitos</td><td style="padding:9px 14px;border:1px solid var(--border)">Contexto e decisões</td></tr>
+            <tr><td style="padding:9px 14px;border:1px solid var(--border)">Regras de negócio</td><td style="padding:9px 14px;border:1px solid var(--border)">PO / Requisitos</td><td style="padding:9px 14px;border:1px solid var(--border)">RNs numeradas (+ wiki)</td></tr>
+            <tr><td style="padding:9px 14px;border:1px solid var(--border)">Use case</td><td style="padding:9px 14px;border:1px solid var(--border)">PO / Requisitos</td><td style="padding:9px 14px;border:1px solid var(--border)">Fluxos e cenários</td></tr>
+            <tr><td style="padding:9px 14px;border:1px solid var(--border)">Spec de protótipo</td><td style="padding:9px 14px;border:1px solid var(--border)">PO + Designer</td><td style="padding:9px 14px;border:1px solid var(--border)">Telas e comportamentos</td></tr>
+            <tr><td style="padding:9px 14px;border:1px solid var(--border)">Task de design</td><td style="padding:9px 14px;border:1px solid var(--border)">Designer</td><td style="padding:9px 14px;border:1px solid var(--border)">Issue GitLab para UX/UI</td></tr>
+            <tr><td style="padding:9px 14px;border:1px solid var(--border)">Task de dev</td><td style="padding:9px 14px;border:1px solid var(--border)">Dev / Tech lead</td><td style="padding:9px 14px;border:1px solid var(--border)">Issue GitLab para desenvolvimento</td></tr>
+            <tr><td style="padding:9px 14px;border:1px solid var(--border)">Implementação</td><td style="padding:9px 14px;border:1px solid var(--border)">Dev</td><td style="padding:9px 14px;border:1px solid var(--border)">Código + testes</td></tr>
+            <tr><td style="padding:9px 14px;border:1px solid var(--border)">Testes</td><td style="padding:9px 14px;border:1px solid var(--border)">QA</td><td style="padding:9px 14px;border:1px solid var(--border)">Validação contra critérios</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="slide" data-chapter="4">
+        <h2>Demo — PO especificando</h2>
+        <div class="chat">
+          <div class="bubble you">
+            <div class="who">PO</div>
+            Quero especificar o cadastro de etapas customizadas
+          </div>
+          <div class="bubble ai">
+            <div class="who">Assistente</div>
+            Vamos começar pelas notas de reunião. O que motivou essa feature?
+          </div>
+          <div class="bubble you">
+            <div class="who">PO</div>
+            O Nexus precisa de etapas genéricas que o usuário cria, antes das etapas fixas do sistema…
+          </div>
+          <div class="bubble ai">
+            <div class="who">Assistente</div>
+            Salvei em <code>features/cadastro-etapas/spec/meeting-notes.md</code>.<br>
+            Revise o texto. Quando aprovar, seguimos para <strong>regras de negócio</strong>.
+          </div>
+        </div>
+        <div class="callout warm">Sempre há uma pausa para <strong>você revisar</strong> antes de avançar.</div>
+      </section>
+
+      <section class="slide" data-chapter="4">
+        <h2>Demo — Designer</h2>
+        <div class="chat">
+          <div class="bubble you">
+            <div class="who">Designer</div>
+            Preciso da task de design da feature cadastro-etapas
+          </div>
+          <div class="bubble ai">
+            <div class="who">Assistente</div>
+            Li o use case e a spec de protótipo. Algumas perguntas:<br>
+            — Há componentes novos ou só reutiliza os existentes?<br>
+            — Mobile entra no escopo?
+          </div>
+          <div class="bubble you">
+            <div class="who">Designer</div>
+            Só reutiliza. Desktop apenas nesta fase.
+          </div>
+          <div class="bubble ai">
+            <div class="who">Assistente</div>
+            Task gerada em <code>tasks/design-task.md</code> — pronta para colar no GitLab.
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="4">
+        <h2>Demo — Dev e QA</h2>
+        <div class="grid-2">
+          <div>
+            <span class="tag dev">Dev</span>
+            <div class="chat" style="margin-top:10px">
+              <div class="bubble you">
+                <div class="who">Dev</div>
+                Implemente a sprint task da feature cadastro-etapas
+              </div>
+              <div class="bubble ai">
+                <div class="who">Assistente</div>
+                Li a task e as RNs. Proponho este plano: migration, entidade, CRUD API, tela SPA… Confirma?
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="tag qa">QA</span>
+            <div class="chat" style="margin-top:10px">
+              <div class="bubble you">
+                <div class="who">QA</div>
+                Quais critérios de aceite da feature cadastro-etapas?
+              </div>
+              <div class="bubble ai">
+                <div class="who">Assistente</div>
+                Na sprint task: cadastro com nome obrigatório, listagem com filtro, exclusão lógica… Quer o arquivo completo?
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="4">
+        <h2>Bug ou ajuste — fluxo rápido</h2>
+        <div class="pipeline">
+          <div class="pipe-step you">Descreve o problema</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Assistente pergunta detalhes</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Gera fix-task.md</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step">Dev corrige</div>
+          <span class="pipe-arrow">→</span>
+          <div class="pipe-step you">QA valida</div>
+        </div>
+        <div class="phrase-list" style="margin-top:18px">
+          <div class="phrase">O filtro de data na listagem de projetos não funciona no último dia do mês</div>
+          <div class="phrase">Investigue o bug no cadastro de máquinas</div>
+        </div>
+        <div class="callout">
+          <strong>Urgência em produção?</strong> Não passe por aqui — abra issue direto no GitLab e faça o MR. O fluxo de specs é para trabalho planejado e documentado.
+        </div>
+      </section>
+
+      <section class="slide" data-chapter="4">
+        <h2>Consultas do dia a dia</h2>
+        <span class="tag all">Qualquer perfil</span>
+        <div class="grid-2" style="margin-top:14px">
+          <div class="card">
+            <h4>Perguntas que sempre funcionam</h4>
+            <div class="phrase-list">
+              <div class="phrase">Onde paramos na feature X?</div>
+              <div class="phrase">Qual o status do fix Y?</div>
+              <div class="phrase">O que falta para fechar a spec?</div>
+              <div class="phrase">Continuar o trabalho de ontem</div>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Onde o assistente busca a resposta</h4>
+            <ul>
+              <li>progress.md da feature ou fix</li>
+              <li>Arquivos já gerados na pasta</li>
+              <li>Contexto do produto (steering)</li>
+              <li>Código, quando a pergunta for técnica</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide chapter-intro" data-chapter="4">
+        <div class="chapter-badge">Encerramento</div>
+        <h1>Lembre-se<br><span class="hl">só três coisas</span></h1>
+        <ol class="steps" style="margin-top:20px">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <strong>create-specs-setup</strong>
+              <span>Configura uma vez → nasce o {projeto}-specs (ex.: nexus-specs).</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <strong>Converse em português no Cursor</strong>
+              <span>"Olá", "quero especificar…", "onde paramos?" — sem decorar comandos.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <strong>Revise os rascunhos</strong>
+              <span>A IA ajuda a escrever; você valida antes de seguir.</span>
+            </div>
+          </li>
+        </ol>
+        <p class="subtitle" style="margin-top:28px">
+          Dúvidas? Diga <strong>"Olá"</strong> no chat do Cursor com o workspace aberto.
+        </p>
+      </section>
+
+    </main>
+
+    <footer class="nav">
+      <button class="nav-btn" id="prevBtn" disabled>← Anterior</button>
+      <div>
+        <div class="progress-dots" id="dots"></div>
+        <div class="kbd-hint"><kbd>←</kbd> <kbd>→</kbd> navegar · <kbd>1</kbd>–<kbd>5</kbd> ir ao vídeo</div>
+      </div>
+      <button class="nav-btn primary" id="nextBtn">Próximo →</button>
+    </footer>
+
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const dotsEl = document.getElementById('dots');
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const chapterTabs = [...document.querySelectorAll('.chapter-tab')];
+
+    const chapterStarts = slides.reduce((acc, s, i) => {
+      if (s.classList.contains('chapter-intro')) acc.push(i);
+      return acc;
+    }, []);
+
+    let current = 0;
+
+    slides.forEach((s, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot-btn' + (s.classList.contains('chapter-intro') ? ' ch-start' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    const dots = [...dotsEl.querySelectorAll('.dot-btn')];
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      current = Math.max(0, Math.min(n, slides.length - 1));
+      slides[current].classList.add('active');
+      updateUI();
+    }
+
+    function updateUI() {
+      counter.textContent = `${current + 1} / ${slides.length}`;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      const ch = +slides[current].dataset.chapter;
+      chapterTabs.forEach(t => t.classList.toggle('active', +t.dataset.chapter === ch));
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+    chapterTabs.forEach(tab => tab.addEventListener('click', () => goTo(chapterStarts[+tab.dataset.chapter] ?? 0)));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); if (current < slides.length - 1) goTo(current + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); if (current > 0) goTo(current - 1); }
+      if (e.key >= '1' && e.key <= '5') goTo(chapterStarts[+e.key - 1] ?? 0);
+    });
+
+    updateUI();
+  </script>
+</body>
+</html>
