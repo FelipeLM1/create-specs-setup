@@ -7,7 +7,17 @@
   }
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".flow, .steps").forEach(function (el) {
+      el.classList.add("is-visible");
+    });
     return;
+  }
+
+  function markNestedVisible(el) {
+    el.classList.add("is-visible");
+    el.querySelectorAll(".flow, .steps").forEach(function (nested) {
+      nested.classList.add("is-visible");
+    });
   }
 
   var reveals = document.querySelectorAll("[data-reveal]");
@@ -16,22 +26,26 @@
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            markNestedVisible(entry.target);
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -4% 0px" }
     );
 
     reveals.forEach(function (el) {
       observer.observe(el);
     });
   } else {
-    reveals.forEach(function (el) {
-      el.classList.add("is-visible");
-    });
+    reveals.forEach(markNestedVisible);
   }
+
+  document.querySelectorAll(".flow, .steps").forEach(function (el) {
+    if (el.closest(".is-visible") || el.classList.contains("is-visible")) {
+      el.classList.add("is-visible");
+    }
+  });
 
   if (motion !== "elaborado") {
     return;

@@ -25,4 +25,4 @@ Use a skill `docs-wiki-page` (sob demanda). Modelo: `templates/page.html`.
 
 ## Público
 
-Cliente, usuário final e time — **sem** detalhes técnicos de implementação.
+Documentação de produto em linguagem de negócio (sem código).

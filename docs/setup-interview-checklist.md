@@ -116,7 +116,7 @@ Se **não**: `prototype.enabled: false` — protótipo pode ser adicionado depoi
 
 ## Fase 5b — Docs wiki do produto (opcional)
 
-Wiki HTML estática em `docs_wiki/` — foco **negócio/produto** (cliente, usuário final e time). Sem detalhes técnicos. Fácil de abrir no navegador ou empacotar para envio.
+Wiki HTML estática em `docs_wiki/` — documentação de produto (o que resolve, como funciona, como fazer). Fácil de abrir no navegador ou empacotar para envio.
 
 **Não confundir** com a wiki externa de RN (`business_rules.wiki`, Fase 3).
 
@@ -139,7 +139,7 @@ Se **não**: `docs_wiki.enabled: false` — pode adicionar depois via `upgrade-s
 
 **5b.1 — Criar docs wiki?**
 
-> Quer criar uma **docs wiki** do produto? É um site HTML estático (sem framework) para cliente, usuário e time: explica o que o sistema resolve e como fazer as coisas no dia a dia — sem código. Dá para abrir no navegador ou enviar a pasta pronta.
+> Quer criar uma **docs wiki** do produto? É um site HTML estático (sem framework): explica o que o sistema resolve e como fazer as coisas no dia a dia. Dá para abrir no navegador ou enviar a pasta pronta.
 
 **5b.2 — Tema visual** (cada tema já inclui tipografia **e** uma paleta de cores pronta):
 
@@ -161,7 +161,7 @@ Se **não**: `docs_wiki.enabled: false` — pode adicionar depois via `upgrade-s
 
 | Opção | Descrição |
 |-------|-----------|
-| **narrativo** | Conta a história: problema → solução → como fazer (bom para cliente) |
+| **narrativo** | Conta a história: problema → solução → como fazer |
 | **didatico** | Mais tutorial e passo a passo (“como faço X”) |
 | **conciso** | Direto e curto; menos prosa |
 | **personalizado** | Você descreve o tom |

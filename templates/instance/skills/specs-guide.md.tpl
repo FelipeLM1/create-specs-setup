@@ -42,7 +42,7 @@ Posso ajudar no {{SPECS_REPO_SLUG}}. O que você precisa fazer?
 3. **Bug ou ajuste** — correção pontual (fluxo enxuto em fixes/)
 4. **Continuar** — retomar spec ou fix já iniciado
 5. **Status** — ver andamento de feature ou fix
-6. **Docs wiki** — página de produto para cliente/usuário (se habilitada)
+6. **Docs wiki** — página de produto (se habilitada)
 7. **Hotfix urgente** — produção (sem pasta no {{SPECS_REPO_SLUG}})
 
 Descreva em uma frase ou escolha o número.
@@ -63,7 +63,7 @@ Se o usuário já descreveu o problema, **pule a lista** e vá direto à triagem
 | Implementar / codar tarefa ou feature | Implementação | `implement-sprint-task` |
 | Investigar e corrigir bug no código | Implementação fix | `implement-fix` |
 | Gerar/exportar prints do protótipo para a spec | Pós-B5 | `prototype-export-screenshots` |
-| Página da docs wiki / documentação de produto para cliente | Docs wiki | `docs-wiki-page` |
+| Página da docs wiki / documentação de produto | Docs wiki | `docs-wiki-page` |
 | Label, copy, filtro, tweak acordado | Fix (`adjustment`) | `quick-fix` |
 | "Onde paramos" / slug conhecido incompleto | Continuar | ver § Continuar abaixo |
 | "Status da feature X" | Consulta | `feature-progress` |

@@ -9,6 +9,11 @@
   max-width: 48rem;
 }
 
+.content--wide .diagram,
+.diagram--wide {
+  max-width: none;
+}
+
 .diagram__title {
   margin: 0 0 1rem;
   font-size: 0.75rem;
@@ -224,24 +229,40 @@ html[data-motion="elaborado"] .flow__step {
 }
 
 html[data-motion="sutil"] .flow.is-visible .flow__step,
-html[data-motion="elaborado"] .flow.is-visible .flow__step {
+html[data-motion="elaborado"] .flow.is-visible .flow__step,
+html[data-motion="sutil"] .is-visible .flow__step,
+html[data-motion="elaborado"] .is-visible .flow__step {
   animation: wiki-hero-in 0.5s ease forwards;
 }
 
 html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(1),
-html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(1) { animation-delay: 0.05s; }
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(1),
+html[data-motion="sutil"] .is-visible .flow__step:nth-child(1),
+html[data-motion="elaborado"] .is-visible .flow__step:nth-child(1) { animation-delay: 0.05s; }
 html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(2),
-html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(2) { animation-delay: 0.12s; }
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(2),
+html[data-motion="sutil"] .is-visible .flow__step:nth-child(2),
+html[data-motion="elaborado"] .is-visible .flow__step:nth-child(2) { animation-delay: 0.12s; }
 html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(3),
-html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(3) { animation-delay: 0.19s; }
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(3),
+html[data-motion="sutil"] .is-visible .flow__step:nth-child(3),
+html[data-motion="elaborado"] .is-visible .flow__step:nth-child(3) { animation-delay: 0.19s; }
 html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(4),
-html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(4) { animation-delay: 0.26s; }
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(4),
+html[data-motion="sutil"] .is-visible .flow__step:nth-child(4),
+html[data-motion="elaborado"] .is-visible .flow__step:nth-child(4) { animation-delay: 0.26s; }
 html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(5),
-html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(5) { animation-delay: 0.33s; }
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(5),
+html[data-motion="sutil"] .is-visible .flow__step:nth-child(5),
+html[data-motion="elaborado"] .is-visible .flow__step:nth-child(5) { animation-delay: 0.33s; }
 html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(6),
-html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(6) { animation-delay: 0.4s; }
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(6),
+html[data-motion="sutil"] .is-visible .flow__step:nth-child(6),
+html[data-motion="elaborado"] .is-visible .flow__step:nth-child(6) { animation-delay: 0.4s; }
 html[data-motion="sutil"] .flow.is-visible .flow__step:nth-child(7),
-html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(7) { animation-delay: 0.47s; }
+html[data-motion="elaborado"] .flow.is-visible .flow__step:nth-child(7),
+html[data-motion="sutil"] .is-visible .flow__step:nth-child(7),
+html[data-motion="elaborado"] .is-visible .flow__step:nth-child(7) { animation-delay: 0.47s; }
 
 @media (prefers-reduced-motion: reduce) {
   html[data-motion] .flow__step {

@@ -1,6 +1,6 @@
 ---
 name: docs-wiki-page
-description: Gera ou atualiza páginas HTML da docs wiki do produto (negócio/cliente) em docs_wiki/. Tom narrativo sem detalhes técnicos. Use quando pedir página da wiki, documentar feature para o cliente, atualizar docs wiki ou exportar guia de produto no {{SPECS_REPO_SLUG}}.
+description: Gera ou atualiza páginas HTML da docs wiki do produto em docs_wiki/. Tom narrativo de negócio/produto. Use quando pedir página da wiki, documentar feature na docs wiki, atualizar docs wiki ou exportar guia de produto no {{SPECS_REPO_SLUG}}.
 ---
 
 # Skill: Docs wiki — gerar/atualizar página
@@ -11,7 +11,7 @@ description: Gera ou atualiza páginas HTML da docs wiki do produto (negócio/cl
 - "gerar página da wiki sobre…"
 - "documentar na docs wiki a feature…"
 - "atualizar a wiki do produto…"
-- "página para o cliente sobre…"
+- "página da wiki sobre…"
 
 **Pré-condição:** `docs_wiki.enabled: true` em `sdd.config.yaml` e pasta `docs_wiki/` existente.
 Se desabilitada → informar e oferecer criar via `upgrade-specs` / setup.
@@ -22,7 +22,7 @@ Se desabilitada → informar e oferecer criar via `upgrade-specs` / setup.
 
 ## Objetivo
 
-Criar ou atualizar uma página HTML estática em `docs_wiki/pages/`, alinhada ao tema/escrita/animação configurados, **focada em negócio/produto** (cliente, usuário final e time).
+Criar ou atualizar uma página HTML estática em `docs_wiki/pages/`, alinhada ao tema/escrita/animação configurados, em tom de **negócio/produto**.
 
 ---
 
@@ -35,6 +35,7 @@ Criar ou atualizar uma página HTML estática em `docs_wiki/pages/`, alinhada ao
 5. Fontes de verdade internas (specs) **reescritas** em tom de produto — não copiar RN/SE-ENTÃO literal
 6. Respeitar `ai-rules.md` (fato / `[HIPÓTESE]` / `[PENDENTE]`)
 7. Responder em **português** (ou idioma de `project.language`)
+8. **Não** incluir seções do tipo “para quem é esta wiki” / justificar público — ir direto ao conteúdo
 
 ### Estilos de escrita (`docs_wiki.escrita`)
 
@@ -92,7 +93,7 @@ Antes de gravar, obter:
 2. **Fonte** — spec em `sprints/.../features/{slug}/`, steering, ou só o que o usuário narrar?
 3. **Tipo de página** — `feature` · `concept` · `flow` · `glossary` · `onboarding` · outro
 4. **Slug do arquivo** — kebab-case (ex.: `aprovacao-pedidos`)
-5. Confirmar se atualiza `index.html` (card + link no nav)
+5. Confirmar tags/descrição curta para o catálogo (busca)
 
 Se a fonte for feature: ler `meeting-notes`, `business-rules`, `use-case` (e design/screenshots se existirem) — **só para entender**; reescrever para a wiki.
 
@@ -102,9 +103,12 @@ Se a fonte for feature: ler `meeting-notes`, `business-rules`, `use-case` (e des
 
 ```
 docs_wiki/
-  index.html
+  index.html                 ← hub + catálogo (data-catalog)
   pages/{slug}.html          ← página nova/atualizada
   templates/page.html        ← esqueleto de referência
+  assets/js/catalog-data.js  ← registro de páginas (busca + catálogo)
+  assets/js/catalog.js       ← renderiza catálogo e busca
+  assets/brand/              ← logo opcional (logo.png / logo-on-dark.png)
   assets/…                   ← não alterar salvo pedido de tema
 ```
 
@@ -114,13 +118,13 @@ Placeholders a preencher (valores de `sdd.config.yaml`):
 
 - `data-motion`, `data-theme`, `data-writing` iguais às páginas existentes
 - Links CSS/JS relativos (`../assets/...`)
-- Nav consistente com as outras páginas
+- Header com busca (`data-wiki-search`) + scripts `catalog-data.js` e `catalog.js`
 
 ---
 
 ## Seções mínimas (página tipo feature / flow)
 
-1. Hero: eyebrow + título + lead
+1. Hero compacto: eyebrow + título + lead
 2. **O problema** (ou contexto de negócio)
 3. **O que o sistema resolve**
 4. **Como funciona** (comportamento visível ao usuário)
@@ -134,14 +138,28 @@ Ajustar seções ao tipo (`glossary`, `concept`, etc.) sem perder o tom de produ
 
 ## Após gravar a página
 
-1. Atualizar `docs_wiki/index.html` — card em “Explorar” + link no nav (se combinado)
-2. Atualizar nav das páginas irmãs relevantes (pelo menos `como-usar.html` e `index.html`)
+1. **Obrigatório:** atualizar `docs_wiki/assets/js/catalog-data.js` — adicionar/atualizar entrada:
+
+```js
+{
+  id: "{slug}",
+  title: "…",
+  description: "…",
+  href: "pages/{slug}.html",
+  type: "feature", // feature | concept | flow | glossary | onboarding | …
+  tags: ["…"],
+  listed: true
+}
+```
+
+2. Não é necessário editar cards manuais no `index.html` — o catálogo é renderizado pelo JS
 3. Mensagem pós-etapa:
 
 ```
 ✅ Página da docs wiki gerada.
 
 Arquivo: docs_wiki/pages/{slug}.html
+Catálogo: docs_wiki/assets/js/catalog-data.js (atualizado)
 Abrir: docs_wiki/index.html (navegador)
 
 Quer gerar outra página ou ajustar o texto desta?
@@ -151,12 +169,14 @@ Quer gerar outra página ou ajustar o texto desta?
 
 ## Anti-patterns
 
+- Incluir seção “para quem é a wiki” / justificar público da documentação
 - Incluir trechos de código ou contratos de API
 - Copiar `business-rules.md` literalmente
 - Inventar comportamento sem evidência na spec/conversa
 - Alterar tema CSS global sem pedido explícito
 - Gerar página se `docs_wiki.enabled: false`
 - Usar SVG/ilustração **sem licença MIT** (ou origem duvidosa)
+- Esquecer de registrar a página em `catalog-data.js` (quebra busca e catálogo)
 
 ---
 
@@ -166,3 +186,4 @@ Quer gerar outra página ou ajustar o texto desta?
 - `sdd.config.yaml` → `docs_wiki`
 - `docs_wiki/README.md`
 - `docs_wiki/templates/page.html`
+- `docs_wiki/assets/js/catalog-data.js`

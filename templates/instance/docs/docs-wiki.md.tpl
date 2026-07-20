@@ -1,6 +1,6 @@
 # Docs wiki (documentação de produto)
 
-A **docs wiki** é um site HTML estático dentro do repositório de specs (`docs_wiki/`), voltado a **cliente, usuário final e time**. Explica o produto em linguagem de negócio — o que resolve, como funciona e como fazer no sistema.
+A **docs wiki** é um site HTML estático em `docs_wiki/`: explica o produto — o que resolve, como funciona e como fazer no sistema — em linguagem de negócio.
 
 **Não confundir** com a wiki externa de regras de negócio (`business_rules.wiki` no GitLab), usada para RN numeradas e gates de sprint task.
 
@@ -12,16 +12,17 @@ Somente se `sdd.config.yaml` → `docs_wiki.enabled: true` (decidido no setup ou
 
 ---
 
-## Público e tom
+## Conteúdo
 
 | Inclui | Não inclui |
 |--------|------------|
 | Problema de negócio | Código-fonte |
 | Valor e comportamento do sistema | Endpoints / banco |
 | Passo a passo de uso | Decisões de implementação |
-| Narrativa exportável ao cliente | Jargão técnico desnecessário |
 
 Estilo de escrita configurável: `narrativo` (padrão) · `didatico` · `conciso` · `personalizado`.
+
+Não justificar na página “para quem é a wiki” — ir direto ao conteúdo do produto.
 
 ---
 
@@ -52,8 +53,8 @@ Usar `assets/css/diagrams.css` (fluxo, split, decisão, figura SVG) para didáti
 ## Como abrir / entregar
 
 1. Abrir `docs_wiki/index.html` no navegador, ou
-2. Empacotar a pasta `docs_wiki/` e enviar ao cliente, ou
-3. Servir como site estático (qualquer host de arquivos estáticos)
+2. Empacotar a pasta `docs_wiki/` e enviar, ou
+3. Servir como site estático
 
 Sem framework e sem build obrigatório.
 
@@ -65,8 +66,18 @@ Skill **`docs-wiki-page`** — sob demanda (não automática no lifecycle da fea
 
 Modelo: `docs_wiki/templates/page.html`.
 
+### Catálogo e busca
+
+- Fonte: `docs_wiki/assets/js/catalog-data.js` (formato JS para funcionar via `file://`)
+- UI: busca no header + seção catálogo no `index.html` (filtros por tipo)
+- Ao gerar página: **obrigatório** registrar em `catalog-data.js`
+
+### Marca
+
+Logo opcional em `docs_wiki/assets/brand/` (`logo.png` / `logo-on-dark.png`).
+
 ---
 
 ## Relação com o SDD
 
-As specs em `sprints/.../features/{slug}/` continuam sendo a fonte detalhada interna. A docs wiki **reescreve** o essencial em tom de produto para leitura externa e consulta rápida do time.
+As specs em `sprints/.../features/{slug}/` continuam sendo a fonte detalhada interna. A docs wiki **reescreve** o essencial em tom de produto.

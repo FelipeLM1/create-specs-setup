@@ -16,58 +16,67 @@
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="index.html">{{PROJECT_NAME}}</a>
-      <ul class="nav">
-        <li><a href="index.html" aria-current="page">Início</a></li>
-        <li><a href="pages/como-usar.html">Como usar esta wiki</a></li>
-      </ul>
+      <a class="brand" href="index.html">
+        <!-- Se existir assets/brand/logo(-on-dark).png, a skill/setup pode ativar o <img> -->
+        <span class="brand__name">{{PROJECT_NAME}}</span>
+      </a>
+      <div class="site-header__tools">
+        <div class="search">
+          <label class="visually-hidden" for="wiki-search">Buscar na wiki</label>
+          <input
+            id="wiki-search"
+            class="search__input"
+            type="search"
+            placeholder="Buscar páginas…"
+            autocomplete="off"
+            data-wiki-search
+          >
+          <ul class="search__results" data-wiki-search-results role="listbox" aria-label="Resultados da busca"></ul>
+        </div>
+        <ul class="nav">
+          <li><a href="index.html" aria-current="page">Início</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="pages/como-usar.html">Como usar</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="hero__inner">
-      <p class="hero__eyebrow">Wiki do produto</p>
-      <h1 class="hero__title">Entenda o {{PROJECT_NAME}} sem abrir o código</h1>
-      <p class="hero__lead">
-        Aqui contamos, em linguagem de negócio, o problema que o sistema resolve,
-        como ele funciona no dia a dia e o passo a passo para realizar as principais ações.
-      </p>
+  <section class="hero hero--compact">
+    <div class="hero__inner hero__row">
+      <div>
+        <p class="hero__eyebrow">Wiki do produto</p>
+        <h1 class="hero__title">Entenda o {{PROJECT_NAME}} sem abrir o código</h1>
+        <p class="hero__lead">
+          Aqui contamos, em linguagem de negócio, o problema que o sistema resolve,
+          como ele funciona no dia a dia e o passo a passo para realizar as principais ações.
+        </p>
+      </div>
+      <!-- Opcional: <div class="hero__visual"><img src="assets/brand/logo-on-dark.png" alt=""></div> -->
     </div>
   </section>
 
   <main class="layout">
-    <div class="content">
-      <section data-reveal>
-        <h2 id="bem-vindo">Bem-vindo</h2>
+    <div class="content content--wide">
+      <section data-reveal id="catalogo">
+        <h2>Catálogo de páginas</h2>
         <p class="lead">
-          Esta wiki é para <strong>cliente, usuário final e time</strong>.
-          O foco é produto: o quê, por quê e como fazer — sem detalhes técnicos de implementação.
+          Todas as páginas da wiki em um só lugar. Filtre por tipo ou use a busca no topo.
         </p>
-        <div class="callout callout--tip">
-          <p class="callout__label">Dica</p>
-          <p>Comece por “Como usar esta wiki” e depois explore os tópicos conforme a necessidade do momento.</p>
-        </div>
-      </section>
-
-      <section data-reveal>
-        <h2 id="explorar">Explorar</h2>
-        <div class="card-grid">
-          <a class="card" href="pages/como-usar.html">
-            <h3 class="card__title">Como usar esta wiki</h3>
-            <p class="card__text">Orientação rápida para navegar e tirar o máximo desta documentação.</p>
-          </a>
-          <!-- Novas páginas: adicione cards aqui ao gerar com a skill docs-wiki-page -->
-        </div>
+        <div class="catalog-toolbar" data-catalog-filters></div>
+        <div data-catalog></div>
       </section>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <p>{{PROJECT_NAME}} — documentação de produto. Abra o <code>index.html</code> no navegador para navegar offline.</p>
+      <p>{{PROJECT_NAME}} — documentação de produto. Use a busca ou o catálogo para encontrar tópicos.</p>
     </div>
   </footer>
 
+  <script src="assets/js/catalog-data.js"></script>
+  <script src="assets/js/catalog.js"></script>
   <script src="assets/js/motion.js"></script>
   <script src="assets/js/nav.js"></script>
 </body>

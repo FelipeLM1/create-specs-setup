@@ -16,16 +16,32 @@
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="../index.html">{{PROJECT_NAME}}</a>
-      <ul class="nav">
-        <li><a href="../index.html">Início</a></li>
-        <li><a href="como-usar.html">Como usar esta wiki</a></li>
-        <!-- Mantido pela skill docs-wiki-page -->
-      </ul>
+      <a class="brand" href="../index.html">
+        <span class="brand__name">{{PROJECT_NAME}}</span>
+      </a>
+      <div class="site-header__tools">
+        <div class="search">
+          <label class="visually-hidden" for="wiki-search">Buscar na wiki</label>
+          <input
+            id="wiki-search"
+            class="search__input"
+            type="search"
+            placeholder="Buscar páginas…"
+            autocomplete="off"
+            data-wiki-search
+          >
+          <ul class="search__results" data-wiki-search-results role="listbox" aria-label="Resultados da busca"></ul>
+        </div>
+        <ul class="nav">
+          <li><a href="../index.html">Início</a></li>
+          <li><a href="../index.html#catalogo">Catálogo</a></li>
+          <li><a href="como-usar.html">Como usar</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
-  <section class="hero">
+  <section class="hero hero--compact">
     <div class="hero__inner">
       <p class="hero__eyebrow">{{PAGE_EYEBROW}}</p>
       <h1 class="hero__title">{{PAGE_TITLE}}</h1>
@@ -59,10 +75,12 @@
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <p><a href="../index.html">← Voltar ao início</a></p>
+      <p><a href="../index.html">← Voltar ao início</a> · <a href="../index.html#catalogo">Catálogo</a></p>
     </div>
   </footer>
 
+  <script src="../assets/js/catalog-data.js"></script>
+  <script src="../assets/js/catalog.js"></script>
   <script src="../assets/js/motion.js"></script>
   <script src="../assets/js/nav.js"></script>
 </body>

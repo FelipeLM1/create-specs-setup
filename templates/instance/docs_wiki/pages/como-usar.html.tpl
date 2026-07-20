@@ -16,15 +16,32 @@
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="../index.html">{{PROJECT_NAME}}</a>
-      <ul class="nav">
-        <li><a href="../index.html">Início</a></li>
-        <li><a href="como-usar.html" aria-current="page">Como usar esta wiki</a></li>
-      </ul>
+      <a class="brand" href="../index.html">
+        <span class="brand__name">{{PROJECT_NAME}}</span>
+      </a>
+      <div class="site-header__tools">
+        <div class="search">
+          <label class="visually-hidden" for="wiki-search">Buscar na wiki</label>
+          <input
+            id="wiki-search"
+            class="search__input"
+            type="search"
+            placeholder="Buscar páginas…"
+            autocomplete="off"
+            data-wiki-search
+          >
+          <ul class="search__results" data-wiki-search-results role="listbox" aria-label="Resultados da busca"></ul>
+        </div>
+        <ul class="nav">
+          <li><a href="../index.html">Início</a></li>
+          <li><a href="../index.html#catalogo">Catálogo</a></li>
+          <li><a href="como-usar.html" aria-current="page">Como usar</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
-  <section class="hero">
+  <section class="hero hero--compact">
     <div class="hero__inner">
       <p class="hero__eyebrow">Orientação</p>
       <h1 class="hero__title">Como usar esta wiki</h1>
@@ -40,8 +57,8 @@
       <p class="sidebar__title">Nesta página</p>
       <nav>
         <ul>
-          <li><a href="#para-quem">Para quem é</a></li>
           <li><a href="#o-que-encontrar">O que encontrar</a></li>
+          <li><a href="#como-encontrar">Como encontrar</a></li>
           <li><a href="#como-ler">Como ler</a></li>
           <li><a href="#atualizar">Manter atualizado</a></li>
         </ul>
@@ -49,18 +66,6 @@
     </aside>
 
     <main class="content">
-      <section data-reveal>
-        <h2 id="para-quem">Para quem é</h2>
-        <p>
-          Esta wiki serve a <strong>clientes</strong>, <strong>usuários finais</strong> e ao <strong>time</strong>
-          (produto, negócio e desenvolvimento). Todos compartilham a mesma linguagem: o sistema como ele é vivido no dia a dia.
-        </p>
-        <div class="callout">
-          <p class="callout__label">O que você não encontra aqui</p>
-          <p>Código, endpoints, detalhes de banco ou decisões de implementação. Isso fica nos repositórios técnicos e nas specs internas.</p>
-        </div>
-      </section>
-
       <section data-reveal>
         <h2 id="o-que-encontrar">O que encontrar</h2>
         <p>As páginas costumam seguir um fio narrativo:</p>
@@ -73,26 +78,30 @@
       </section>
 
       <section data-reveal>
+        <h2 id="como-encontrar">Como encontrar</h2>
+        <p>
+          Use a <strong>busca</strong> no topo (título, descrição e tags) ou o
+          <a href="../index.html#catalogo">catálogo na página inicial</a>, com filtros por tipo de página.
+        </p>
+      </section>
+
+      <section data-reveal>
         <h2 id="como-ler">Como ler</h2>
         <p>
-          Use o menu superior para ir ao início ou a outras páginas.
+          Use o menu superior para ir ao início, ao catálogo ou a outras páginas.
           Nas páginas longas, a barra lateral destaca a seção em que você está.
-        </p>
-        <p>
-          Prefira ler com calma: a wiki foi feita para ser prazerosa —
-          com ritmo de texto, destaques e animações leves (respeitando a preferência do seu sistema por menos movimento).
         </p>
       </section>
 
       <section data-reveal>
         <h2 id="atualizar">Manter atualizado</h2>
         <p>
-          Novas páginas nascem sob demanda, a partir das specs do produto
-          (meeting notes, regras de negócio e casos de uso — sempre reescritas em tom de produto).
+          Novas páginas nascem sob demanda. Ao gerar uma página, a skill atualiza o
+          <code>assets/js/catalog-data.js</code> — assim busca e catálogo ficam sincronizados.
         </p>
         <div class="callout callout--tip">
           <p class="callout__label">Para o time</p>
-          <p>Peça: “Gere uma página da docs wiki sobre {tópico/feature}” — a skill <code>docs-wiki-page</code> cuida disso.</p>
+          <p>Peça: “Gere uma página da docs wiki sobre {tópico/feature}”.</p>
         </div>
       </section>
     </main>
@@ -100,10 +109,12 @@
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <p><a href="../index.html">← Voltar ao início</a></p>
+      <p><a href="../index.html">← Voltar ao início</a> · <a href="../index.html#catalogo">Catálogo</a></p>
     </div>
   </footer>
 
+  <script src="../assets/js/catalog-data.js"></script>
+  <script src="../assets/js/catalog.js"></script>
   <script src="../assets/js/motion.js"></script>
   <script src="../assets/js/nav.js"></script>
 </body>

@@ -57,7 +57,7 @@ Reportar gaps ao usuário antes de alterar.
 | Skill `spec-from-code` | Adicionar se ausente (spec de fluxo já implementado) |
 | Skills `implement-sprint-task`, `implement-fix` | Adicionar se ausentes (implementação guiada para dev) |
 | Skill `docs-wiki-page` + `docs/docs-wiki.md` | Adicionar se ausentes |
-| `docs_wiki/` | **Opt-in** — perguntar se quer criar a wiki HTML de produto; se sim, copiar `templates/instance/docs_wiki/` (inclui `diagrams.css`), preencher `docs_wiki` no `sdd.config.yaml` e seguir didática visual da Fase 5b (diagramas + SVG MIT) |
+| `docs_wiki/` | **Opt-in** — perguntar se quer criar a wiki HTML de produto; se sim, copiar `templates/instance/docs_wiki/` (inclui `diagrams.css`, `catalog.js` / `catalog-data.js`), preencher `docs_wiki` no `sdd.config.yaml` e seguir didática visual da Fase 5b (diagramas + SVG MIT). Se a wiki já existir sem catálogo/busca, oferecer upgrade desses arquivos. |
 | Templates `analysis-context`, `implementation-gaps`, `evolution-insights`, `spec-from-code-progress` | Adicionar em `templates/` se ausentes |
 
 Usar templates em `create-specs-setup/templates/instance/` como referência — copiar conteúdo já parametrizado para o projeto.

@@ -138,7 +138,7 @@ Se **sim** e SPA ok:
 
 ### Fase 5b — Docs wiki do produto (opcional)
 
-Pergunta 🔴: criar **docs wiki** HTML estática agora? (site de produto para cliente/usuário/time — sem código)
+Pergunta 🔴: criar **docs wiki** HTML estática agora? (documentação de produto — o que resolve, como funciona, como fazer)
 
 Se **não** → `docs_wiki.enabled: false`.
 
@@ -250,15 +250,16 @@ Substituir placeholders ao gravar (ver checklist e template).
 
 ### 3b. Docs wiki (se `docs_wiki.enabled: true`)
 
-1. Copiar `templates/instance/docs_wiki/` → `{TARGET_DIR}/docs_wiki/` (inclui `assets/css/diagrams.css`)
-2. Renomear/processar `*.tpl` → arquivos finais (`index.html`, `pages/como-usar.html`, `README.md`, `templates/page.html`)
+1. Copiar `templates/instance/docs_wiki/` → `{TARGET_DIR}/docs_wiki/` (inclui `assets/css/diagrams.css`, `assets/js/catalog.js`)
+2. Renomear/processar `*.tpl` → arquivos finais (`index.html`, `pages/como-usar.html`, `README.md`, `templates/page.html`, `assets/js/catalog-data.js`)
 3. Substituir placeholders: `{{PROJECT_NAME}}`, `{{PROJECT_LANGUAGE}}`, `{{DOCS_WIKI_TEMA}}`, `{{DOCS_WIKI_ANIMACAO}}`, `{{DOCS_WIKI_ESCRITA}}`
 4. Se `usar_cores_marca: true`: preencher `assets/css/tokens.css` com `--color-primary` / `--color-accent` a partir de `cor_principal` / `cor_destaque`
-5. Copiar skill `docs-wiki-page.md.tpl` → `.agents/skills/docs-wiki-page/SKILL.md` (**sempre** copiar a skill; se wiki desabilitada, a skill orienta a habilitar via upgrade)
-6. Copiar `docs/docs-wiki.md.tpl` → `docs/docs-wiki.md`
-7. Se o usuário pediu páginas extras na entrevista → gerar com o mesmo padrão da skill `docs-wiki-page` **após** a base pronta (narrativa + diagramas/SVG MIT quando didático; ver § Fase 5b)
+5. Se o usuário fornecer logo da marca → gravar em `docs_wiki/assets/brand/logo.png` e/ou `logo-on-dark.png` e inserir `<img class="brand__logo">` no header das páginas base
+6. Copiar skill `docs-wiki-page.md.tpl` → `.agents/skills/docs-wiki-page/SKILL.md` (**sempre** copiar a skill; se wiki desabilitada, a skill orienta a habilitar via upgrade)
+7. Copiar `docs/docs-wiki.md.tpl` → `docs/docs-wiki.md`
+8. Se o usuário pediu páginas extras na entrevista → gerar com o mesmo padrão da skill `docs-wiki-page` **após** a base pronta (narrativa + diagramas/SVG MIT quando didático; ver § Fase 5b) e registrar em `catalog-data.js`
 
-Garantir que as páginas HTML linkam `diagrams.css` junto com `base.css` / `motion.css`.
+Garantir que as páginas HTML linkam `diagrams.css` junto com `base.css` / `motion.css`, e `catalog-data.js` + `catalog.js`.
 
 Se `docs_wiki.enabled: false`: **não** criar a pasta `docs_wiki/`; ainda assim gravar `docs/docs-wiki.md` (explica o recurso) e a skill `docs-wiki-page` (detecta disabled).
 
@@ -306,7 +307,7 @@ Se `docs_wiki.enabled: false`: **não** criar a pasta `docs_wiki/`; ainda assim 
 | V9 | `ai-rules.md` contém seção Search-first | leitura |
 | V10 | Se `prototype.enabled`: `prototypes/package.json`, catálogo vazio em `registry/` (com `sprint` no modelo), página do catálogo com busca/filtro sprint, botão/print (`prototype-screenshot-button` + script `export:spec-screenshots`) e `src/app/feature/README.md` | só se protótipo ativo |
 | V11 | Nenhum arquivo gravado contém referências hardcoded a projetos externos (URLs ou nomes de repos alheios) | busca textual em `{TARGET_DIR}` |
-| V12 | Se `docs_wiki.enabled`: `docs_wiki/index.html`, `pages/como-usar.html`, `assets/css/base.css`, `assets/css/diagrams.css`, `assets/js/motion.js`; skill `docs-wiki-page` presente | só se docs wiki ativa |
+| V12 | Se `docs_wiki.enabled`: `docs_wiki/index.html`, `pages/como-usar.html`, `assets/css/base.css`, `assets/css/diagrams.css`, `assets/js/motion.js`, `assets/js/catalog.js`, `assets/js/catalog-data.js`; skill `docs-wiki-page` presente | só se docs wiki ativa |
 
 Apresentar tabela **✅ / ❌** ao usuário (V1–V12). Com qualquer ❌, corrigir antes do handoff.
 
